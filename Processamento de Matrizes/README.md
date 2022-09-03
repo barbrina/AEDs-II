@@ -40,7 +40,7 @@
 
 <p> 6) A sua transposta é calculada e preenchida através da matriz inicial e em seguida, a multiplicação é feita em uma nova matriz. </p>
 
-<p> 7) Por fim, a matriz de data é transformada em uma matriz de vector por vector e ela será utilizada como valor na unordered_map. Todas as inserções na hash são mostradas na tela, assim como as não inserções, por duas coordenadas terem a mesma chave. </p>
+<p> 7) Por fim, a matriz de data é transformada em uma matriz de vector por vector e ela será utilizada como valor na unordered_map. Todas as inserções na hash são mostradas na tela, assim como as não inserções, por duas coordenadas terem a mesma chave. Os dados são printados na tela. </p>
 
 
 # Compilação e Execução
