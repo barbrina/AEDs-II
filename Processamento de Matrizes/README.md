@@ -11,11 +11,22 @@
 
 <p>Feito a leitura da composição de M para um tipo matriz em C, a segunda etapa é produzir a transposta de M -= MT. Feito isso, produza a multiplicação e armazene em uma hash o resultado da multiplicação como valor para a dupla de i's e j's, os quais deverão ser utilizados como chaves da hash. Assim, para cada novo calculo, antes o sistema deve consular a hash para identificar se a multiplicação já foi realizada. Em caso afirmativo, retorne apenas a resposta já calculada. Caso contrário, elabore a multiplicação e armazene o conteúdo em cache.  </p>
 
+## Mapa não ordenado
+
+<p>Em C++, o STL unordered_map é um contêiner associado que armazena elementos formados pela combinação de um valor-chave e um valor mapeado. O valor da chave é usado para identificar exclusivamente o elemento e o valor mapeado é o conteúdo associado à chave. Tanto a chave quanto o valor podem ser de qualquer tipo predefinido ou definido pelo usuário.</p>
+
+<p>O unordered_map interno é implementado usando a tabela de hash , a chave fornecida para mapear é convertida em índices de uma tabela de hash, é por isso que o desempenho da estrutura de dados depende muito da função hash, mas em média, o custo de pesquisa, inserção e exclusão do a tabela hash é O (1). </p>
+
+### Métodos em unordered_map 
+<p>Muitas funções estão disponíveis que funcionam em unordered_map. os mais úteis deles são - operator =, operator [], empty e size for capacity, start e end para o iterator, find e contar para lookup, insert e apaga para modificação.</p>
+<p>A biblioteca C++ 11 também fornece funções para ver a contagem de intervalos usados internamente, o tamanho dos intervalos e também a função hash usada e várias políticas de hash, mas são menos úteis em aplicativos reais. Podemos iterar sobre todos os elementos de unordered_map usando Iterator.</p>
+
 ## Desenvolvimento do problema
 
 <p>  O problema foi desenvolvido da seguinte maneira: </p>
 
-
+<p> 1) Um mapa não ordenado é criado: </p>
+`
 
 # Compilação e Execução
 
@@ -42,7 +53,3 @@ O algoritmo disponibilizado possui um arquivo Makefile que realiza todo o proced
 <img align="center"  src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 </div>
-
-
-
-
