@@ -43,6 +43,13 @@
 <p> 7) Por fim, a matriz de data é transformada em uma matriz de vector por vector e ela será utilizada como valor na unordered_map. Todas as inserções na hash são mostradas na tela, assim como as não inserções, por duas coordenadas terem a mesma chave. Os dados são printados na tela. </p>
 
 
+<div align="center">
+ <p> </p>
+ <img src="img/imprimir.png">
+ <p> </p>
+</div>
+
+
 # Compilação e Execução
 
 O algoritmo disponibilizado possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
