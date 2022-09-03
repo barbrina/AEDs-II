@@ -1,5 +1,5 @@
 <div style="display: inline-block;">
-<img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white"/> 
+<img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"/> 
 <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/> 
 <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"/> 
 </a> 
@@ -17,6 +17,13 @@
 
 <p>O unordered_map interno é implementado usando a tabela de hash , a chave fornecida para mapear é convertida em índices de uma tabela de hash, é por isso que o desempenho da estrutura de dados depende muito da função hash, mas em média, o custo de pesquisa, inserção e exclusão do a tabela hash é O (1). </p>
 
+<div align="center">
+ <p> </p>
+ <img src="img/hash function.png">
+ <p> </p>
+</div>
+
+
 ### Métodos em unordered_map 
 <p>Muitas funções estão disponíveis que funcionam em unordered_map. os mais úteis deles são - operator =, operator [], empty e size for capacity, start e end para o iterator, find e contar para lookup, insert e apaga para modificação.</p>
 <p>A biblioteca C++ 11 também fornece funções para ver a contagem de intervalos usados internamente, o tamanho dos intervalos e também a função hash usada e várias políticas de hash, mas são menos úteis em aplicativos reais. Podemos iterar sobre todos os elementos de unordered_map usando Iterator.</p>
@@ -25,7 +32,7 @@
 
 <p>  O problema foi desenvolvido da seguinte maneira: </p>
 
-<p> 1) Um mapa não ordenado é criado: </p>
+<p> 1) Um mapa não ordenado é declarado: </p>
 
 ```unordered_map<string, vector<vector<int>>> umap;```
 <p> onde string indicação do tipo de dados para a chave, e vector<vector<int>> indica o tipo de dados para o valor.</p>
