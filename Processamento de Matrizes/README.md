@@ -26,7 +26,22 @@
 <p>  O problema foi desenvolvido da seguinte maneira: </p>
 
 <p> 1) Um mapa não ordenado é criado: </p>
-`
+
+```unordered_map<string, vector<vector<int>>> umap;```
+<p> onde string indicação do tipo de dados para a chave, e vector<vector<int>> indica o tipo de dados para o valor.</p>
+
+<p> 2) Em seguida, a função para abertura de arquivo é chamada e nela é passada o mapa não ordenado declarado. </p>
+
+<p> 3) Em arquivo.cpp, o coordenadas.txt é aberto e suas coordenadas são lidas e passadas para uma string, que será utilizada como chave da unordered_map, e seus valores são passados para variáveis do tipo inteiro, que serão utilizadas para calcular o tamanho da matriz. </p>
+
+<p> 4) A matriz e sua transposta do tipo data são declaradas e criadas. </p>
+
+<p> 5) O arquivo.txt posteriormente é aberto, e nele a matriz criada é preenchida após receber os valores das coordenadas através do método PreencherMatriz(lin, col, num, matriz); </p>
+
+<p> 6) A sua transposta é calculada e preenchida através da matriz inicial e em seguida, a multiplicação é feita em uma nova matriz. </p>
+
+<p> 7) Por fim, a matriz de data é transformada em uma matriz de vector por vector e ela será utilizada como valor na unordered_map. Todas as inserções na hash são mostradas na tela, assim como as não inserções, por duas coordenadas terem a mesma chave. </p>
+
 
 # Compilação e Execução
 
