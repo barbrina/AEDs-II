@@ -1,4 +1,5 @@
 <img align="right" width="100" height="100" src="img/binarytree.png">
+
 # Código de Huffman
 
 ## Árvore Binária
@@ -21,23 +22,29 @@
  <p> </p>
 </div>
 
-### Árvore de Huffman
+## Árvore de Huffman
 
 <p> Trata-se de uma codificação de caracteres que permite compactar arquivos de texto, ou seja, representar um arquivo de texto A por um arquivo de bits B bem menor. O algoritmo de Huffman calcula uma tabela de códigos sob medida para o arquivo A de modo que o arquivo B seja o menor possível. O algoritmo de Huffman é um bom exemplo de algoritmo guloso. O texto desta página é uma versão melhorada da seção 3, capítulo 16, de CLRS.  </p>
+
+
+> **Algoritmo guloso**
+> Estratégia gulosa é aquela usada por um montanhista que decide caminhar sempre "para cima", na direção de "maior subida", na esperança de assim chegar ao pico mais alto da montanha. (Como todos sabemos, essa estratégia nem sempre produz o resultado esperado). Um algoritmo guloso escolhe, em cada iteração, o objeto mais "apetitoso" que vê pela frente. (A definição de "apetitoso" é estabelecida a priori, antes da execução do algoritmo.) O objeto escolhido passa a fazer parte da solução que o algoritmo constrói.
 
 <p> </p>
 
 #### Desempenho
 
-<p> Se a fila-com-prioridades for implementada como um vetor ordenado, cada execução de inserir na fila e extrair o mínimo elemenrp consumirá Ο(m) unidades de tempo, sendo m o número de células na fila Q. Como m ≤ n e há n repetições do bloco de linhas 1 a 7 e n−1 repetições do bloco de linhas 9 a 15, o consumo de tempo total do algoritmo será Ο(n²).  Se a fila-com-prioridades for implementada como um min-heap (veja um dos exercícios abaixo), cada execução de Insere-na-Fila e Extrai-Min consumirá Ο(lg n) unidades de tempo. Com isso, o consumo total será de </p>
+<p> Se a fila-com-prioridades for implementada como um vetor ordenado, cada execução de inserir na fila e extrair o mínimo elemenrp consumirá Ο(m) unidades de tempo, sendo m o número de células na fila Q. Como m ≤ n e há n repetições do bloco de linhas 1 a 7 e n−1 repetições do bloco de linhas 9 a 15, o consumo de tempo total do algoritmo será $Ο(n²)$.  Se a fila-com-prioridades for implementada como um min-heap (veja um dos exercícios abaixo), cada execução de Insere-na-Fila e Extrai-Min consumirá $O(n lg n)$ unidades de tempo. Com isso, o consumo total será de </p>
 
-Ο(n lg n)
+
+$O(n lg n)$
 
 <p> unidades de tempo.  </p>
-  
+
+
 ## Desenvolvimento do Problema
   
-## Compilação e Execuçãoo
+## Compilação e Execução
 
 
 O algoritmo disponibilizado possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
