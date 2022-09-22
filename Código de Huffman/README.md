@@ -24,7 +24,7 @@
 
 ## Árvore de Huffman
 
-<p> Trata-se de uma codificação de caracteres que permite compactar arquivos de texto, ou seja, representar um arquivo de texto A por um arquivo de bits B bem menor. O algoritmo de Huffman calcula uma tabela de códigos sob medida para o arquivo A de modo que o arquivo B seja o menor possível. O algoritmo de Huffman é um bom exemplo de algoritmo guloso. O texto desta página é uma versão melhorada da seção 3, capítulo 16, de CLRS.  </p>
+<p> Trata-se de uma codificação de caracteres que permite compactar arquivos de texto, ou seja, representar um arquivo de texto A por um arquivo de bits B bem menor. O algoritmo de Huffman calcula uma tabela de códigos sob medida para o arquivo A de modo que o arquivo B seja o menor possível. O algoritmo de Huffman é um bom exemplo de algoritmo guloso.</p>
 
 
 > **Algoritmo guloso**
@@ -32,7 +32,7 @@
 
 <p> </p>
 
-#### Desempenho
+### Desempenho
 
 <p> Se a fila-com-prioridades for implementada como um vetor ordenado, cada execução de inserir na fila e extrair o mínimo elemenrp consumirá Ο(m) unidades de tempo, sendo m o número de células na fila Q. Como m ≤ n e há n repetições do bloco de linhas 1 a 7 e n−1 repetições do bloco de linhas 9 a 15, o consumo de tempo total do algoritmo será $Ο(n²)$.  Se a fila-com-prioridades for implementada como um min-heap (veja um dos exercícios abaixo), cada execução de Insere-na-Fila e Extrai-Min consumirá $O(n lg n)$ unidades de tempo. Com isso, o consumo total será de </p>
 
@@ -41,9 +41,23 @@ $O(n lg n)$
 
 <p> unidades de tempo.  </p>
 
+### Aplicação
+
+<p>A principal aplicação prática do algoritmo de Huffman é o cálculo de códigos binários para compressão de arquivos, ou seja, a transformação de um arquivo de caracteres em uma sequência de bits que ocupa pouco espaço. A ideia é usar poucos bits para representar os caracteres mais frequentes e mais bits para representar os mais raros. No caso deste projeto, a idea é análoga a esta, apenas trocando a representação de caracteres mais frequentes para palavras mais frequentes do texto. </p>
+
+
+## Algoritmo
+
+### Arquivos
+
+<p> A estrutura dos arquivos apresenta um arquivo makefile, um script que consta as instruções de como gerar um binário e uma pasta src. A pasta src apresenta cinco arquivos, sendo eles o main.c, responsável pela chamada das principais funções, e os arquivos Arquivo.cpp  </p>
+
+### Estrutura do algoritmo
 
 ## Desenvolvimento do Problema
   
+  
+
 ## Compilação e Execução
 
 
@@ -59,14 +73,9 @@ O algoritmo disponibilizado possui um arquivo Makefile que realiza todo o proced
 
 </div>
 
-# Contato
+## Referências 
 
-<div>
-<p align="justify"> Bárbara Gualberto</p>
-<a href="https://t.me/barbrinas">
-<img align="center" src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"/> 
- 
- <a href="[https://www.linkedin.com/in/thaissa-vitoria-daldegan-6a84b9153/](https://www.linkedin.com/in/barbara-gualberto/)">
-<img align="center"  src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
-</a>
-</div>
+<p> P. Feofiloff. **Análise de Algoritmos**. Internet: http://www.ime.usp.br/~pf/analise_de_algoritmos/, 1999–2009 </p>
+<p> P. Feofiloff. **Código de Huffman**. Internet: [http://www.ime.usp.br/~pf/analise_de_algoritmos/](https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/huffman.html#sec:recursive-structure), 1999–2009 </p>
+
+
