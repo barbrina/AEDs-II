@@ -53,11 +53,15 @@ $O(n lg n)$
 
 ### Estrutura do algoritmo
 
-<p> Para apresentar o algoritmo, explicarei separadamente os dois principais arquivos do código: o arquivo.cpp e o huffman.hpp.</p>
+<p> O código é dividido em dois pedaços, o primeiro onde o arquivo é lido e as palavras são tratadas, e o segundo, onde a árvore é criada e a codificação é enviara para o arquivo binário. Dessa forma, explicarei separadamente os dois principais arquivos do algoritmo na ordem a qual eles são excecutados: o arquivo.cpp e o huffman.hpp.
 
 #### arquivo.cpp
 
+<p> </p>
+
 #### huffman.cpp
+
+<p> </p>
 
 ## Compilação e Execução
 
@@ -71,6 +75,7 @@ O algoritmo disponibilizado possui um arquivo Makefile que realiza todo o proced
 |  `make clean`          | Apaga a última compilação realizada contida na pasta build                                        |
 |  `make`                | Executa a compilação do programa utilizando o gcc, e o resultado vai para a pasta build           |
 |  `make run`            | Executa o programa da pasta build após a realização da compilação                                 |
+|  `make r`              | Apaga, builda e executa o programa                                                                |
 
 </div>
 
