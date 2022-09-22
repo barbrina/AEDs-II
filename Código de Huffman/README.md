@@ -36,7 +36,6 @@
 
 <p> Se a fila-com-prioridades for implementada como um vetor ordenado, cada execução de inserir na fila e extrair o mínimo elemenrp consumirá Ο(m) unidades de tempo, sendo m o número de células na fila Q. Como m ≤ n e há n repetições do bloco de linhas 1 a 7 e n−1 repetições do bloco de linhas 9 a 15, o consumo de tempo total do algoritmo será $Ο(n²)$.  Se a fila-com-prioridades for implementada como um min-heap (veja um dos exercícios abaixo), cada execução de Insere-na-Fila e Extrai-Min consumirá $O(n lg n)$ unidades de tempo. Com isso, o consumo total será de </p>
 
-
 $O(n lg n)$
 
 <p> unidades de tempo.  </p>
@@ -48,15 +47,17 @@ $O(n lg n)$
 
 ## Algoritmo
 
-### Arquivos
+### Estrutura dos arquivos
 
-<p> A estrutura dos arquivos apresenta um arquivo makefile, um script que consta as instruções de como gerar um binário e uma pasta src. A pasta src apresenta cinco arquivos, sendo eles o main.c, responsável pela chamada das principais funções, e os arquivos Arquivo.cpp  </p>
+<p> O código apresenta um arquivo makefile, um script que consta as instruções de como gerar um binário, e uma pasta src. A pasta src apresenta cinco arquivos, sendo eles o main.c, responsável pela chamada das principais funções, e os arquivos arquivo.hpp, arquivo.cpp, huffman.hpp e huffman.cpp. Os dois primeiros arquivos, arquivo.hpp e arquivo.cpp, são responsáveis pela leitura do arquivo de texto, tratamento das palavras e inserção das mesmas no map. Os dois últimos, huffman.hpp e huffman.cpp, são responsáveis pela criação da min-heap, da árvore de huffman e a leitura e salvamento da codificação no arquivo binário. A pasta src também apresenta uma pasta files, onde consta o arquivo de texto, texto.txt, que será comprimido e o arquivo binário codificado.bin, já com a codificação. </p>
 
 ### Estrutura do algoritmo
 
-## Desenvolvimento do Problema
-  
-  
+<p> Para apresentar o algoritmo, explicarei separadamente os dois principais arquivos do código: o arquivo.cpp e o huffman.hpp.</p>
+
+#### arquivo.cpp
+
+#### huffman.cpp
 
 ## Compilação e Execução
 
