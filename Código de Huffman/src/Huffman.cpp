@@ -6,18 +6,19 @@ MinHeapNode *novo_no(string data, float freq)
     MinHeapNode *temp = (MinHeapNode *)malloc(sizeof(MinHeapNode));
 
     temp->esq = temp->dir = NULL;
-    temp->data = data;
+    temp->data = (char *)malloc(data.size() * sizeof(char));
+    strcpy(temp->data, data.c_str());
     temp->freq = freq;
 
     return temp;
 }
 
 // Uma função apra criar uma min heap de dada capacidade
-MinHeap *cria_minheap(int capacidade)
+MinHeap *cria_minheap(unsigned capacidade)
 {
     MinHeap *minHeap = (MinHeap *)malloc(sizeof(MinHeap));
 
-    minHeap->tamanho = 0; // current tamanhois 0
+    minHeap->tamanho = 0; // tamanho atual é 0
     minHeap->capacidade = capacidade;
     minHeap->array = (struct MinHeapNode **)malloc(minHeap->capacidade * sizeof(MinHeapNode *));
 
@@ -35,18 +36,18 @@ void troca_no(MinHeapNode **a, MinHeapNode **b)
 // Função padrão para minheapify
 void minHeapify(MinHeap *minHeap, int idx)
 {
-    int smallest = idx;
+    int menor = idx;
     int esq = 2 * idx + 1;
     int dir = 2 * idx + 2;
 
-    if (esq < minHeap->tamanho && minHeap->array[esq]->freq < minHeap->array[smallest]->freq)
-        smallest = esq;
-    if (dir < minHeap->tamanho && minHeap->array[dir]->freq < minHeap->array[smallest]->freq)
-        smallest = dir;
-    if (smallest != idx)
+    if (esq < minHeap->tamanho && minHeap->array[esq]->freq < minHeap->array[menor]->freq)
+        menor = esq;
+    if (dir < minHeap->tamanho && minHeap->array[dir]->freq < minHeap->array[menor]->freq)
+        menor = dir;
+    if (menor != idx)
     {
-        troca_no(&minHeap->array[smallest], &minHeap->array[idx]);
-        minHeapify(minHeap, smallest);
+        troca_no(&minHeap->array[menor], &minHeap->array[idx]);
+        minHeapify(minHeap, menor);
     }
 }
 
@@ -90,12 +91,12 @@ void constroi_minheap(MinHeap *minHeap)
     int n = minHeap->tamanho - 1;
     int i;
 
-    for (i = (n - 1) / 2; i >= 0; --i)
+    for (i = (n - 1) / 2; i >= 0; --i) // começa da metade e vai até o 0
         minHeapify(minHeap, i);
 }
 
 // Função para imprimir uma array de tamanho n
-void imprime_arr(int *arr, int n)
+void imprime_arr(int arr[], int n)
 {
     int i;
     for (i = 0; i < n; ++i)
@@ -110,12 +111,11 @@ int e_folha(MinHeapNode *root)
 }
 
 // Cria uma min heap de capacidade igual ao tamanho e insere todas as palavras nele. Tamanho inicial da min heap é igual a capacidade
-MinHeap *cria_constroi_minheap(string *data, float *freq, int tamanho)
+MinHeap *cria_constroi_minheap(string data[], float freq[], int tamanho)
 {
-
     MinHeap *minHeap = cria_minheap(tamanho);
 
-    for (int i = 0; i < tamanho; i++)
+    for (int i = 0; i < tamanho; ++i)
     {
         minHeap->array[i] = novo_no(data[i], freq[i]);
     }
@@ -127,11 +127,11 @@ MinHeap *cria_constroi_minheap(string *data, float *freq, int tamanho)
 }
 
 // Função principal que constrói a árvore de huffman
-MinHeapNode *arvore_huffman(string *data, float *freq, int tamanho)
+MinHeapNode *arvore_huffman(string data[], float freq[], int tamanho)
 {
-    MinHeapNode *esq, *dir, *top;
 
-    // Passo 1: Cria uma min heap com uma capacidade igual ao tamanho.
+    MinHeapNode *esq, *dir, *top;
+    // Passo 1: Cria uma min heap com uma capacidade igual ao tamanho
     MinHeap *minHeap = cria_constroi_minheap(data, freq, tamanho);
 
     // Itera enquanto tamanho da heap não se torna 1
@@ -179,18 +179,24 @@ void imprime_codigo(MinHeapNode *root, int arr[], int top)
     }
 }
 
-MinHeapNode *codigo_huffman(string *data, float *freq, int tamanho)
+MinHeapNode *codigo_huffman(string data[], float freq[], int tamanho)
 {
     // Constrói a árvore de huffman
     MinHeapNode *root = arvore_huffman(data, freq, tamanho); // aponta para o nó raiz da árvore
+
+    int arr[MAX_TREE_HT], top = 0;
+    // imprime_codigo(root, arr, top);
+
     return root;
 }
 
 void salva_arquivo(MinHeapNode *root, map<string, float> mapa, vector<string> palavras)
 {
-    ofstream codificacao("codificado.bin", ios::binary);
+    FILE *code;
+    string nome;
+    code = fopen("src/arquivos/codificado.bin", "w+");
 
-    if (codificacao.is_open())
+    if (code != NULL)
     {
         map<string, float>::iterator itr;
         for (auto i : palavras)
@@ -198,41 +204,39 @@ void salva_arquivo(MinHeapNode *root, map<string, float> mapa, vector<string> pa
             itr = mapa.find(i);
             if (itr != mapa.end())
             {
+                string nome;
                 int arr[MAX_TREE_HT], top = 0;
-                procura(root, itr->first, itr->second, arr, top, codificacao);
+                procura(root, itr->first, itr->second, arr, top, nome);
+                fwrite(nome.c_str(), nome.size(), 1, code);
             }
         }
     }
     else
         cout << "Problema ao abrir o arquivo.\n";
 
-    codificacao.close();
+    fclose(code);
 }
 
-void procura(MinHeapNode *root, string data, float freq, int arr[], int top, ofstream &codificacao)
+void procura(MinHeapNode *root, string data, float freq, int arr[], int top, string &nome)
 {
-
     // Atribui 0 para esquerda e recorre
     if (root->esq)
     {
         arr[top] = 0;
-        procura(root->esq, data, freq, arr, top + 1, codificacao);
+        procura(root->esq, data, freq, arr, top + 1, nome);
     }
 
     // Atribui 1 para direita e recorre
     if (root->dir)
     {
         arr[top] = 1;
-        procura(root->dir, data, freq, arr, top + 1, codificacao);
+        procura(root->dir, data, freq, arr, top + 1, nome);
     }
 
     // Se for uma folha, então contem uma das input strings, imprime a instring e o código da arr[]
     if (e_folha(root) && root->freq == freq && root->data == data)
     {
-        int i;
-        for (i = 0; i < top; ++i)
-        {
-            codificacao.write(reinterpret_cast<const char *>(&arr[i]), sizeof(arr[i]));
-        }
+        for (int i = 0; i < top; i++)
+            nome += to_string(arr[i]);
     }
 }

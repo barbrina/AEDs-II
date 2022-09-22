@@ -3,37 +3,42 @@
 void abre_arq(map<string, float> *mapa, vector<string> *palavras)
 {
     string palavra;
+    string linha;
 
     // Abre um arquivo de texto para Leitura
-    ifstream texto("texto.txt");
+    ifstream texto("src/arquivos/texto.txt");
 
-    // leitura de texto.txt, palavra por palavra
-    while (texto >> palavra)
+    while (texto.is_open())
     {
-
-        // transforma palavra em lower case
-        transform(palavra.begin(), palavra.end(), palavra.begin(), ::tolower);
-
-        // retira as vogais se houver
-        bool key = checa_vogais(palavra);
-
-        if (key)
-            palavra.erase();
-        else
+        while (getline(texto, linha))
         {
-            // retira pontuações se houver
-            palavra = checa_pontuacao(palavra);
+            stringstream line(linha);
 
-            // se não encontrar a palavra, adiciona ela no mapa
-            if (!encontra_palavra(mapa, palavra))
-                insere_map(mapa, palavra, 1);
+            while (getline(line, palavra, ' '))
+            {
+                // transforma palavra em lower case
+                transform(palavra.begin(), palavra.end(), palavra.begin(), ::tolower);
+
+                // retira as vogais se houver
+                bool key = checa_vogais(palavra);
+
+                if (key)
+                    palavra.erase();
+                else
+                {
+                    // retira pontuações se houver
+                    palavra = checa_pontuacao(palavra);
+
+                    // se não encontrar a palavra, adiciona ela no mapa
+                    if (!encontra_palavra(mapa, palavra))
+                        insere_map(mapa, palavra, 1);
+
+                    palavras->push_back(palavra);
+                }
+            }
         }
-
-        palavras->push_back(palavra);
-        palavras->push_back(" ");
+        texto.close();
     }
-
-    texto.close();
 }
 
 bool checa_vogais(string palavra)
@@ -109,25 +114,25 @@ void formula_rp(map<string, float> *mapa)
     map<string, float>::iterator itr;
 
     float max = max_valor(mapa);
-    //float total = total_palavras(mapa);
+    float total = total_palavras(mapa);
     float min = min_valor(mapa);
     float formula;
-
-    for (itr = mapa->begin(); itr != mapa->end(); ++itr)
-    {
-        float atual = itr->second;
-        string palavra = itr->first;
-        formula = atual / (max - min);
-        atualiza_map(mapa, palavra, formula);
-    }
 
     /*for (itr = mapa->begin(); itr != mapa->end(); ++itr)
     {
         float atual = itr->second;
         string palavra = itr->first;
-        formula = atual / total;
+        formula = atual / (max - min);
         atualiza_map(mapa, palavra, formula);
     }*/
+
+    for (itr = mapa->begin(); itr != mapa->end(); ++itr)
+    {
+        float atual = itr->second;
+        string palavra = itr->first;
+        formula = atual / total;
+        atualiza_map(mapa, palavra, formula);
+    }
 
     /*for (itr = mapa->begin(); itr != mapa->end(); ++itr)
     {
