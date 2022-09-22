@@ -1,6 +1,5 @@
-# Código de Huffman
-
 <img align="right" width="100" height="100" src="img/binarytree.png">
+# Código de Huffman
 
 ## Árvore Binária
 
