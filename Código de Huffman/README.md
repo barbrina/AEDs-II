@@ -57,7 +57,7 @@ $O(n lg n)$
 
 #### arquivo.cpp
 
-<p>Na main, a primeira função a ser chamada é *abre_arq(map<string, float> *mapa, vector<string> *palavras) e para ele são repassados um map de string e float, e um vector de string. Nesta função, o arquivo de leitura texto.txt é aberto, as palavras são lidas, tokenizadas e tratadas. Em seguida, as palavras são inseridas no map pela função **encontra_palavra(map<string, float> *mapa, string palavra)** e recebem o valor 1. As palavras que estão sendo inseridas pela segunda vez não são adicionadas novamente, apenas são somadas +1 no ponto flutuante.  </p>
+Na main, a primeira função a ser chamada é `abre_arq(map <string, float> *mapa, vector<string> *palavras)` e são repassados como parâmetros um map de string e float, e um vector de string. Nesta função, o arquivo de leitura texto.txt é aberto, as palavras são lidas, tokenizadas e tratadas. Em seguida, as palavras são inseridas no vector de palavras e no map pela função `encontra_palavra(map <string, float> *mapa, string palavra)` e recebem o valor 1. As palavras que estão sendo inseridas pela segunda ou mais vezes não são adicionadas novamente, apenas são incrementadas no ponto flutuante.  
  
  https://github.com/barbrina/AEDs-II/blob/a9e73e4093d6a82a88c3d4fef892333de1db2093/C%C3%B3digo%20de%20Huffman/src/arquivo.cpp#L4-L42
 
