@@ -31,17 +31,17 @@
 
 <p align="justify"> De maneira informal, a codificação Huffman é um algoritmo de compressão de dados sem perdas. A ideia é atribuir códigos de comprimento variável aos caracteres de entrada, sendo que os comprimentos dos códigos atribuídos são baseados nas frequências dos caracteres correspondentes. O caractere mais frequente recebe o menor código e o caractere menos frequente recebe o maior código.
  
-Os códigos de comprimento variável atribuídos aos caracteres de entrada são códigos de prefixo, significa que ***os códigos (sequências de bits) são atribuídos de tal forma que o código atribuído a um caractere não é o prefixo do código atribuído a nenhum outro caractere.*** É assim que o Huffman Coding garante que não haja ambiguidade ao decodificar o fluxo de bits gerado. 
+Os códigos de comprimento variável atribuídos aos caracteres de entrada são códigos de prefixo, significa que ***os códigos (sequências de bits) são atribuídos de tal forma que o código atribuído a um caractere não é o prefixo do código atribuído a nenhum outro caractere.*** É assim que o código de Huffman garante que não haja ambiguidade ao decodificar o fluxo de bits gerado. 
 
-<p align="justify"> Para entender os códigos de prefixo, usaremos um contra-exemplo. Sejam quatro caracteres a, b, c e d, e seus códigos de comprimento variável correspondentes sejam 00, 01, 0 e 1. Essa codificação leva à ambiguidade porque o código atribuído a c é o prefixo dos códigos atribuídos a a e b. Se o fluxo de bits compactado for 0001, a saída descompactada poderá ser “cccd” ou “ccb” ou “acd” ou “ab”. </p>
+<p align="justify"> Para entender os códigos de prefixo, usaremos um contra-exemplo. Sejam quatro caracteres $a$, $b$, $c$ e $d$, e seus códigos de comprimento variável correspondentes sejam $00$, $01$, $0$ e $1$. Essa codificação leva à ambiguidade porque o código atribuído a $c$ é o prefixo dos códigos atribuídos a $a$ e $b$. Se o fluxo de bits compactado for $0001$, a saída descompactada poderá ser “ $cccd$ ” ou “ $ccb$ ” ou “ $acd$ ” ou “ $ab$ ”. </p>
 
 ### Implementação do algoritmo
 
 <p>  É natural usar uma árvore binária usual como estrutura de dados para representar uma árvore de Huffman. Para uma implementação não recursiva do algoritmo de Huffman, basta representar árvores de Huffman com folhas unitárias. </p>
 
-Cada nó da árvore de Huffman será representado por uma célula dotada de quatro campos: esq, dir, índice e p. Para cada célula $z$, $esq[z]$ é o endereço do filho esquerdo de $z$ e $dir[z]$ é o endereço do filho direito de $z$. Se $z$ representa uma folha então $esq[z]$ = $dir[z]$ = $nil$. Se $z$ não representa uma folha então $índice[z]$ é irrelevante. Se $z$ representa uma folha { i } então $índice[z] = i$. Para cada $z$,  $p[z]$ é o peso do nó da árvore que a célula $z$ representa.
+Cada nó da árvore de Huffman será representado por uma célula dotada de quatro campos: $esq$, $dir$, $índice$ e $p$. Para cada célula $z$, $esq[z]$ é o endereço do filho esquerdo de $z$ e $dir[z]$ é o endereço do filho direito de $z$. Se $z$ representa uma folha então $esq[z]$ = $dir[z]$ = $nil$. Se $z$ não representa uma folha então $índice[z]$ é irrelevante. Se $z$ representa uma folha {i} então $índice[z] = i$. Para cada $z$,  $p[z]$ é o peso do nó da árvore que a célula $z$ representa.
 
-Podemos agora reescrever o algoritmo de Huffman em estilo iterativo. Vamos supor que o conjunto-suporte $S$ é ${ 1, 2, … , n }$. O algoritmo recebe uma ponderação $p$ de $S$ e devolve o endereço da raiz de uma árvore binária que representa uma árvore de Huffman ótima com folhas unitárias. </p>
+Podemos agora reescrever o algoritmo de Huffman em estilo iterativo. Vamos supor que o conjunto-suporte $S$ é {1, 2, … , n}. O algoritmo recebe uma ponderação $p$ de $S$ e devolve o endereço da raiz de uma árvore binária que representa uma árvore de Huffman ótima com folhas unitárias. </p>
 
 ```
 Huffman (n, p)
@@ -83,6 +83,11 @@ $O(n lg n)$
 <p align="justify"> A principal aplicação prática do algoritmo de Huffman é o cálculo de códigos binários para compressão de arquivos, ou seja, a transformação de um arquivo de caracteres em uma sequência de bits que ocupa pouco espaço. A ideia é usar poucos bits para representar os caracteres mais frequentes e mais bits para representar os mais raros. No caso deste projeto, a idea é análoga a esta, apenas trocando a representação de caracteres mais frequentes para palavras mais frequentes do texto. </p>
 
 ## O Algoritmo
+
+### Problema Proposto 
+
+<p align="justify"> Elabore uma árvore binária que utilize o código de Huffman para comprimir arquivos. Para tanto, (1) contabilizar a recorrência de cada palavra (RP) no arquivo; (2) normalizar a contabilização entre 0 e 1 utilizando a formula -> RP / (max(RP) - min(RP)); (3) Montar a árvore com as regras apresentadas por Huffman; (4) Troque as palavras pela codificação binária (utilizar booleano para representar 0 e 1); (5) Salve o arquivo em formato binário e observe qual foi o ganho de espaço obtido. </p>
+
 
 ### Estrutura dos arquivos
 
@@ -216,7 +221,17 @@ A segunda parte principal do código de Huffman é atravessar toda a árvore e a
  <p> A cada palavra encontrada, o array de inteiros é transformado em string, que é utilizado na função salva_arquivo para escrever a codificação em arquivo binário codifica.bin. O código pode ser printado na tela descomentando a linha: </p>
  
  https://github.com/barbrina/AEDs-II/blob/0a472cc7bb01aea1c4385e0ee014326acb8b2a8d/C%C3%B3digo%20de%20Huffman/src/huffman.cpp#L188
-  
+ 
+## Exemplo
+ 
+ <p> Segue um exemplo de como ficaria o arquivo de saída com o seguinte arquivo de entrada </p>
+ 
+#### Arquivo de Entrada
+https://github.com/barbrina/AEDs-II/blob/7ded50f157a23f524fcc4ab7fc320ce67dbbcbb4/C%C3%B3digo%20de%20Huffman/src/files/texto.txt#L1-L138 
+ 
+#### Arquivo de Saída
+ https://github.com/barbrina/AEDs-II/blob/7ded50f157a23f524fcc4ab7fc320ce67dbbcbb4/C%C3%B3digo%20de%20Huffman/src/files/codificado.bin#L1 
+ 
 ## Compilação e Execução
 
 O algoritmo disponibilizado possui um arquivo makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
