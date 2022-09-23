@@ -4,7 +4,7 @@
 
 ## Árvore Binária
 
-<p align="justify"> Uma árvore binária (= binary tree) é um conjunto de registros que satisfaz certas condições. Os registros serão chamados nós (poderiam também ser chamados células).  Cada nó tem um endereço.  Suporemos por enquanto que cada nó tem apenas três campos:  um número inteiro e dois ponteiros para nós.  Os nós podem, então, ser definidos assim: </p>
+<p align="justify"> Uma árvore binária $(= binary$ $tree)$ é um conjunto de registros que satisfaz certas condições. Os registros serão chamados nós (poderiam também ser chamados células).  Cada nó tem um endereço.  Suporemos por enquanto que cada nó tem apenas três campos:  um número inteiro e dois ponteiros para nós.  Os nós podem, então, ser definidos assim: </p>
 
 <div align="center">
  <p> </p>
@@ -12,9 +12,9 @@
  <p> </p>
 </div>
 
-<p align="justify"> O campo conteudo é a "carga útil" do nó;  os dois outros campos servem apenas para dar estrutura à árvore.  O campo esq de cada nó contém NULL ou o endereço de outro nó.  Uma hipótese análoga vale para o campo dir. Se o campo esq de um nó P é o endereço de um nó E, diremos que E é o filho esquerdo de P.  Analogamente, se P.dir é igual a &D, diremos que D é o filho direito de P.  Se um nó F é filho (esquerdo ou direito) de P, diremos que P é o pai de F.  Uma folha (= leaf) é um nó que não tem filho algum. </p>
+<p align="justify"> O campo conteudo é a "carga útil" do nó;  os dois outros campos servem apenas para dar estrutura à árvore. O campo esq de cada nó contém $NULL$ ou o endereço de outro nó. Uma hipótese análoga vale para o campo $dir$. Se o campo $esq$ de um nó $P$ é o endereço de um nó $E$, diremos que $E$ é o filho esquerdo de $P$. Analogamente, se $P.dir$ é igual a & $D$, diremos que $D$ é o filho direito de $P$. Se um nó $F$ é filho (esquerdo ou direito) de $P$, diremos que $P$ é o pai de $F$. Uma folha $(= leaf)$ é um nó que não tem filho algum. </p>
 
-<p align="justify"> É muito conveniente confundir, verbalmente, cada nó com seu endereço.  Assim, se x é um ponteiro para um nó (ou seja, se x é do tipo *noh), dizemos  "considere o nó x"  em lugar de  "considere o nó cujo endereço é x". A figura abaixo mostra dois exemplos de árvores binárias. A seguir, uma representação esquemática de uma árvore binária cujos nós contêm os números 2, 7, 5, etc. </p>
+<p align="justify">É muito conveniente confundir, verbalmente, cada nó com seu endereço.  Assim, se $x$ é um ponteiro para um nó (ou seja, se $x$ é do tipo $*noh$), dizemos  "considere o nó $x$"  em lugar de  "considere o nó cujo endereço é $x$". A seguir, uma representação esquemática de uma árvore binária cujos nós contêm os números 2, 7, 5, etc. </p>
 
 <div align="center">
  <p> </p>
@@ -24,20 +24,51 @@
 
 ## Árvore de Huffman
 
- Trata-se de uma codificação de caracteres que permite compactar arquivos de texto, ou seja, representar um arquivo de texto A por um arquivo de bits B bem menor. O algoritmo de Huffman calcula uma tabela de códigos sob medida para o arquivo A de modo que o arquivo B seja o menor possível. O algoritmo de Huffman é um bom exemplo de algoritmo guloso[^1].
+ Trata-se de uma codificação de caracteres que permite compactar arquivos de texto, ou seja, representar um arquivo de texto A por um arquivo de bits B bem menor. O algoritmo de Huffman calcula uma tabela de códigos sob medida para o arquivo A de modo que o arquivo B seja o menor possível. O algoritmo de Huffman é um bom exemplo de **algoritmo guloso[^1]**.
 
 
 [^1]: **Algoritmo guloso** Estratégia gulosa é aquela usada por um montanhista que decide caminhar sempre "para cima", na direção de "maior subida", na esperança de assim chegar ao pico mais alto da montanha. (Como todos sabemos, essa estratégia nem sempre produz o resultado esperado). Um algoritmo guloso escolhe, em cada iteração, o objeto mais "apetitoso" que vê pela frente. (A definição de "apetitoso" é estabelecida a priori, antes da execução do algoritmo.) O objeto escolhido passa a fazer parte da solução que o algoritmo constrói.
 
 <p align="justify"> De maneira informal, a codificação Huffman é um algoritmo de compressão de dados sem perdas. A ideia é atribuir códigos de comprimento variável aos caracteres de entrada, sendo que os comprimentos dos códigos atribuídos são baseados nas frequências dos caracteres correspondentes. O caractere mais frequente recebe o menor código e o caractere menos frequente recebe o maior código.
  
-<p align="justify"> Os códigos de comprimento variável atribuídos aos caracteres de entrada são códigos de prefixo, significa que ***os códigos (sequências de bits) são atribuídos de tal forma que o código atribuído a um caractere não é o prefixo do código atribuído a nenhum outro caractere.*** É assim que o Huffman Coding garante que não haja ambiguidade ao decodificar o fluxo de bits gerado. </p>
+Os códigos de comprimento variável atribuídos aos caracteres de entrada são códigos de prefixo, significa que ***os códigos (sequências de bits) são atribuídos de tal forma que o código atribuído a um caractere não é o prefixo do código atribuído a nenhum outro caractere.*** É assim que o Huffman Coding garante que não haja ambiguidade ao decodificar o fluxo de bits gerado. 
 
 <p align="justify"> Para entender os códigos de prefixo, usaremos um contra-exemplo. Sejam quatro caracteres a, b, c e d, e seus códigos de comprimento variável correspondentes sejam 00, 01, 0 e 1. Essa codificação leva à ambiguidade porque o código atribuído a c é o prefixo dos códigos atribuídos a a e b. Se o fluxo de bits compactado for 0001, a saída descompactada poderá ser “cccd” ou “ccb” ou “acd” ou “ab”. </p>
 
 ### Implementação do algoritmo
 
-<p> </p>
+<p>  É natural usar uma árvore binária usual como estrutura de dados para representar uma árvore de Huffman. Para uma implementação não recursiva do algoritmo de Huffman, basta representar árvores de Huffman com folhas unitárias. </p>
+
+Cada nó da árvore de Huffman será representado por uma célula dotada de quatro campos: esq, dir, índice e p. Para cada célula $z$, $esq[z]$ é o endereço do filho esquerdo de $z$ e $dir[z]$ é o endereço do filho direito de $z$. Se $z$ representa uma folha então $esq[z]$ = $dir[z]$ = $nil$. Se $z$ não representa uma folha então $índice[z]$ é irrelevante. Se $z$ representa uma folha { i } então $índice[z] = i$. Para cada $z$,  $p[z]$ é o peso do nó da árvore que a célula $z$ representa.
+
+Podemos agora reescrever o algoritmo de Huffman em estilo iterativo. Vamos supor que o conjunto-suporte $S$ é ${ 1, 2, … , n }$. O algoritmo recebe uma ponderação $p$ de $S$ e devolve o endereço da raiz de uma árvore binária que representa uma árvore de Huffman ótima com folhas unitárias. </p>
+
+```
+Huffman (n, p)
+1 Q := Nova-Fila-com-Prioridades ( )
+2 para i crescendo de 1 até n
+3     z := Cria-Célula ( )
+4     índice[z] := i
+5     p[z] := pi
+6     esq[z] := dir[z] := nil
+7     Insere-na-Fila (Q, z)
+8     enquanto Q tiver 2 ou mais células
+9 x := Extrai-Min (Q)
+10    y := Extrai-Min (Q)
+11    z := Cria-Célula ( )
+12    esq[z] := x
+13    dir[z] := y
+14    p[z] := p[x] + p[y]
+15    I  nsere-na-Fila (Q, z)
+16 r := Extrai-Min (Q)
+17 devolva r
+```
+
+<p>  A operação Nova-Fila-com-Prioridades () cria uma fila-com-prioridades vazia. Os elementos da fila serão células e a prioridade de cada célula $z$ é $p[z]$. A operação Cria-Célula gera uma nova célula e devolve o endereço dessa célula. A operação Insere-na-Fila $(Q, z)$ insere a célula $z$ na fila $Q$.
+
+As linhas 1 a 7 constroem as folhas da árvore. As demais linhas constroem os nós internos e a estrutura da árvore. A operação Extrai-Min $(Q)$ nas linhas 9 e 10 retira da fila-com-prioridades $Q$ uma célula que tem $p$ mínimo.
+
+No início de cada iteração temos uma floresta composta de duas ou mais árvores. (No início da primeira iteração, cada árvore tem apenas um nó.) Durante a iteração, o algoritmo escolhe duas raízes e funde as correspondentes árvores. No fim da última iteração, a floresta tem uma única árvore.</p>
 
 ### Desempenho
 
@@ -178,13 +209,17 @@ void insere_minheap(MinHeap *minHeap, MinHeapNode *minHeapNode)
 }
  ```
  
- ### Funções Auxiliares
-
-<p> Algumas funções a mais foram criadas, que não servem para o funcionamento do código, mas auxiliam na visualização das listas, das codificações...</p>
+A segunda parte principal do código de Huffman é atravessar toda a árvore e associar códigos as strings. Esta parte será realizada na função final da main `void salva_arquivo(MinHeapNode *root, map<string, float> mapa, vector<string> palavras)`. A função salva_arquivo é responsável por ler a vector string de palavras que armazenou as palavras no texto a medida que elas foram aparecendo, procurar estas palavras no map para pegar a frequência, e por fim, chamar a função `void procura(MinHeapNode *root, string data, float freq, int arr[], int top, string &nome)`, responsável por recursivamente passar por toda a árvore a procura da palavra e a cada interação com o nó esquerdo ou direito, armazenar a codificação em uma int arr[].
  
+ https://github.com/barbrina/AEDs-II/blob/0a472cc7bb01aea1c4385e0ee014326acb8b2a8d/C%C3%B3digo%20de%20Huffman/src/huffman.cpp#L223-L245
+ 
+ <p> A cada palavra encontrada, o array de inteiros é transformado em string, que é utilizado na função salva_arquivo para escrever a codificação em arquivo binário codifica.bin. O código pode ser printado na tela descomentando a linha: </p>
+ 
+ https://github.com/barbrina/AEDs-II/blob/0a472cc7bb01aea1c4385e0ee014326acb8b2a8d/C%C3%B3digo%20de%20Huffman/src/huffman.cpp#L188
+  
 ## Compilação e Execução
 
-O algoritmo disponibilizado possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
+O algoritmo disponibilizado possui um arquivo makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
 
 <div>
 
@@ -199,7 +234,8 @@ O algoritmo disponibilizado possui um arquivo Makefile que realiza todo o proced
 
 ## Referências Bibliogŕaficas
 
-<p> P. Feofiloff. **Análise de Algoritmos**. Internet: http://www.ime.usp.br/~pf/analise_de_algoritmos/, 1999–2009 </p>
-<p> P. Feofiloff. **Código de Huffman**. Internet: https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/huffman.html, 1999–2009 </p>
+P. Feofiloff. **_Análise de Algoritmos_**. Internet: http://www.ime.usp.br/~pf/analise_de_algoritmos/, 1999–2009
+ 
+P. Feofiloff. **_Código de Huffman_**. Internet: https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/huffman.html, 1999–2009
 
 
