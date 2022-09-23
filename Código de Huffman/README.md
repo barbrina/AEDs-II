@@ -45,7 +45,7 @@ $O(n lg n)$
 <p>A principal aplicação prática do algoritmo de Huffman é o cálculo de códigos binários para compressão de arquivos, ou seja, a transformação de um arquivo de caracteres em uma sequência de bits que ocupa pouco espaço. A ideia é usar poucos bits para representar os caracteres mais frequentes e mais bits para representar os mais raros. No caso deste projeto, a idea é análoga a esta, apenas trocando a representação de caracteres mais frequentes para palavras mais frequentes do texto. </p>
 
 
-## Algoritmo
+## O Algoritmo
 
 ### Estrutura dos arquivos
 
@@ -57,7 +57,7 @@ $O(n lg n)$
 
 #### arquivo.cpp
 
-Na main, a primeira função a ser chamada é `abre_arq(map <string, float> *mapa, vector<string> *palavras)` e são repassados como parâmetros um ponteiro map de string e float, e um ponteiro vector de string.
+Na main, a primeira função a ser chamada é `abre_arq(map <string, float> *mapa, vector<string> *palavras)` e são repassados como parâmetros um ponteiro map de string e float, e um ponteiro vector de string que foram criados na main.
  
  ```c
  map<string, float> mapa;
@@ -68,10 +68,29 @@ abre_arq(&mapa, &palavras);
  
  Nesta função, o arquivo de leitura texto.txt é aberto, as palavras são lidas, tokenizadas e tratadas. Em seguida, as palavras são inseridas no vector de palavras e no map pela função `encontra_palavra(map <string, float> *mapa, string palavra)` e recebem como valor mapeado o 1. As palavras que estão sendo inseridas pela segunda ou mais vezes não são adicionadas novamente, apenas são incrementadas no ponto flutuante. Por fim, o arquivo é fechado.
  
- https://github.com/barbrina/AEDs-II/blob/a9e73e4093d6a82a88c3d4fef892333de1db2093/C%C3%B3digo%20de%20Huffman/src/arquivo.cpp#L4-L42
+https://github.com/barbrina/AEDs-II/blob/86e05e2ec36d252bfbf6585394437bddf9c14ec1/C%C3%B3digo%20de%20Huffman/src/arquivo.cpp#L4-L42
  
- Após a conclusão da leitura e da 
+Após a conclusão da leitura de todas as palavras na main, a formula de RP é calculada através da função ` formula_rp(map<string, float> *mapa)` e para ela é passado como parâmetro o ponteiro de map com a palavras e a recorrência das mesmas. A fórmula utilizada para o cálculo de recorrência foi a seguinte:
+ 
+$$ x = {RP(atual) \over RP(máx) - RP(mín)} $$
 
+Após pegar a recorrencia da palavra atual e dividi-la pela subtração da recorrencia da palavra de maior recorrencia, através do método  float `float max_valor(map<string, float> *mapa)` e pela de menor recorrencia `float min_valor(map<string, float> *mapa)`, o resultado nos dá a frequência que é atualizada na própria map.
+ 
+Na main, o multimap é criado com os valores de float, representando a frequência e a string representando a palavra. Em seguida, a função ordena  `void ordena(map<string, float> &mapa, multimap<float, string> &mmapa)` é chamada, passando como parâmetro o map e o multimap. O objetivo desta função é passar todos os valores contidos em map, para multimap e ordenar as palavras em relação a frequência das mesmas, ao invés da ordem alfabética.
+ 
+ ```c
+ string *data = new string[mmapa.size()]; // cria lista de palavras
+ float *freq = new float[mmapa.size()];   // cria lista de frequencias
+ passar_array(&mmapa, data, freq); // passa os valores da multimap para as listas
+```
+ 
+Uma string de ponteiro e um float de ponteiro são criados e alocados dinamicamente na main. A função `void passar_array(multimap<float, string> *mmapa, string data[], float freq[])` com os parâmetros das listas mencionadas anteriormente e o multimap. O multimap é percorrido e as palavras e a frequência das mesmas são repassadas para estas listas, de modo a serem usadas posteriormentes para a criação da árvore de huffman.
+ 
+
+ 
+ 
+ 
+ 
 
 #### huffman.cpp
 
