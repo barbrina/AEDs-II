@@ -125,22 +125,22 @@ void formula_rp(map<string, float> *mapa)
     float min = min_valor(mapa);
     float formula;
 
-    // Outra fórmula a ser utilizada
-    /*for (itr = mapa->begin(); itr != mapa->end(); ++itr)
+    for (itr = mapa->begin(); itr != mapa->end(); ++itr)
     {
         float atual = itr->second;
         string palavra = itr->first;
         formula = atual / (max - min);
         atualiza_map(mapa, palavra, formula);
-    }*/
+    }
 
-    for (itr = mapa->begin(); itr != mapa->end(); ++itr)
+    // Outra fórmula a ser utilizada
+    /*for (itr = mapa->begin(); itr != mapa->end(); ++itr)
     {
         float atual = itr->second;
         string palavra = itr->first;
         formula = atual / total;
         atualiza_map(mapa, palavra, formula);
-    }
+    }*/
 }
 
 // função que retorna a quantidade de elementos dentro da map
