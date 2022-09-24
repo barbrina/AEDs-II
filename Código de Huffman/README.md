@@ -141,7 +141,7 @@ MinHeapNode *root; // cria um ponteiro para a raiz da árvore de huffman
 root = codigo_huffman(data, freq, mapa.size());
 ```
  
-Função esta que chama outra função `MinHeapNode *arvore_huffman(string data[], float freq[], int tamanho)` e repassa os ponteiros de string e float criadas na main, com as respectivas palavras e suas frequências. Esta função é responsável por uma das duas partes principais do código de huffman: construir a árvore de huffman a partir das strings de entrada e ela é dividida em quatro passos que serão explicados a seguir.
+Função esta que chama outra função `MinHeapNode *arvore_huffman(string data[], float freq[], int tamanho)` e repassa os ponteiros de string e float criadas na main, com as respectivas palavras e suas frequências. Esta função é responsável por uma das duas partes principais do código de huffman: construir a árvore de huffman a partir das strings de entrada. A função dividida em quatro passos que serão explicados a seguir.
  
 https://github.com/barbrina/AEDs-II/blob/a4ad775d9450cd6e53511ebebc7284a8eb8104e1/C%C3%B3digo%20de%20Huffman/src/huffman.cpp#L130-L151
  
