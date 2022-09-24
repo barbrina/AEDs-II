@@ -29,7 +29,7 @@
  <p> </p>
 </div>
 
-## 2. Árvore AVL
+## 2. Árvore AVL (Adelson-Velskii and Landis)
 
 ## 3. Árvore Rubro Negra
 
@@ -77,7 +77,7 @@ O algoritmo disponibilizado possui um arquivo makefile que realiza todo o proced
 
 P. Feofiloff. **_Análise de Algoritmos_**. Internet: http://www.ime.usp.br/~pf/analise_de_algoritmos/, 1999–2009
  
-P. Feofiloff. **_Código de Huffman_**. Internet: https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/huffman.html, 1999–2009
+
 
 
 
