@@ -14,20 +14,22 @@ void cria_arqs()
     // escreve no arquivo 500.000 números flutuantes aleatórios
     for (int i = 0; i < 500000; i++)
     {
-        static default_random_engine r;
+        /*static default_random_engine r;
         static uniform_real_distribution<> dis(0, 10);
-        float num = dis(r);
-        arq1 << num << " ";
+        float num = dis(r);*/
+        float num = (float)rand() / (float)(RAND_MAX / 10);
+        float novo = (float)rand() / (float)(RAND_MAX / 10);
+        arq1 << num << "\n";
         if (i < 9000)
-            consulta << num << " ";
+            consulta << num << "\n";
         if (i < 50000)
-            arq2 << num << " ";
+            arq2 << num << "\n";
         if (i < 5000)
-            arq3 << num << " ";
+            arq3 << num << "\n";
         if (i < 1000)
-            consulta << dis(r) << " ";
+            consulta << novo << "\n";
         if (i < 500)
-            arq4 << num << " ";
+            arq4 << num << "\n";
     }
 
     arq1.close();
@@ -263,23 +265,18 @@ void umapa()
 
 Tree *insert_binary(string nome, Tree *raiz, Record r)
 {
-    string line, numero;
+    string numero;
     double num_double;
 
     // abre o arquivo para leitura
     ifstream arq(nome);
 
-    while (getline(arq, line))
+    while (getline(arq, numero))
     {
-        stringstream linha(line);
-
-        while (getline(linha, numero, ' '))
-        {
-            num_double = stod(numero); // transforma string em número flutuante
-            r.key = num_double;        // define chave
-            r.value = 1;               // define valor
-            insertTree(&raiz, r);      // insere na árvore binária
-        }
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;        // define chave
+        r.value = 1;               // define valor
+        insertTree(&raiz, r);      // insere na árvore binária
     }
 
     arq.close();
@@ -289,23 +286,18 @@ Tree *insert_binary(string nome, Tree *raiz, Record r)
 
 TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r)
 {
-    string line, numero;
+    string numero;
     double num_double;
 
     // abre o arquivo para leitura
     ifstream arq(nome);
 
-    while (getline(arq, line))
+    while (getline(arq, numero))
     {
-        stringstream linha(line);
-
-        while (getline(linha, numero, ' '))
-        {
-            num_double = stod(numero); // transforma string em número flutuante
-            r.key = num_double;        // define chave
-            r.value = 1;               // define valor
-            insertTreeAVL(&raiz, r);   // insere na árvore AVL
-        }
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;        // define chave
+        r.value = 1;               // define valor
+        insertTreeAVL(&raiz, r);   // insere na árvore AVL
     }
 
     arq.close();
@@ -315,7 +307,7 @@ TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r)
 
 void insert_rb(string nome)
 {
-    string line, numero;
+    string numero;
     double num_double;
     RecordRB r;
 
@@ -324,16 +316,11 @@ void insert_rb(string nome)
 
     TreeRB *raiz = CreateRB(); // cria a árvore binária de pesquisa
 
-    while (getline(arq, line))
+    while (getline(arq, numero))
     {
-        stringstream linha(line);
-
-        while (getline(linha, numero, ' '))
-        {
-            num_double = stod(numero);            // transforma string em número flutuante
-            r.key = num_double;                   // define chave
-            insertTreeRB(&raiz, &raiz, &raiz, r); // insere na árvore rubro negra
-        }
+        num_double = stod(numero);            // transforma string em número flutuante
+        r.key = num_double;                   // define chave
+        insertTreeRB(&raiz, &raiz, &raiz, r); // insere na árvore rubro negra
     }
 
     // central(raiz);
@@ -344,7 +331,7 @@ void insert_rb(string nome)
 
 void insert_vetor(string nome)
 {
-    string line, numero;
+    string numero;
     double num_double;
     vector<float> vetor;
     // int i = 0;
@@ -352,17 +339,12 @@ void insert_vetor(string nome)
     // abre o arquivo para leitura
     ifstream arq(nome);
 
-    while (getline(arq, line))
+    while (getline(arq, numero))
     {
-        stringstream linha(line);
-
-        while (getline(linha, numero, ' '))
-        {
-            num_double = stod(numero); // transforma string em número flutuante
-            vetor.push_back(num_double);
-            // cout << vetor[i] << endl;
-            //  cout << i++;
-        }
+        num_double = stod(numero); // transforma string em número flutuante
+        vetor.push_back(num_double);
+        // cout << vetor[i] << endl;
+        //  cout << i++;
     }
 
     sort(vetor.begin(), vetor.end());
@@ -380,15 +362,10 @@ void insert_mapa(string nome)
     // abre o arquivo para leitura
     ifstream arq(nome);
 
-    while (getline(arq, line))
+    while (getline(arq, numero))
     {
-        stringstream linha(line);
-
-        while (getline(linha, numero, ' '))
-        {
-            num_double = stod(numero); // transforma string em número flutuante
-            mapa.insert({num_double, 1});
-        }
+        num_double = stod(numero); // transforma string em número flutuante
+        mapa.insert({num_double, 1});
     }
 
     arq.close();
@@ -396,7 +373,7 @@ void insert_mapa(string nome)
 
 void insert_umapa(string nome)
 {
-    string line, numero;
+    string numero;
     double num_double;
     unordered_map<int, int> umapa;
     // int i = 0;
@@ -404,15 +381,10 @@ void insert_umapa(string nome)
     // abre o arquivo para leitura
     ifstream arq(nome);
 
-    while (getline(arq, line))
+    while (getline(arq, numero))
     {
-        stringstream linha(line);
-
-        while (getline(linha, numero, ' '))
-        {
-            num_double = stod(numero); // transforma string em número flutuante
-            umapa.insert({num_double, 1});
-        }
+        num_double = stod(numero); // transforma string em número flutuante
+        umapa.insert({num_double, 1});
     }
 
     arq.close();
@@ -420,23 +392,19 @@ void insert_umapa(string nome)
 
 void remove_binary(Tree *raiz)
 {
-    string line, numero;
+    string numero;
     double num_double;
     Record r;
 
     // abre o arquivo para leitura
     ifstream arq("src/files/consulta.txt");
 
-    while (getline(arq, line))
+    while (getline(arq, numero))
     {
-        stringstream linha(line);
 
-        while (getline(linha, numero, ' '))
-        {
-            num_double = stod(numero); // transforma string em número flutuante
-            r.key = num_double;
-            removeTree(&raiz, r);
-        }
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;
+        removeTree(&raiz, r);
     }
 
     arq.close();
@@ -444,23 +412,18 @@ void remove_binary(Tree *raiz)
 
 void remove_avl(TreeAVL *raiz)
 {
-    string line, numero;
+    string numero;
     double num_double;
     RecordAVL r;
 
     // abre o arquivo para leitura
     ifstream arq("src/files/consulta.txt");
 
-    while (getline(arq, line))
+    while (getline(arq, numero))
     {
-        stringstream linha(line);
-
-        while (getline(linha, numero, ' '))
-        {
-            num_double = stod(numero); // transforma string em número flutuante
-            r.key = num_double;
-            removeTreeAVL(&raiz, &raiz, r);
-        }
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;
+        removeTreeAVL(&raiz, &raiz, r);
     }
 
     arq.close();
