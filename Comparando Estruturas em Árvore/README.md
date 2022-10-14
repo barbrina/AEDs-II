@@ -212,7 +212,9 @@ O algoritmo disponibilizado possui um arquivo makefile que realiza todo o proced
 
 </div>
 
-## 6. Referências Bibliogŕaficas
+## 6. Conclusão
+
+## 7. Referências Bibliogŕaficas
 
 P. Feofiloff. **_Análise de Algoritmos_**. Internet: http://www.ime.usp.br/~pf/analise_de_algoritmos/, 1999–2009
  
