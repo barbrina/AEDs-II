@@ -196,8 +196,10 @@ Como forma de atendimento ao caso 3, o pai do pai deve ser aplicado a uma troca 
 
 ### 4.4 Estrutura do algoritmo
 
+
+## 5. Conclusão
  
-## 5. Compilação e Execução
+## 6. Compilação e Execução
 
 O algoritmo disponibilizado possui um arquivo makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
 
@@ -212,7 +214,6 @@ O algoritmo disponibilizado possui um arquivo makefile que realiza todo o proced
 
 </div>
 
-## 6. Conclusão
 
 ## 7. Referências Bibliogŕaficas
 
