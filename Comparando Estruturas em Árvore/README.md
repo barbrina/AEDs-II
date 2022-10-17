@@ -189,7 +189,7 @@ Como forma de atendimento ao caso 3, o pai do pai deve ser aplicado a uma troca 
 
 ### 4.2 Estrutura dos arquivos
 
-<p align="justify">  </p>
+<p align="justify"> O código apresenta um arquivo makefile (um script que consta as instruções de como gerar um binário) e uma pasta src. A pasta src apresenta cinco arquivos, sendo eles o main.c, responsável pela chamada das principais funções, e os arquivos arquivo.hpp, arquivo.cpp, huffman.hpp e huffman.cpp. Os dois primeiros arquivos, arquivo.hpp e arquivo.cpp, são responsáveis pela leitura do arquivo de texto, tratamento das palavras e inserção das mesmas no map. Os dois últimos, huffman.hpp e huffman.cpp, são responsáveis pela criação da min-heap, da árvore de huffman e a leitura e salvamento da codificação no arquivo binário. A pasta src também apresenta uma pasta files, onde consta o arquivo de texto, texto.txt, que será comprimido e o arquivo binário, codificado.bin, já com a codificação.  </p>
 
 ### 4.3 Bibliotecas utilizadas
 
