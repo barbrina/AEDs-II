@@ -46,11 +46,150 @@ O código apresenta um arquivo makefile (um script que consta as instruções de
 
 ### 2.3 Bibliotecas utilizadas
 
+https://github.com/barbrina/AEDs-II/blob/978c0498e5b92eb0f0425e8956e99e5cf933c866/Comparando%20Estruturas%20em%20%C3%81rvore/src/arquivo.hpp#L4-L13
 
 ### 2.4 Estrutura do algoritmo
 
 
-### 3. Resultados e Análises
+## 3. Resultados e Análises
+
+ Cinco leituras foram feitas em cada tipo de arquivo para termos a média e o desvio padrão do tempo necessário para inserção e remoção
+ 
+ Inserção de um arquivo de 500 números ponto flutuante:
+ 
+<div align="center">
+
+|                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
+| Árvore Binária de Busca |             |             |             |             |             |             |               |
+|       Árvore AVL        |             |             |             |             |             |             |               |
+|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
+|          Vector         |             |             |             |             |             |             |               |
+|           Map           |             |             |             |             |             |             |               |
+|      Unordered Map      |             |             |             |             |             |             |               |
+
+</div>
+
+Remoção de um arquivo de 500 números ponto flutuante:
+
+<div align="center">
+
+|                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
+| Árvore Binária de Busca |             |             |             |             |             |             |               |
+|       Árvore AVL        |             |             |             |             |             |             |               |
+|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
+|          Vector         |             |             |             |             |             |             |               |
+|           Map           |             |             |             |             |             |             |               |
+|      Unordered Map      |             |             |             |             |             |             |               |
+
+</div>
+
+Inserção de um arquivo de 5000 números ponto flutuante:
+ 
+<div align="center">
+
+|                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
+| Árvore Binária de Busca |             |             |             |             |             |             |               |
+|       Árvore AVL        |             |             |             |             |             |             |               |
+|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
+|          Vector         |             |             |             |             |             |             |               |
+|           Map           |             |             |             |             |             |             |               |
+|      Unordered Map      |             |             |             |             |             |             |               |
+
+</div>
+
+Remoção de um arquivo de 5000 números ponto flutuante:
+
+<div align="center">
+
+|                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
+| Árvore Binária de Busca |             |             |             |             |             |             |               |
+|       Árvore AVL        |             |             |             |             |             |             |               |
+|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
+|          Vector         |             |             |             |             |             |             |               |
+|           Map           |             |             |             |             |             |             |               |
+|      Unordered Map      |             |             |             |             |             |             |               |
+
+</div>
+
+Inserção de um arquivo de 50000 números ponto flutuante:
+ 
+<div align="center">
+
+|                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
+| Árvore Binária de Busca |             |             |             |             |             |             |               |
+|       Árvore AVL        |             |             |             |             |             |             |               |
+|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
+|          Vector         |             |             |             |             |             |             |               |
+|           Map           |             |             |             |             |             |             |               |
+|      Unordered Map      |             |             |             |             |             |             |               |
+
+</div>
+
+Remoção de um arquivo de 50000 números ponto flutuante:
+
+<div align="center">
+
+|                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
+| Árvore Binária de Busca |             |             |             |             |             |             |               |
+|       Árvore AVL        |             |             |             |             |             |             |               |
+|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
+|          Vector         |             |             |             |             |             |             |               |
+|           Map           |             |             |             |             |             |             |               |
+|      Unordered Map      |             |             |             |             |             |             |               |
+
+</div>
+
+Inserção de um arquivo de 500000 números ponto flutuante:
+ 
+<div align="center">
+
+|                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
+| Árvore Binária de Busca |             |             |             |             |             |             |               |
+|       Árvore AVL        |             |             |             |             |             |             |               |
+|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
+|          Vector         |             |             |             |             |             |             |               |
+|           Map           |             |             |             |             |             |             |               |
+|      Unordered Map      |             |             |             |             |             |             |               |
+
+</div>
+
+Remoção de um arquivo de 500000 números ponto flutuante:
+
+<div align="center">
+
+|                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
+| Árvore Binária de Busca |             |             |             |             |             |             |               |
+|       Árvore AVL        |             |             |             |             |             |             |               |
+|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
+|          Vector         |             |             |             |             |             |             |               |
+|           Map           |             |             |             |             |             |             |               |
+|      Unordered Map      |             |             |             |             |             |             |               |
+
+</div>
+
+Temos como resultado a seguinte tabela
+
+<div align="center">
+
+|                         |   500.txt   |   5000.txt  |  50000.txt  |  500000.txt |
+|-------------------------|-------------|-------------|-------------|-------------|
+| Árvore Binária de Busca |             |             |             |             |
+|       Árvore AVL        |             |             |             |             |
+|    Árvore Rubro Negra   |             |             |             |             |
+|          Vector         |             |             |             |             |
+|           Map           |             |             |             |             |
+|      Unordered Map      |             |             |             |             |
+
+</div>
+
 
 ## 4. Conclusão
  
