@@ -22,7 +22,7 @@ struct TreeAVL
 
 TreeAVL *CreateTreeAVL();
 void insertTreeAVL(TreeAVL **t, RecordAVL r);
-void pesquisa(TreeAVL **t, TreeAVL **aux, RecordAVL r);
+bool pesquisaAVL(TreeAVL **t, TreeAVL **aux, RecordAVL r);
 int isInTree(TreeAVL *t, RecordAVL r);
 
 // muda o remove devido a necessidade de ponteiro para sub-árvore desbalanceada

@@ -47,27 +47,28 @@ void insertTreeAVL(TreeAVL **t, RecordAVL r)
 	(*t)->weight = getMaxWeight(getWeight(&(*t)->left), getWeight(&(*t)->right)) + 1;
 }
 
-void pesquisa(TreeAVL **t, TreeAVL **aux, RecordAVL r)
+bool pesquisaAVL(TreeAVL **t, TreeAVL **aux, RecordAVL r)
 {
 
 	if (*t == NULL)
 	{
-		printf("[ERROR]: Node not found!");
-		return;
+		// printf("[ERROR]: Node not found!");
+		return false;
 	}
 
 	if ((*t)->reg.key > r.key)
 	{
-		pesquisa(&(*t)->left, aux, r);
-		return;
+		pesquisaAVL(&(*t)->left, aux, r);
+		return true;
 	}
 	if ((*t)->reg.key < r.key)
 	{
-		pesquisa(&(*t)->right, aux, r);
-		return;
+		pesquisaAVL(&(*t)->right, aux, r);
+		return true;
 	}
 
 	*aux = *t;
+	return true;
 }
 
 int isInTree(TreeAVL *t, RecordAVL r)
@@ -125,7 +126,6 @@ void removeTreeAVL(TreeAVL **t, TreeAVL **f, RecordAVL r)
 
 	if (*t == NULL)
 	{
-		printf("[ERROR]: Record not found!!!\n");
 		return;
 	}
 
@@ -139,6 +139,8 @@ void removeTreeAVL(TreeAVL **t, TreeAVL **f, RecordAVL r)
 		removeTreeAVL(&(*t)->right, t, r);
 		return;
 	}
+
+	printf("%lf ", r.key);
 
 	if ((*t)->right == NULL)
 	{

@@ -35,16 +35,16 @@ Tree *insert_binary(string nome, Tree *raiz, Record r);       // função para a
 TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r); // função para abrir aquivo e inserir valores na árvore AVL
 void insert_rb(string nome);                                  // função para abrir aquivo e inserir valores na árvore Rubro Negra
 
-void insert_vetor(string nome); // função para abrir aquivo e inserir valores em um vector
-void insert_mapa(string nome);  // função para abrir aquivo e inserir valores em um map
-void insert_umapa(string nome); // função para abrir aquivo e inserir valores em um unordered map
+vector<double> insert_vetor(string nome, vector<double> vetor);  // função para abrir aquivo e inserir valores em um vector
+void insert_mapa(string nome, map<double, int> *mapa);             // função para abrir aquivo e inserir valores em um map
+void insert_umapa(string nome, unordered_map<double, int> *umapa); // função para abrir aquivo e inserir valores em um unordered map
 
 void remove_binary(Tree *raiz); // função para remover valores na árvore binária de busca
 void remove_avl(TreeAVL *raiz); // função para remover valores na árvore AVL
 void remove_rb(TreeRB *raiz);   // função para remover valores na árvore Rubro Negra
 
-void remove_vetor(); // função para remover valores em um vector
-void remove_mapa();  // função para remover valores em um map
-void remove_umapa(); // função para remover valores em um unordered map
+void remove_vetor(vector<double> vetor);              // função para remover valores em um vector
+void remove_mapa(map<double, int> *mapa);             // função para remover valores em um map
+void remove_umapa(unordered_map<double, int> *umapa); // função para remover valores em um unordered map
 
 #endif

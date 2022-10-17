@@ -10,7 +10,7 @@ typedef struct TreeRB TreeRB;
 
 struct RecordRB
 {
-    float key;
+    double key;
 };
 
 struct TreeRB
@@ -28,8 +28,11 @@ void rotacaoSimplesDireita(TreeRB **raiz, TreeRB *child);
 
 void insertFixUp(TreeRB **raiz, TreeRB *child);
 void insertTreeRB(TreeRB **t, TreeRB **pai, TreeRB **raiz, RecordRB r);
-void pesquisa(TreeRB **t, TreeRB **aux, RecordRB r);
-void removeTreeRB();
+bool pesquisaRB(TreeRB **t, TreeRB **aux, RecordRB r);
+TreeRB *minimoRB(TreeRB *x);
+void transplanteRB(TreeRB **t, TreeRB *z, TreeRB *filho);
+void removeTreeRB(TreeRB **t, TreeRB *x, TreeRB *y, TreeRB *z);
+void consertaRB(TreeRB **t, TreeRB *x, TreeRB *z);
 
 void preordem(TreeRB *t);
 void central(TreeRB *t);

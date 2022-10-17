@@ -105,31 +105,158 @@ void insertTreeRB(TreeRB **t, TreeRB **pai, TreeRB **raiz, RecordRB r)
     }
 }
 
-void pesquisa(TreeRB **t, TreeRB **aux, RecordRB r)
+bool pesquisaRB(TreeRB **t, TreeRB **aux, RecordRB r)
 {
 
     if (*t == NULL)
     {
-        printf("[ERROR]: Node not found!");
-        return;
+        // printf("[ERROR]: Node not found!");
+        return false;
     }
 
     if ((*t)->reg.key > r.key)
     {
-        pesquisa(&(*t)->esq, aux, r);
-        return;
+        pesquisaRB(&(*t)->esq, aux, r);
+        return true;
     }
     if ((*t)->reg.key < r.key)
     {
-        pesquisa(&(*t)->dir, aux, r);
-        return;
+        pesquisaRB(&(*t)->dir, aux, r);
+        return true;
     }
 
     *aux = *t;
+    return true;
 }
 
-void removeTreeRB()
+TreeRB *minimoRB(TreeRB *x)
 {
+    while (x->esq != NULL) // trocar para nill
+        x = x->esq;
+
+    return x;
+}
+
+void transplanteRB(TreeRB **t, TreeRB *z, TreeRB *filho)
+{
+    if (z->pai == NULL)
+        (*t) = filho;
+    else if (z == z->pai->esq)
+        z->pai->esq = filho;
+    else
+        z->pai->dir = filho;
+
+    filho->pai = z->pai;
+}
+
+void removeTreeRB(TreeRB **t, TreeRB *x, TreeRB *y, TreeRB *z)
+{
+    y = z;
+    bool cor_original = y->cor;
+
+    if (z->esq == NULL)
+    {
+        x = z->dir;
+        transplanteRB(t, z, z->dir);
+    }
+    else if (z->dir == NULL)
+    {
+        x = z->esq;
+        transplanteRB(t, z, z->esq);
+    }
+    else
+    {
+        y = minimoRB(z->dir);
+        cor_original = y->cor;
+        x = y->dir;
+
+        if (y->pai == z)
+            x->pai = y;
+        else
+        {
+            transplanteRB(t, y, y->dir);
+            y->dir = z->dir;
+            y->dir->pai = y;
+        }
+
+        transplanteRB(t, z, y);
+        y->esq = z->esq;
+        y->esq->pai = y;
+        y->cor = z->cor;
+    }
+    if (cor_original)
+    {
+    }
+}
+
+void consertaRB(TreeRB **t, TreeRB *x, TreeRB *z)
+{
+    while (z != (*t) && x->cor)
+    {
+        if (x == x->pai->esq)
+        {
+            z = x->pai->dir;
+            if (!z->cor)
+            {
+                z->cor = false;                    // caso 1
+                x->pai->cor = true;                // caso 1
+                rotacaoSimplesEsquerda(t, x->pai); // caso 1
+                z = x->pai->dir;                   // caso 1
+            }
+            else if (z->esq->cor && z->dir->cor)
+            {
+                z->cor = false; // caso 2
+                x = x->pai;     // caso 2
+            }
+            else if (z->dir->cor)
+            {
+                z->dir->cor = true;          // caso 3
+                z->cor = false;              // caso 3
+                rotacaoSimplesDireita(t, z); // caso 3
+                z = x->pai->dir;             // caso 3
+            }
+            else
+            {
+                z->cor = x->pai->cor;              // caso 4
+                x->pai->cor = true;                // caso 4
+                z->dir->cor = true;                // caso 4
+                rotacaoSimplesEsquerda(t, x->pai); // caso 4
+                x = (*t);                          // caso 4
+            }
+        }
+        else
+        {
+            z = x->pai->esq;
+            if (!z->cor)
+            {
+                z->cor = false;                   // caso 1
+                x->pai->cor = true;               // caso 1
+                rotacaoSimplesDireita(t, x->pai); // caso 1
+                z = x->pai->esq;                  // caso 1
+            }
+            else if (z->dir->cor && z->esq->cor)
+            {
+                z->cor = false; // caso 2
+                x = x->pai;     // caso 2
+            }
+            else if (z->esq->cor)
+            {
+                z->dir->cor = true;           // caso 3
+                z->cor = false;               // caso 3
+                rotacaoSimplesEsquerda(t, z); // caso 3
+                z = x->pai->esq;              // caso 3
+            }
+            else
+            {
+                z->cor = x->pai->cor;             // caso 4
+                x->pai->cor = true;               // caso 4
+                z->esq->cor = true;               // caso 4
+                rotacaoSimplesDireita(t, x->pai); // caso 4
+                x = (*t);                         // caso 4
+            }
+        }
+    }
+    x->cor = true;
 }
 
 void rotacaoSimplesEsquerda(TreeRB **raiz, TreeRB *child)
