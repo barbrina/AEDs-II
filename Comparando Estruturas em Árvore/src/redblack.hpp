@@ -11,13 +11,11 @@ using namespace std;
 typedef struct RecordRB RecordRB;
 typedef struct TreeRB TreeRB;
 
-struct RecordRB
-{
+struct RecordRB {
     double key;
 };
 
-struct TreeRB
-{
+struct TreeRB {
     RecordRB reg;
     TreeRB *esq, *dir;
     TreeRB *pai; // específico para rubro negra
@@ -28,6 +26,8 @@ TreeRB *CreateRB();
 
 void rotacaoEsquerda(TreeRB **raiz, TreeRB *child);
 void rotacaoDireita(TreeRB **raiz, TreeRB *child);
+
+void inicializaTreeRB(TreeRB **raiz);
 
 void insertFixUp(TreeRB **raiz, TreeRB *child);
 void insertTreeRB(TreeRB **t, TreeRB **pai, TreeRB **raiz, RecordRB r);

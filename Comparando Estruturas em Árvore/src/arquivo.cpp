@@ -155,7 +155,11 @@ void avl()
 
 void rb()
 {
-    TreeRB *raiz = CreateRB();
+    // TreeRB *raiz = CreateRB();
+    TreeRB *raiz;
+
+    inicializaTreeRB(&raiz);
+
     RecordRB r;
 
     string nome = arquivo();
@@ -437,8 +441,6 @@ void remove_rb(TreeRB *raiz)
 {
     string numero;
     double num_double;
-
-    TreeRB *aux = CreateRB();
     RecordRB r;
 
     // abre o arquivo para leitura
@@ -448,37 +450,11 @@ void remove_rb(TreeRB *raiz)
     {
         num_double = stod(numero); // transforma string em número flutuante
         r.key = num_double;
-        if (pesquisaRB(&raiz, &aux, r))
-        {
-            cout << num_double << " ";
-            removeTreeRB(&raiz, r);
-        }
+        removeTreeRB(&raiz, r);
     }
 
     arq.close();
 }
-
-/*void remove_rb(TreeRB *raiz)
-{
-    string numero;
-    double num_double;
-    TreeRB *aux = CreateRB();
-    RecordRB r;
-
-    // abre o arquivo para leitura
-    ifstream arq("src/files/consulta.txt");
-
-    while (getline(arq, numero))
-    {
-        num_double = stod(numero); // transforma string em número flutuante
-        r.key = num_double;
-        if (pesquisaRB(&raiz, &aux, r))
-            ;
-        // removeRB(&raiz, &raiz, r);
-    }
-
-    arq.close();
-}*/
 
 void remove_vetor(vector<double> vetor)
 {

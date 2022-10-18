@@ -5,7 +5,7 @@ int main()
     string nome;
     int estrutura = 0, decisao = 0;
 
-    //cria_arqs();
+    // cria_arqs();
 
     do
     {

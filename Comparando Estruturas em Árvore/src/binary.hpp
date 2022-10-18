@@ -8,14 +8,12 @@
 typedef struct Record Record;
 typedef struct Tree Tree;
 
-struct Record
-{
+struct Record {
     double key;
     int value;
 };
 
-struct Tree
-{
+struct Tree {
     Record reg;
     Tree *esq, *dir;
 };
