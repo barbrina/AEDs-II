@@ -1,8 +1,62 @@
 #include "redblack.hpp"
 
+TreeRB *nill;
+
 TreeRB *CreateRB()
 {
-    return NULL;
+    return nullptr;
+}
+
+void rotacaoEsquerda(TreeRB **raiz, TreeRB *child)
+{
+    TreeRB *x, *y;
+
+    x = child;
+    y = child->dir;
+    x->dir = y->esq;
+
+    if (y->esq != nill)
+        y->esq->pai = x;
+
+    y->pai = x->pai;
+
+    if (x->pai == nill)
+        *raiz = y;
+
+    else if (x == x->pai->esq)
+        x->pai->esq = y;
+
+    else
+        x->pai->dir = y;
+
+    y->esq = x;
+    x->pai = y;
+}
+
+void rotacaoDireita(TreeRB **raiz, TreeRB *child)
+{
+    TreeRB *x, *y;
+
+    x = child;
+    y = child->esq;
+    x->esq = y->dir;
+
+    if (y->dir != nill)
+        y->dir->pai = x;
+
+    y->pai = x->pai;
+
+    if (x->pai == nill)
+        *raiz = y;
+
+    else if (x == x->pai->dir)
+        x->pai->dir = y;
+
+    else
+        x->pai->esq = y;
+
+    y->dir = x;
+    x->pai = y;
 }
 
 void insertFixUp(TreeRB **raiz, TreeRB *child)
@@ -18,7 +72,7 @@ void insertFixUp(TreeRB **raiz, TreeRB *child)
             tio = child->pai->pai->dir;
 
             // caso 1:
-            if ((tio != NULL) && (tio->cor == false))
+            if ((tio != nill) && (tio->cor == false))
             {
                 child->pai->cor = true;
                 tio->cor = true;
@@ -32,13 +86,13 @@ void insertFixUp(TreeRB **raiz, TreeRB *child)
                 if (child == child->pai->dir)
                 {
                     child = child->pai;
-                    rotacaoSimplesEsquerda(raiz, child);
+                    rotacaoEsquerda(raiz, child);
                 }
 
                 // caso 3
                 child->pai->cor = true;
                 child->pai->pai->cor = false;
-                rotacaoSimplesDireita(raiz, child->pai->pai);
+                rotacaoDireita(raiz, child->pai->pai);
             }
         }
         else
@@ -47,7 +101,7 @@ void insertFixUp(TreeRB **raiz, TreeRB *child)
             tio = child->pai->pai->esq;
 
             // caso 1
-            if ((tio != NULL) && (tio->cor == false))
+            if ((tio != nill) && (tio->cor == false))
             {
                 child->pai->cor = true;
                 tio->cor = true;
@@ -61,13 +115,13 @@ void insertFixUp(TreeRB **raiz, TreeRB *child)
                 if (child == child->pai->esq)
                 {
                     child = child->pai;
-                    rotacaoSimplesDireita(raiz, child);
+                    rotacaoDireita(raiz, child);
                 }
 
                 // caso 3
                 child->pai->cor = true;
                 child->pai->pai->cor = false;
-                rotacaoSimplesEsquerda(raiz, child->pai->pai);
+                rotacaoEsquerda(raiz, child->pai->pai);
             }
         }
     }
@@ -78,12 +132,12 @@ void insertFixUp(TreeRB **raiz, TreeRB *child)
 void insertTreeRB(TreeRB **t, TreeRB **pai, TreeRB **raiz, RecordRB r)
 {
 
-    if (*t == NULL)
+    if (*t == nill)
     {
         *t = (TreeRB *)malloc(sizeof(TreeRB));
-        (*t)->esq = NULL;
-        (*t)->dir = NULL;
-        (*t)->pai = pai != t ? *pai : NULL;
+        (*t)->esq = nill;
+        (*t)->dir = nill;
+        (*t)->pai = pai != t ? *pai : nill;
         (*t)->cor = false; // false: vermelho  true:preto
         (*t)->reg = r;
         insertFixUp(raiz, *t);
@@ -108,7 +162,7 @@ void insertTreeRB(TreeRB **t, TreeRB **pai, TreeRB **raiz, RecordRB r)
 bool pesquisaRB(TreeRB **t, TreeRB **aux, RecordRB r)
 {
 
-    if (*t == NULL)
+    if (*t == nill)
     {
         // printf("[ERROR]: Node not found!");
         return false;
@@ -129,67 +183,160 @@ bool pesquisaRB(TreeRB **t, TreeRB **aux, RecordRB r)
     return true;
 }
 
-TreeRB *minimoRB(TreeRB *x)
+void transplantRB(TreeRB **t, TreeRB *aux, TreeRB *auxf)
 {
-    while (x->esq != NULL) // trocar para nill
-        x = x->esq;
 
-    return x;
-}
-
-void transplanteRB(TreeRB **t, TreeRB *z, TreeRB *filho)
-{
-    if (z->pai == NULL)
-        (*t) = filho;
-    else if (z == z->pai->esq)
-        z->pai->esq = filho;
+    if (aux->pai == nill)
+        (*t) = auxf;
+    else if (aux == aux->pai->esq)
+        aux->pai->esq = auxf;
     else
-        z->pai->dir = filho;
+        aux->pai->dir = auxf;
 
-    filho->pai = z->pai;
+    return;
+    auxf->pai = aux->pai;
 }
 
-void removeTreeRB(TreeRB **t, TreeRB *x, TreeRB *y, TreeRB *z)
+void removeFixUp(TreeRB **raiz, TreeRB *filho)
 {
-    y = z;
-    bool cor_original = y->cor;
+    TreeRB *tio;
 
-    if (z->esq == NULL)
+    while ((filho != *raiz) && (filho->cor))
+    {
+        if (filho == filho->pai->esq)
+        {
+            tio = filho->pai->dir;
+            if (!tio->cor)
+            {
+                tio->cor = true;                   // caso 1
+                filho->pai->cor = false;           // caso 1
+                rotacaoEsquerda(raiz, filho->pai); // caso 1
+                tio = filho->pai->dir;             // caso 1
+            }
+
+            if ((tio->esq->cor) && (tio->dir->cor))
+            {
+                tio->cor = false;   // caso 2
+                filho = filho->pai; // caso 2
+            }
+            else
+            {
+                if (tio->dir->cor)
+                {
+                    tio->esq->cor = true;      // caso 3
+                    tio->cor = false;          // caso 3
+                    rotacaoDireita(raiz, tio); // caso 3
+                    tio = filho->pai->dir;     // caso 3
+                }
+
+                tio->cor = filho->pai->cor;        // caso 4
+                filho->pai->cor = true;            // caso 4
+                tio->dir->cor = true;              // caso 4
+                rotacaoEsquerda(raiz, filho->pai); // caso 4
+                filho = *raiz;                     // caso 4
+            }
+        }
+        else
+        {
+            tio = filho->pai->esq;
+
+            if (!tio->cor)
+            {
+                tio->cor = true;                  // caso 1
+                filho->pai->cor = false;          // caso 1
+                rotacaoDireita(raiz, filho->pai); // caso 1
+                tio = filho->pai->esq;            // caso 1
+            }
+
+            if ((tio->dir->cor) && (tio->dir->cor))
+            {
+                tio->cor = false;   // caso 2
+                filho = filho->pai; // caso 2
+            }
+            else
+            {
+                if (tio->esq->cor)
+                {
+                    tio->dir->cor = true;       // caso 3
+                    tio->cor = false;           // caso 3
+                    rotacaoEsquerda(raiz, tio); // caso 3
+                    tio = filho->pai->esq;      // caso 3
+                }
+
+                tio->cor = filho->pai->cor;       // caso 4
+                filho->pai->cor = true;           // caso 4
+                tio->esq->cor = true;             // caso 4
+                rotacaoDireita(raiz, filho->pai); // caso 4
+                filho = *raiz;                    // caso 4
+            }
+        }
+    }
+
+    filho->cor = true;
+}
+
+void removeTreeRB(TreeRB **t, RecordRB r)
+{
+    TreeRB *z = nill;
+    TreeRB *x, *y;
+
+    while ((*t) != nill)
+    {
+        if ((*t)->reg.key == r.key)
+            z = (*t);
+        if ((*t)->reg.key <= r.key)
+            (*t) = (*t)->dir;
+        else
+            (*t) = (*t)->esq;
+    }
+
+    if (z == nill)
+    {
+        cout << "Chave não foi encontrada na árvore" << endl;
+        return;
+    }
+
+    y = z;
+    bool y_original_color = y->cor;
+
+    if (z->esq == nill)
     {
         x = z->dir;
-        transplanteRB(t, z, z->dir);
+        transplantRB(t, z, z->dir);
     }
-    else if (z->dir == NULL)
+    else if (z->dir == nill)
     {
         x = z->esq;
-        transplanteRB(t, z, z->esq);
+        transplantRB(t, z, z->esq);
     }
     else
     {
         y = minimoRB(z->dir);
-        cor_original = y->cor;
+        y_original_color = y->cor;
         x = y->dir;
 
         if (y->pai == z)
             x->pai = y;
         else
         {
-            transplanteRB(t, y, y->dir);
+            transplantRB(t, y, y->dir);
             y->dir = z->dir;
             y->dir->pai = y;
         }
 
-        transplanteRB(t, z, y);
+        transplantRB(t, z, y);
         y->esq = z->esq;
         y->esq->pai = y;
         y->cor = z->cor;
     }
-    if (cor_original)
-    {
-    }
+
+    if (y_original_color)
+        removeFixUp(t, x);
+
+    delete z;
 }
 
-void consertaRB(TreeRB **t, TreeRB *x, TreeRB *z)
+/*void consertaRB(TreeRB **t, TreeRB *x, TreeRB *z)
 {
     while (z != (*t) && x->cor)
     {
@@ -257,75 +404,295 @@ void consertaRB(TreeRB **t, TreeRB *x, TreeRB *z)
         }
     }
     x->cor = true;
+}*/
+
+TreeRB *minimoRB(TreeRB *t)
+{
+    while (t->esq != nill)
+        t = t->esq;
+
+    return t;
 }
 
-void rotacaoSimplesEsquerda(TreeRB **raiz, TreeRB *child)
+void preordemRB(TreeRB *t)
 {
-    TreeRB *x, *y;
-
-    x = child;
-    y = child->dir;
-    x->dir = y->esq;
-
-    if (y->esq != NULL)
-        y->esq->pai = x;
-
-    y->pai = x->pai;
-
-    if (x->pai == NULL)
-        *raiz = y;
-
-    else
+    if (!(t == nill))
     {
-
-        if (x == x->pai->esq)
-            x->pai->esq = y;
-
-        else
-            x->pai->dir = y;
+        printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
+        preordemRB(t->esq);
+        preordemRB(t->dir);
     }
-
-    y->esq = x;
-    x->pai = y;
 }
 
-void rotacaoSimplesDireita(TreeRB **raiz, TreeRB *child)
+void centralRB(TreeRB *t)
 {
+    if (!(t == nill))
+    {
+        centralRB(t->esq);
+        printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
+        centralRB(t->dir);
+    }
+}
+
+void posordemRB(TreeRB *t)
+{
+    if (!(t == nill))
+    {
+        posordemRB(t->esq);
+        posordemRB(t->dir);
+        printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
+    }
+}
+
+/*void inicializaTreeRB(TreeRB *t, TreeRB *pai)
+{
+    t->valor = 0;
+    t->pai = pai;
+    t->esq = nill;
+    t->dir = nill;
+    t->cor = 0; // vermelho: 1 preto: 0
+}
+
+TreeRB *pesquisaTreeRB(TreeRB *t, int key)
+{
+    if (t == nill || key == t->valor)
+        return t;
+
+    if (key < t->valor)
+    {
+        return pesquisaTreeRB(t->esq, key);
+    }
+    return pesquisaTreeRB(t->dir, key);
+}
+
+// Balancear a árvore t após a eliminação
+// página 232 - Algoritmos - Cormen
+void deleteFix(TreeRB *raiz, TreeRB *filho)
+{
+    TreeRB *tio;
+
+    while ((filho != raiz) && (filho->cor == 0))
+    {
+        if (filho == filho->pai->esq)
+        {
+            tio = filho->pai->dir;
+            if (tio->cor == 1)
+            {
+                tio->cor = 0;                        // caso 1
+                filho->pai->cor = 1;                 // caso 1
+                rotacionaEsquerda(raiz, filho->pai); // caso 1
+                tio = filho->pai->dir;               // caso 1
+            }
+
+            if ((tio->esq->cor == 0) && (tio->dir->cor == 0))
+            {
+                tio->cor = 1;       // caso 2
+                filho = filho->pai; // caso 2
+            }
+            else
+            {
+                if (tio->dir->cor == 0)
+                {
+                    tio->esq->cor = 0;           // caso 3
+                    tio->cor = 1;                // caso 3
+                    rotacionaDireita(raiz, tio); // caso 3
+                    tio = filho->pai->dir;       // caso 3
+                }
+
+                tio->cor = filho->pai->cor;          // caso 4
+                filho->pai->cor = 0;                 // caso 4
+                tio->dir->cor = 0;                   // caso 4
+                rotacionaEsquerda(raiz, filho->pai); // caso 4
+                filho = raiz;                        // caso 4
+            }
+        }
+        else
+        {
+            tio = filho->pai->esq;
+
+            if (tio->cor == 1)
+            {
+                tio->cor = 0;                       // caso 1
+                filho->pai->cor = 1;                // caso 1
+                rotacionaDireita(raiz, filho->pai); // caso 1
+                tio = filho->pai->esq;              // caso 1
+            }
+
+            if (tio->dir->cor == 0 && tio->dir->cor == 0)
+            {
+                tio->cor = 1;       // caso 2
+                filho = filho->pai; // caso 2
+            }
+            else
+            {
+                if (tio->esq->cor == 0)
+                {
+                    tio->dir->cor = 0;            // caso 3
+                    tio->cor = 1;                 // caso 3
+                    rotacionaEsquerda(raiz, tio); // caso 3
+                    tio = filho->pai->esq;        // caso 3
+                }
+
+                tio->cor = filho->pai->cor;         // caso 4
+                filho->pai->cor = 0;                // caso 4
+                tio->esq->cor = 0;                  // caso 4
+                rotacionaDireita(raiz, filho->pai); // caso 4
+                filho = raiz;                       // caso 4
+            }
+        }
+    }
+
+    filho->cor = 0;
+}
+
+void transplantRB(TreeRB *raiz, TreeRB *u, TreeRB *v)
+{
+
+    if (u->pai == nill)
+        raiz = v;
+    else if (u == u->pai->esq)
+        u->pai->esq = v;
+    else
+        u->pai->dir = v;
+
+    v->pai = u->pai;
+}
+
+void deleteNode(TreeRB *t, int key)
+{
+    TreeRB *z = nill;
     TreeRB *x, *y;
 
-    x = child;
-    y = child->esq;
-    x->esq = y->dir;
-
-    if (y->dir != NULL)
-        y->dir->pai = x;
-
-    y->pai = x->pai;
-
-    if (x->pai == NULL)
+    while (t != nill)
     {
-        *raiz = y;
+        if (t->valor == key)
+            z = t;
+        if (t->valor <= key)
+            t = t->dir;
+        else
+            t = t->esq;
     }
 
+    if (z == nill)
+    {
+        cout << "Chave não foi encontrada na árvore" << endl;
+        return;
+    }
+
+    y = z;
+    int y_original_color = y->cor;
+
+    if (z->esq == nill)
+    {
+        x = z->dir;
+        transplantRB(t, z, z->dir);
+    }
+    else if (z->dir == nill)
+    {
+        x = z->esq;
+        transplantRB(t, z, z->esq);
+    }
     else
     {
-
-        if (x == x->pai->dir)
-            x->pai->dir = y;
-
+        y = minimoRB(z->dir);
+        y_original_color = y->cor;
+        x = y->dir;
+        if (y->pai == z)
+            x->pai = y;
         else
-            x->pai->esq = y;
+        {
+            transplantRB(t, y, y->dir);
+            y->dir = z->dir;
+            y->dir->pai = y;
+        }
+
+        transplantRB(t, z, y);
+        y->esq = z->esq;
+        y->esq->pai = y;
+        y->cor = z->cor;
     }
 
-    y->dir = x;
-    x->pai = y;
+    delete z;
+
+    if (y_original_color == 0)
+        deleteFix(t, x);
+}
+
+// Balancea a árvore t após a inserção
+// página 226 - Algoritmos - Cormen
+void insertFix(TreeRB *t, TreeRB *z)
+{
+    TreeRB *y;
+
+    while (z->pai->cor == 1)
+    {
+        if (z->pai == z->pai->pai->dir)
+        {
+            y = z->pai->pai->esq;
+
+            if (y->cor == 1)
+            {
+                y->cor = 0;           // caso 1
+                z->pai->cor = 0;      // caso 1
+                z->pai->pai->cor = 1; // caso 1
+                z = z->pai->pai;      // caso 1
+            }
+            else
+            {
+                if (z == z->pai->esq)
+                {
+                    z = z->pai;             // caso 2
+                    rotacionaDireita(t, z); // caso 2
+                }
+                z->pai->cor = 0;                   // caso 3
+                z->pai->pai->cor = 1;              // caso 3
+                rotacionaEsquerda(t, z->pai->pai); // caso 3
+            }
+        }
+        else
+        {
+            y = z->pai->pai->dir;
+
+            if (y->cor == 1)
+            {
+                y->cor = 0;           // caso 1
+                z->pai->cor = 0;      // caso 1
+                z->pai->pai->cor = 1; // caso 1
+                z = z->pai->pai;      // caso 1
+            }
+            else
+            {
+                if (z == z->pai->dir)
+                {
+                    z = z->pai;              // caso 2
+                    rotacionaEsquerda(t, z); // caso 2
+                }
+                z->pai->cor = 0;                  // caso 3
+                z->pai->pai->cor = 1;             // caso 3
+                rotacionaDireita(t, z->pai->pai); // caso 3
+            }
+        }
+        if (z == t)
+            break;
+    }
+    t->cor = 0;
+}
+
+TreeRB *CreateRB(TreeRB *t)
+{
+    nill = new TreeRB;
+    nill->cor = 0;
+    nill->esq = nill;
+    nill->dir = nill;
+    t = nill;
+    return t;
 }
 
 void preordem(TreeRB *t)
 {
-    if (!(t == NULL))
+    if (t != nill)
     {
-        printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
+        cout << t->valor << " ";
         preordem(t->esq);
         preordem(t->dir);
     }
@@ -333,20 +700,166 @@ void preordem(TreeRB *t)
 
 void central(TreeRB *t)
 {
-    if (!(t == NULL))
+    if (t != nill)
     {
         central(t->esq);
-        printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
+        cout << t->valor << " ";
         central(t->dir);
     }
 }
 
 void posordem(TreeRB *t)
 {
-    if (!(t == NULL))
+    if (t != nill)
     {
         posordem(t->esq);
         posordem(t->dir);
-        printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
+        cout << t->valor << " ";
     }
 }
+
+TreeRB *minimoRB(TreeRB *t)
+{
+    while (t->esq != nill)
+    {
+        t = t->esq;
+    }
+    return t;
+}
+
+TreeRB *maximoRB(TreeRB *t)
+{
+    while (t->dir != nill)
+    {
+        t = t->dir;
+    }
+    return t;
+}
+
+// página 208 - Algoritmos - Cormen
+TreeRB *successor(TreeRB *x)
+{
+    if (x->dir != nill)
+    {
+        return minimoRB(x->dir);
+    }
+
+    TreeRB *y = x->pai;
+    while (y != nill && x == y->dir)
+    {
+        x = y;
+        y = y->pai;
+    }
+    return y;
+}
+
+// página 208 - Algoritmos - Cormen
+TreeRB *predecessor(TreeRB *x)
+{
+    if (x->esq != nill)
+    {
+        return maximoRB(x->esq);
+    }
+
+    TreeRB *y = x->pai;
+    while (y != nill && x == y->esq)
+    {
+        x = y;
+        y = y->pai;
+    }
+
+    return y;
+}
+
+// página 224 - Algoritmo - Cormen
+void rotacionaEsquerda(TreeRB *t, TreeRB *x)
+{
+    TreeRB *y;
+
+    y = x->dir;      // define y
+    x->dir = y->esq; // faz da subárvore esquerda de y a subárvore direita de x
+
+    if (y->esq != nill)
+        y->esq->pai = x;
+
+    y->pai = x->pai; // liga o pai de x a y
+
+    if (x->pai == nill)
+        t = y;
+    else if (x == x->pai->esq)
+        x->pai->esq = y;
+    else
+        x->pai->dir = y;
+
+    y->esq = x; // coloca x à esquerda de y
+    x->pai = y;
+}
+
+// página 224 - Algoritmos - Cormen
+void rotacionaDireita(TreeRB *t, TreeRB *x)
+{
+    TreeRB *y;
+
+    y = x->esq;      // define y
+    x->esq = y->dir; // faz a subárvore esquerda de y a subárvore direita de x
+
+    if (y->dir != nill)
+        y->dir->pai = x;
+
+    y->pai = x->pai; // liga o pai de x a y
+
+    if (x->pai == nill)
+        t = y;
+    else if (x == x->pai->dir)
+        x->pai->dir = y;
+    else
+        x->pai->esq = y;
+
+    y->dir = x; // coloca x a direita de y
+    x->pai = y;
+}
+
+// Inserting a t
+// página 225 - Algoritmos - Cormen
+void insertTreeRB(TreeRB *raiz, int key)
+{
+    TreeRB *t = new TreeRB;
+    t->pai = nill;
+    t->valor = key;
+    t->esq = nill;
+    t->dir = nill;
+    t->cor = 1;
+
+    TreeRB *y = nill;
+    TreeRB *x = raiz;
+
+    while (x != nill)
+    {
+        y = x;
+        if (t->valor < x->valor)
+            x = x->esq;
+        else
+            x = x->dir;
+    }
+
+    t->pai = y;
+
+    if (y == nill)
+        raiz = t;
+    else if (t->valor < y->valor)
+        y->esq = t;
+    else
+        y->dir = t;
+
+    if (t->pai == nill)
+    {
+        t->cor = 0;
+        return;
+    }
+
+    if (t->pai->pai == nill)
+        return;
+
+    insertFix(raiz, t);
+}
+*/

@@ -125,7 +125,7 @@ void binary()
 
 void avl()
 {
-    TreeAVL *raiz = CreateTreeAVL(); // cria a árvore binária de pesquisa
+    TreeAVL *raiz = CreateAVL(); // cria a árvore binária de pesquisa
     RecordAVL r;
 
     string nome = arquivo();
@@ -155,14 +155,16 @@ void avl()
 
 void rb()
 {
+    TreeRB *raiz = CreateRB();
+    RecordRB r;
+
     string nome = arquivo();
     int decisao = 0;
 
     clock_t inicio = clock();
-
-    insert_rb(nome);
-
+    raiz = insert_rb(nome, raiz, r);
     clock_t fim = clock();
+
     double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
     cout << ">> O tempo gasto para inserir na estrutura foi " << tempo << " ." << endl;
 
@@ -173,7 +175,7 @@ void rb()
     if (decisao == 1)
     {
         clock_t inicio = clock();
-        // remove árvore rubro negra
+        remove_rb(raiz);
         clock_t fim = clock();
 
         double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
@@ -309,25 +311,24 @@ TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r)
     return raiz;
 }
 
-void insert_rb(string nome)
+TreeRB *insert_rb(string nome, TreeRB *raiz, RecordRB r)
 {
     string numero;
     double num_double;
-    RecordRB r;
 
     // abre o arquivo para leitura
     ifstream arq(nome);
 
-    TreeRB *raiz = CreateRB(); // cria a árvore binária de pesquisa
-
     while (getline(arq, numero))
     {
-        num_double = stod(numero);            // transforma string em número flutuante
-        r.key = num_double;                   // define chave
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;
         insertTreeRB(&raiz, &raiz, &raiz, r); // insere na árvore rubro negra
     }
 
     arq.close();
+
+    return raiz;
 }
 
 vector<double> insert_vetor(string nome, vector<double> vetor)
@@ -415,7 +416,7 @@ void remove_avl(TreeAVL *raiz)
 {
     string numero;
     double num_double;
-    TreeAVL *aux = CreateTreeAVL();
+    TreeAVL *aux = CreateAVL();
     RecordAVL r;
 
     // abre o arquivo para leitura
@@ -436,6 +437,31 @@ void remove_rb(TreeRB *raiz)
 {
     string numero;
     double num_double;
+
+    TreeRB *aux = CreateRB();
+    RecordRB r;
+
+    // abre o arquivo para leitura
+    ifstream arq("src/files/consulta.txt");
+
+    while (getline(arq, numero))
+    {
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;
+        if (pesquisaRB(&raiz, &aux, r))
+        {
+            cout << num_double << " ";
+            removeTreeRB(&raiz, r);
+        }
+    }
+
+    arq.close();
+}
+
+/*void remove_rb(TreeRB *raiz)
+{
+    string numero;
+    double num_double;
     TreeRB *aux = CreateRB();
     RecordRB r;
 
@@ -452,7 +478,7 @@ void remove_rb(TreeRB *raiz)
     }
 
     arq.close();
-}
+}*/
 
 void remove_vetor(vector<double> vetor)
 {

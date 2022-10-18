@@ -20,7 +20,7 @@ struct TreeAVL
     int weight;
 };
 
-TreeAVL *CreateTreeAVL();
+TreeAVL *CreateAVL();
 void insertTreeAVL(TreeAVL **t, RecordAVL r);
 bool pesquisaAVL(TreeAVL **t, TreeAVL **aux, RecordAVL r);
 int isInTree(TreeAVL *t, RecordAVL r);

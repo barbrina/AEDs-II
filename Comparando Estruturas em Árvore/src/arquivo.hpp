@@ -33,9 +33,9 @@ void umapa(); // conjunto de funções presentes em um unordered map
 
 Tree *insert_binary(string nome, Tree *raiz, Record r);       // função para abrir aquivo e inserir valores na árvore binária de busca
 TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r); // função para abrir aquivo e inserir valores na árvore AVL
-void insert_rb(string nome);                                  // função para abrir aquivo e inserir valores na árvore Rubro Negra
+TreeRB *insert_rb(string nome, TreeRB *raiz, RecordRB r);     // função para abrir aquivo e inserir valores na árvore Rubro Negra
 
-vector<double> insert_vetor(string nome, vector<double> vetor);  // função para abrir aquivo e inserir valores em um vector
+vector<double> insert_vetor(string nome, vector<double> vetor);    // função para abrir aquivo e inserir valores em um vector
 void insert_mapa(string nome, map<double, int> *mapa);             // função para abrir aquivo e inserir valores em um map
 void insert_umapa(string nome, unordered_map<double, int> *umapa); // função para abrir aquivo e inserir valores em um unordered map
 

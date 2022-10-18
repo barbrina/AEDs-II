@@ -1,6 +1,6 @@
 #include "avl.hpp"
 
-TreeAVL *CreateTreeAVL()
+TreeAVL *CreateAVL()
 {
 	return NULL;
 }
