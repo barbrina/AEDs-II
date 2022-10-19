@@ -103,7 +103,7 @@ Inserção de um arquivo de 5000 números ponto flutuante:
 
 </div>
 
-Remoção de um arquivo de 5000 números ponto flutuante:
+Pesquisa e Remoção de um arquivo de 5000 números ponto flutuante:e:
 
 <div align="center">
 
@@ -133,7 +133,7 @@ Inserção de um arquivo de 50000 números ponto flutuante:
 
 </div>
 
-Remoção de um arquivo de 50000 números ponto flutuante:
+Pesquisa e Remoção de um arquivo de 50000 números ponto flutuante:
 
 <div align="center">
 
@@ -154,27 +154,27 @@ Inserção de um arquivo de 500000 números ponto flutuante:
 
 |                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
 |-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
-| Árvore Binária de Busca |             |             |             |             |             |             |               |
-|       Árvore AVL        |             |             |             |             |             |             |               |
-|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
-|          Vector         |             |             |             |             |             |             |               |
-|           Map           |             |             |             |             |             |             |               |
-|      Unordered Map      |             |             |             |             |             |             |               |
+| Árvore Binária de Busca |  0.772144   |   0.755578  |   0.770043  |  0.736056   |  0.739916   |             |               |
+|       Árvore AVL        |  0.945656   |   0.91081   |   0.918492  |  0.91946    |  0.958808   |             |               |
+|    Árvore Rubro Negra   |  0.644124   |  0.624978   |   0.632916  | 0.632175    |   0.644189  |             |               |
+|          Vector         |   0.452528  |  0.454459   |   0.450024  |  0.453121   |  0.443855   |             |               |
+|           Map           |   0.841232  |  0.856242   |   0.874324  |  0.851164   |  0.860233   |             |               |
+|      Unordered Map      |   0.674977  |  0.626464   |   0.622226  |   0.607311  |   0.599449  |             |               |
 
 </div>
 
-Remoção de um arquivo de 500000 números ponto flutuante:
+Pesquisa e Remoção de um arquivo de 500000 números ponto flutuante:
 
 <div align="center">
 
 |                         |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
 |-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
-| Árvore Binária de Busca |             |             |             |             |             |             |               |
-|       Árvore AVL        |             |             |             |             |             |             |               |
-|    Árvore Rubro Negra   |             |             |             |             |             |             |               |
-|          Vector         |             |             |             |             |             |             |               |
-|           Map           |             |             |             |             |             |             |               |
-|      Unordered Map      |             |             |             |             |             |             |               |
+| Árvore Binária de Busca |   0.772144  |  0.018718   |   0.019524  |  0.018782   |  0.019936   |             |               |
+|       Árvore AVL        |   0.03767   |  0.038888   |  0.040195   |   0.036095  |  0.036134   |             |               |
+|    Árvore Rubro Negra   |   0.040962  |  0.043476   |   0.042367  |  0.038164   | 0.040835    |             |               |
+|          Vector         |   25.9439   |   25.9159   |  26.3726    |   25.8722   |  25.8173    |             |               |
+|           Map           |   0.070228  | 0.066728    |  0.069505   |   0.063711  |    0.0655   |             |               |
+|      Unordered Map      |   0.037283  |  0.033472   |   0.037731  |   0.038558  |   0.03944   |             |               |
 
 </div>
 
