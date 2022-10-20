@@ -59,14 +59,14 @@ https://github.com/barbrina/AEDs-II/blob/978c0498e5b92eb0f0425e8956e99e5cf933c86
  
 <div align="center">
 
- |                        |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
+|                        |     T1      |     T2      |     T3      |     T4      |     T5      |    Média    | Desvio Padrão |
 |-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
-| Árvore Binária de Busca |   0.000454  |   0.000565  |  0.000592   |   0.000766  |  0.000644   |             |               |
-|       Árvore AVL        |   0.00087   |  0.000829   |   0.00086   |   0.000755  |   0.001052  |             |               |
-|    Árvore Rubro Negra   |   0.000688  |  0.000592   |  0.001006   |   0.000936  |   0.000458  |             |               |
-|          Vector         |     0.0008  |    0.00062  |  0.000555   |   0.000599  |   0.000503  |             |               |
-|           Map           |   0.001095  |   0.001189  |   0.000896  |   0.001026  |   0.00116   |             |               |
-|      Unordered Map      |   0.001198  |  0.001116   |   0.000823  |   0.001124  |   0.00108   |             |               |
+| Árvore Binária de Busca |     |    |    |    |     |             |               |
+|       Árvore AVL        |    |    |     |    |     |             |               |
+|    Árvore Rubro Negra   |    |     |    |    |    |             |               |
+|          Vector         |     |      |     |    |     |             |               |
+|           Map           |     |     |    |     |     |             |               |
+|      Unordered Map      |    |    |     |     |    |             |               |
 
 </div>
 
@@ -87,6 +87,9 @@ Pesquisa e Remoção de um arquivo de 500 números ponto flutuante:
 
 
 </div>
+
+Remoção de um arquivo de 500 números ponto flutuante:
+
 
 Inserção de um arquivo de 5000 números ponto flutuante:
  
