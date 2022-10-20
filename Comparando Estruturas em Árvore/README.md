@@ -119,6 +119,7 @@ Inserção de um arquivo de 5000 números ponto flutuante:
 Pesquisa de um arquivo de 5000 números ponto flutuante:
 
 <div align="center">
+ 
 |                         |     T1(s)   |     T2(s)   |     T3(s)   |     T4(s)   |     T5(s)   |    Média    | Desvio Padrão |
 |-------------------------|-------------|-------------|-------------|-------------|-------------|-------------|---------------|
 | Árvore Binária de Busca |  0.006511   |  0.007851   |   0.006362  |   0.007029  |  0.008783   |             |               |
@@ -142,6 +143,7 @@ Remoção de um arquivo de 500 números ponto flutuante:
 |          Vector         |  0.16561    |   0.164137  |  0.170774   |  0.166634   |  0.165677   |             |               |
 |           Map           |  0.029356   |  0.030549   |   0.031537  |   0.030616  |  0.031794   |             |               |
 |      Unordered Map      |  0.023283   |  0.022707   |   0.0254    |   0.02288   |   0.021084  |             |               |
+ 
 
 </div>
 Inserção de um arquivo de 50000 números ponto flutuante:
@@ -156,6 +158,7 @@ Inserção de um arquivo de 50000 números ponto flutuante:
 |          Vector         |  0.059944   |   0.05573   |    0.05949  |  0.055502   |   0.05101   |             |               |
 |           Map           |  0.087664   | 0.088532    | 0.088867    |  0.08275    |  0.083032   |             |               |
 |      Unordered Map      |  0.067627   |    0.072097 |  0.075882   |   0.073441  |   0.079601  |             |               |
+ 
 </div>
 
 Pesquisa de um arquivo de 50000 números ponto flutuante:
@@ -200,6 +203,7 @@ Inserção de um arquivo de 50000 números ponto flutuante:
 |          Vector         |0.45212      |0.443821     |0.445571     |0.445728     |0.437731     |             |               |
 |           Map           |0.807353     |0.751685     |0.759954     |0.92795      |0.766622     |             |               |
 |      Unordered Map      |0.600294     |0.582994     |0.610187     |0.600314     |0.597288     |             |               |
+ 
 </div>
 
 Pesquisa de um arquivo de 50000 números ponto flutuante:
