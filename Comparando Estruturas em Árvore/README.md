@@ -74,13 +74,29 @@ Para os dados de inserção, temos como resultado a seguinte tabela:
 
 #### 3.1.1 Arquivo de 500 números
 
-Para o arquivo de 500 números, a inserção que apresentou menor resultado, como apresentado e negrito, foi a árvore rubro negra. O tempo de inserção, apesar de pequeno, na ordem de casa 10<sup>-4</sup>, também esteve próximo dos valores encontrados pelo vector (segundo tempo mais rápido) e pela árvore AVL (terceiro tempo mais rápido). A árvore rubro negra e a AVL ser uma das mais rápidas não é surpreentende, visto que as árvores de busca balanceadas são uma das estruturas mais eficientes que conhecemos, e estudadas neste trabalho. O vector estar em segunda posição pode parecer um resultado interessante de primeira, mas o método de inserção utilizado, o push back, apresenta um "tempo amortizado constante". 
+Para o arquivo de 500 números, a inserção que apresentou menor resultado, como apresentado e negrito, foi a árvore rubro negra. O tempo de inserção, apesar de pequeno, na ordem de casa 10<sup>-4</sup>, também esteve próximo dos valores encontrados pelo vector (segundo tempo mais rápido) e pela árvore AVL (terceiro tempo mais rápido). A árvore rubro negra e a AVL ser uma das mais rápidas não é surpreentende, visto que as árvores de busca balanceadas são uma das estruturas mais eficientes que conhecemos, e estudadas neste trabalho. 
 
-A análise amortizada é uma técnica de análise que examina uma sequência de operações. Se a sequência inteira for executada no tempo T ( n ) , cada operação na sequência será executada em T ( n ) / n . A idéia é que, embora algumas operações na sequência possam ser caras, elas não podem acontecer com frequência suficiente para sobrecarregar o programa. Os vetores em C++ são implementados com matrizes, para aumentar o tamanho de um vetor, deve-se realocar a memória e copiar toda a matriz. Obviamente, não gostaríamos de fazer isso com muita frequência. Portanto, se executarmos uma operação push_back e o vetor precisar alocar mais espaço, aumentará o tamanho em um fator. Agora, isso requer mais memória, que você pode não usar por completo, mas as próximas operações push_back são executadas em tempo constante.
+A inserção que apresentou maior resultado, em negrito na primeira coluna, foi a árvore de busca binária. Por ser uma árvore que utiliza uma inserção simples, dependendo da ordem como os dados são inseridos, pode haver a deterioração. A inserção precisa localizar o local para a qual o número será inserido, dessa forma, árvores muito desbalanceadas precisam de um tempo maior para encontrar a folha vazia. Mesmo apresentanto o maior tempo de inserção, a árvore binária de busca ainda apresentou um tempo relativamente pequeno, na ordem de 10<sup>-3</sup> e isso não significa que a árvore binária de busca seja lenta, apenas que as outras estruturas, para esta quantidade de dados, sejam bem mais rápidas..
 
-A inserção que apresentou maior resultado, em negrito na primeira coluna, foi a árvore de busca binária. Por ser uma árvore que utiliza uma inserção simples, dependendo da ordem como os dados são inseridos, pode haver a deterioração. A inserção precisa localizar o local para a qual o número será inserido, dessa forma, árvores muito desbalanceadas precisam de um tempo maior para encontrar a folha vazia. Mesmo apresentanto o maior tempo de inserção, a árvore binária de busca ainda apresentou um tempo relativamente pequeno, na ordem de 10<sup>-3</sup>.
+#### 3.1.2 Arquivo de 5.000 números
 
+De forma oposta aos resultados encontrados do arquivo de 500 números, o arquivo de 5000 números apresenta como tempo mais rápido de inserção, a própria árvore binária de busca. Apesar de ter sido o menor tempo, sua inserção esteve próximo das árvores avl e rubro negra, também com o vector. Esta diferença,  que a princípio pode parecer contraditória, não é, visto que a árvore binária de busca, como mencionada anteriormente, depende da ordem que os dados são inseridos. Dados bem distribuidos podem facilitar e diminuir o tempo de inserção. 
 
+O map foi a estrutura que apresentou maior tempo de inserção, um valor consideravalmente maior do que das outras estruturas, na casa de 10<sup>-2</sup>. Isso pode ser devido ao fato de que na estrutura map, todos os elementos estão ordenados de acordo com o seu valor chave. Dessa forma os elementos são sempre inseridos em suas respectivas posições, seguindo a ordenação. Segundo a documentação, se N elementos são inseridos, a complexidade é N log(tamanho + N).
+
+#### 3.1.3 Arquivo de 50.000 números
+
+Para o arquivo de 50 mil números, o menor tempo de inserção foi realizado pela estrutura vector e o maior, pela árvore AVL. A estrutura vector apresentar o tempo mais rápido de inserção pode parecer um resultado interessante de primeira, mas o método de inserção utilizado, o push back, apresenta um "tempo amortizado constante". 
+
+A análise amortizada é uma técnica de análise que examina uma sequência de operações. Se a sequência inteira for executada no tempo T(n) , cada operação na sequência será executada em T(n)/n. A idéia é que, embora algumas operações na sequência possam ser caras, elas não podem acontecer com frequência suficiente para sobrecarregar o programa. Os vetores em C++ são implementados com matrizes, para aumentar o tamanho de um vetor, deve-se realocar a memória e copiar toda a matriz. Obviamente, não gostaríamos de fazer isso com muita frequência. Portanto, se executarmos uma operação push_back e o vetor precisar alocar mais espaço, aumentará o tamanho em um fator. Agora, isso requer mais memória, que você pode não usar por completo, mas as próximas operações push_back são executadas em tempo constante.
+
+Apesar do vetor ter sido o mais rápido, todas as leituras apresentaram tempo relativamente parecido, na ordem de 10<sup>-2</sup>.
+
+A árvore AVL, que apresentou o tempo de inserção mais lento, teve resultados próximos as estruturas map e unordered map. A explicação para este tipo de resultado pode ser devido a ordem de inserção, que pode ter feito com que a árvore avl passe por sucessivas rotações para a deixar balanceada, o que pode ter ocasionado neste tempo maior em relação as outras estruturas.
+
+#### 3.1.4 Arquivo de 500.000 números
+
+Assim como o arquivo de 50 mil números, o arquivo de 500 mil números demonstrou que novamente, o tempo mais curto de inserção foi a estrutura vector e o mais longo, pela árvore avl. Isso demonstra que para inserções de dados muito grandes, ambas as estruturas são respectivamente melhor e pior para inserção.
 
 ### 3.1 Pesquisa
 
@@ -90,13 +106,22 @@ Para os dados de pesquisa, temos como resultado a seguinte tabela:
 |                         |                    500.txt              |   5000.txt  |  50000.txt  |  500000.txt |
 |-------------------------|-----------------------------------------|-------------|-------------|-------------|
 | Árvore Binária de Busca |8.36×10<sup>-3</sup> ± 1.84×10<sup>-3</sup>|__7.31×10<sup>-3</sup> ± 1.01×10<sup>-3</sup>__|8.97×10<sup>-3</sup> ± 1.34×10<sup>-3</sup>|8.06×10<sup>-3</sup> ± 1.74×10<sup>-3</sup>|
-|       Árvore AVL        |__6.88×10<sup>-3</sup> ± 5.76×10<sup>-4</sup>__|7.44×10<sup>-3</sup> ± 7.58×10<sup>-4</sup>|9.12×10<sup>-0</sup> ± 2.44×10<sup>-3</sup>|8.81×10<sup>-3</sup>±1.20×10<sup>-3</sup>|
-|    Árvore Rubro Negra   |6.88×10<sup>-3</sup> ± 1.65×10<sup>-3</sup>|7.35×10<sup>-3</sup> ± 7.55×10<sup>-4</sup>|7.91×10<sup>-0</sup> ± 1.08×10<sup>-3</sup>|7.97×10<sup>-3</sup>±4.77×10<sup>-4</sup>|
-|          Vector         |__9.81×10<sup>-3</sup> ± 9.76×10<sup>-4</sup>__|1.09×10<sup>-2</sup> ± 3.85×10<sup>-4</sup>|1.19×10<sup>-0</sup> ± 2.05×10<sup>-3</sup>|1.18×10<sup>-2</sup>±3.14×10<sup>-4</sup>|
-|           Map           |9.24×10<sup>-3</sup> ± 4.11×10<sup>-4</sup>|__1.17×10<sup>-2</sup> ± 5.53×10<sup>-4</sup>__|__1.20×10<sup>-0</sup> ± 2.52×10<sup>-3</sup>__|__1.52×10<sup>-2</sup> ± 3.90×10<sup>-3</sup>__|
-|      Unordered Map      |8.64×10<sup>-3</sup> ± 1.73×10<sup>-3</sup>|8.71×10<sup>-3</sup> ± 9.26×10<sup>-4</sup>|__6.67×10<sup>-0</sup> ± 8.06×10<sup>-4</sup>__|__6.57×10<sup>-3</sup> ± 6.70×10<sup>-5</sup>__|
+|       Árvore AVL        |__6.88×10<sup>-3</sup> ± 5.76×10<sup>-4</sup>__|7.44×10<sup>-3</sup> ± 7.58×10<sup>-4</sup>|9.12×10<sup>-3</sup> ± 2.44×10<sup>-3</sup>|8.81×10<sup>-3</sup>±1.20×10<sup>-3</sup>|
+|    Árvore Rubro Negra   |6.88×10<sup>-3</sup> ± 1.65×10<sup>-3</sup>|7.35×10<sup>-3</sup> ± 7.55×10<sup>-4</sup>|7.91×10<sup>-3</sup> ± 1.08×10<sup>-3</sup>|7.97×10<sup>-3</sup>±4.77×10<sup>-4</sup>|
+|          Vector         |__9.81×10<sup>-3</sup> ± 9.76×10<sup>-4</sup>__|1.09×10<sup>-2</sup> ± 3.85×10<sup>-4</sup>|1.19×10<sup>-2</sup> ± 2.05×10<sup>-3</sup>|1.18×10<sup>-2</sup>±3.14×10<sup>-4</sup>|
+|           Map           |9.24×10<sup>-3</sup> ± 4.11×10<sup>-4</sup>|__1.17×10<sup>-2</sup> ± 5.53×10<sup>-4</sup>__|__1.20×10<sup>-2</sup> ± 2.52×10<sup>-3</sup>__|__1.52×10<sup>-2</sup> ± 3.90×10<sup>-3</sup>__|
+|      Unordered Map      |8.64×10<sup>-3</sup> ± 1.73×10<sup>-3</sup>|8.71×10<sup>-3</sup> ± 9.26×10<sup>-4</sup>|__6.67×10<sup>-3</sup> ± 8.06×10<sup>-4</sup>__|__6.57×10<sup>-3</sup> ± 6.70×10<sup>-5</sup>__|
 
 </div>
+
+#### 3.2.1 Arquivo de 500 números
+
+
+#### 3.2.2 Arquivo de 5.000 números
+
+#### 3.2.3 Arquivo de 50.000 números
+
+#### 3.2.4 Arquivo de 500.000 números
 
 
 ### 3.3 Remoção
@@ -115,8 +140,24 @@ Para os dados de remoção, temos como resultado a seguinte tabela:
 
 </div>
 
+#### 3.3.1 Arquivo de 500 números
+
+
+#### 3.3.2 Arquivo de 5.000 números
+
+#### 3.3.3 Arquivo de 50.000 números
+
+#### 3.3.4 Arquivo de 500.000 números
 
 ## 4. Conclusão
+
+Não existem respostas certas ou erradas para comparações de tempos de estruturas de dados. Diversos fatores interferem para que, as vezes, a melhor estrutura para solucionar determinado tipo de problema, apresente o pior resultado. 
+
+Para trabalhos futuros, a pesquisa ideal seria utilizando escalas de centenas até bilhões de dados, em diversos sistemas operacionais e arquiteturas diferentes de computador, testando diversas formas de entrada de números.
+
+- Depende da ordem de inserção, de pesquisa, e remoção
+- Depende da arquitetura do computador
+- 
  
 ## 5. Compilação e Execução
 
