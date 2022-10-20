@@ -236,47 +236,55 @@ Remoção de um arquivo de 50000 números ponto flutuante:
 
 </div>
 
-Temos como resultado a seguinte tabela
+### 3.1 Inserção
 
-Inserção:
+Para os dados de inserção, temos como resultado a seguinte tabela:
+
 <div align="center">
 
 |                         |                   500.txt                 |   5000.txt  |  50000.txt  |  500000.txt |
 |-------------------------|-------------------------------------------|-------------|-------------|-------------|
-| Árvore Binária de Busca |1.33×10<sup>-3</sup> ± 1.53×10<sup>-3</sup>|5.19×10<sup>-3</sup> ± 5.65×10<sup>-4</sup>|6.65×10<sup>-2</sup> ± 9.69×10<sup>-3</sup>|7.33×10<sup>-1</sup> ± 5.82×10<sup>-2</sup>|
-|       Árvore AVL        |7.80×10<sup>-4</sup> ± 8.64×10<sup>-5</sup>|6.61×10<sup>-3</sup> ± 4.23×10<sup>-4</sup>|9.18×10<sup>-2</sup> ± 4.70×10<sup>-3</sup>|9.31×10<sup>-1</sup> ± 3.22×10<sup>-2</sup>|
-|    Árvore Rubro Negra   |5.51×10<sup>-4</sup> ± 1.21×10<sup>-4</sup>|6.23×10<sup>-3</sup> ± 6.95×10<sup>-4</sup>|6.43×10<sup>-2</sup> ± 1.71×10<sup>-3</sup>|6.45×10<sup>-1</sup> ± 1.40×10<sup>-2</sup>|
-|          Vector         |6.46×10<sup>-4</sup> ± 3.26×10<sup>-5</sup>|5.90×10<sup>-3</sup> ± 1.97×10<sup>-4</sup>|5.63×10<sup>-2</sup> ± 3.62×10<sup>-3</sup>|4.45×10<sup>-1</sup> ± 5.14×10<sup>-3</sup>|
-|           Map           |9.19×10<sup>-4</sup> ± 1.08×10<sup>-4</sup>|1.34×10<sup>-2</sup> ± 1.02×10<sup>-2</sup>|8.62×10<sup>-2</sup> ± 3.03×10<sup>-3</sup>|8.03×10<sup>-1</sup> ± 7.32×10<sup>-2</sup> |
+| Árvore Binária de Busca |__1.33×10<sup>-3</sup> ± 1.53×10<sup>-3</sup>__|__5.19×10<sup>-3</sup> ± 5.65×10<sup>-4</sup>__|6.65×10<sup>-2</sup> ± 9.69×10<sup>-3</sup>|7.33×10<sup>-1</sup> ± 5.82×10<sup>-2</sup>|
+|       Árvore AVL        |7.80×10<sup>-4</sup> ± 8.64×10<sup>-5</sup>|6.61×10<sup>-3</sup> ± 4.23×10<sup>-4</sup>|__9.18×10<sup>-2</sup> ± 4.70×10<sup>-3</sup>__|__9.31×10<sup>-1</sup> ± 3.22×10<sup>-2</sup>__|
+|    Árvore Rubro Negra   |__5.51×10<sup>-4</sup> ± 1.21×10<sup>-4</sup>__|6.23×10<sup>-3</sup> ± 6.95×10<sup>-4</sup>|6.43×10<sup>-2</sup> ± 1.71×10<sup>-3</sup>|6.45×10<sup>-1</sup> ± 1.40×10<sup>-2</sup>|
+|          Vector         |6.46×10<sup>-4</sup> ± 3.26×10<sup>-5</sup>|5.90×10<sup>-3</sup> ± 1.97×10<sup>-4</sup>|__5.63×10<sup>-2</sup> ± 3.62×10<sup>-3</sup>__|__4.45×10<sup>-1</sup> ± 5.14×10<sup>-3</sup>__|
+|           Map           |9.19×10<sup>-4</sup> ± 1.08×10<sup>-4</sup>|__1.34×10<sup>-2</sup> ± 1.02×10<sup>-2</sup>__|8.62×10<sup>-2</sup> ± 3.03×10<sup>-3</sup>|8.03×10<sup>-1</sup> ± 7.32×10<sup>-2</sup> |
 |      Unordered Map      |1.08×10<sup>-3</sup> ± 1.32×10<sup>-4</sup>|9.23×10<sup>-3</sup> ±1.50×10<sup>-3</sup>|7.37×10<sup>-2</sup> ± 4.45×10<sup>-3</sup>|5.98×10<sup>-1</sup> ± 9.81×10<sup>-3</sup>|
 
+
+ 
 </div>
 
-Pesquisa: 
+### 3.1 Pesquisa
+
+Para os dados de pesquisa, temos como resultado a seguinte tabela:
 <div align="center">
 
 |                         |                    500.txt              |   5000.txt  |  50000.txt  |  500000.txt |
 |-------------------------|-----------------------------------------|-------------|-------------|-------------|
-| Árvore Binária de Busca |8.36×10<sup>-3</sup> ± 1.84×10<sup>-3</sup>|7.31×10<sup>-3</sup> ± 1.01×10<sup>-3</sup>|8.97×10<sup>-3</sup> ± 1.34×10<sup>-3</sup>|8.06×10<sup>-3</sup> ± 1.74×10<sup>-3</sup>|
-|       Árvore AVL        |6.88×10<sup>-3</sup> ± 5.76×10<sup>-4</sup>|7.44×10<sup>-3</sup> ± 7.58×10<sup>-4</sup>|9.12×10<sup>-0</sup> ± 2.44×10<sup>-3</sup>|8.81×10<sup>-3</sup>±1.20×10<sup>-3</sup>|
+| Árvore Binária de Busca |8.36×10<sup>-3</sup> ± 1.84×10<sup>-3</sup>|__7.31×10<sup>-3</sup> ± 1.01×10<sup>-3</sup>__|8.97×10<sup>-3</sup> ± 1.34×10<sup>-3</sup>|8.06×10<sup>-3</sup> ± 1.74×10<sup>-3</sup>|
+|       Árvore AVL        |__6.88×10<sup>-3</sup> ± 5.76×10<sup>-4</sup>__|7.44×10<sup>-3</sup> ± 7.58×10<sup>-4</sup>|9.12×10<sup>-0</sup> ± 2.44×10<sup>-3</sup>|8.81×10<sup>-3</sup>±1.20×10<sup>-3</sup>|
 |    Árvore Rubro Negra   |6.88×10<sup>-3</sup> ± 1.65×10<sup>-3</sup>|7.35×10<sup>-3</sup> ± 7.55×10<sup>-4</sup>|7.91×10<sup>-0</sup> ± 1.08×10<sup>-3</sup>|7.97×10<sup>-3</sup>±4.77×10<sup>-4</sup>|
-|          Vector         |9.81×10<sup>-3</sup> ± 9.76×10<sup>-4</sup>|1.09×10<sup>-2</sup> ± 3.85×10<sup>-4</sup>|1.19×10<sup>-0</sup> ± 2.05×10<sup>-3</sup>|1.18×10<sup>-2</sup>±3.14×10<sup>-4</sup>|
-|           Map           |9.24×10<sup>-3</sup> ± 4.11×10<sup>-4</sup>|1.17×10<sup>-2</sup> ± 5.53×10<sup>-4</sup>|1.20×10<sup>-0</sup> ± 2.52×10<sup>-3</sup>|1.52×10<sup>-2</sup> ± 3.90×10<sup>-3</sup>|
-|      Unordered Map      |8.64×10<sup>-3</sup> ± 1.73×10<sup>-3</sup>|8.71×10<sup>-3</sup> ± 9.26×10<sup>-4</sup>|6.67×10<sup>-0</sup> ± 8.06×10<sup>-4</sup> |6.57×10<sup>-3</sup> ± 6.70×10<sup>-5</sup>|
+|          Vector         |__9.81×10<sup>-3</sup> ± 9.76×10<sup>-4</sup>__|1.09×10<sup>-2</sup> ± 3.85×10<sup>-4</sup>|1.19×10<sup>-0</sup> ± 2.05×10<sup>-3</sup>|1.18×10<sup>-2</sup>±3.14×10<sup>-4</sup>|
+|           Map           |9.24×10<sup>-3</sup> ± 4.11×10<sup>-4</sup>|__1.17×10<sup>-2</sup> ± 5.53×10<sup>-4</sup>__|__1.20×10<sup>-0</sup> ± 2.52×10<sup>-3</sup>__|__1.52×10<sup>-2</sup> ± 3.90×10<sup>-3</sup>__|
+|      Unordered Map      |8.64×10<sup>-3</sup> ± 1.73×10<sup>-3</sup>|8.71×10<sup>-3</sup> ± 9.26×10<sup>-4</sup>|__6.67×10<sup>-0</sup> ± 8.06×10<sup>-4</sup>__|__6.57×10<sup>-3</sup> ± 6.70×10<sup>-5</sup>__|
 
 </div>
 
-Remoção: 
+
+### 3.3 Remoção
+
+Para os dados de remoção, temos como resultado a seguinte tabela:
 <div align="center">
 
-|                         |                    500.txt              |                5000.txt              |  50000.txt  |  500000.txt |
-|-------------------------|-----------------------------------------|------------------------|-------------|-------------|
-| Árvore Binária de Busca |4.56×10<sup>-3</sup> ± 7.30×10<sup>-4</sup>|8.54×10<sup>-3</sup> ± 1.97×10<sup>-4</sup>|8.97×10<sup>-3</sup> ± 1.34×10<sup>-3</sup>|1.57×10<sup>-2</sup> ± 1.85×10<sup>-3</sup>|
+|                         |                     500.txt                   |                  5000.txt                 |             50000.txt                      |               500000.txt                  |
+|-------------------------|-----------------------------------------------|-------------------------------------------|-------------|-------------|
+| Árvore Binária de Busca |__4.56×10<sup>-3</sup> ± 7.30×10<sup>-4</sup>__|__8.54×10<sup>-3</sup> ± 1.97×10<sup>-4</sup>__|8.97×10<sup>-3</sup> ± 1.34×10<sup>-3</sup>|__1.57×10<sup>-2</sup> ± 1.85×10<sup>-3</sup>__|
 |       Árvore AVL        |5.52×10<sup>-3</sup> ± 6.96×10<sup>-4</sup>|1.29×10<sup>-2</sup> ± 2.07×10<sup>-4</sup>|9.12×10<sup>-3</sup> ± 2.44×10<sup>-3</sup>|3.36×10<sup>-2</sup> ± 9.33×10<sup>-4</sup>|
 |    Árvore Rubro Negra   |5.71×10<sup>-3</sup> ± 9.63×10<sup>-4</sup>|1.75×10<sup>-2</sup> ± 4.89×10<sup>-4</sup>|7.91×10<sup>-3</sup> ± 1.08×10<sup>-3</sup>|3.83×10<sup>-2</sup> ± 1.90×10<sup>-3</sup>|
-|          Vector         |1.07×10<sup>-2</sup> ± 1.67×10<sup>-4</sup>|1.67×10<sup>-1</sup> ± 2.52×10<sup>-4</sup>|1.19×10<sup>-2</sup> ± 2.05×10<sup>-3</sup>|2.88×10<sup>1</sup> ± 4.68×10<sup>-1</sup>|
-|           Map           |9.40×10<sup>-3</sup> ± 2.97×10<sup>-4</sup>|3.08×10<sup>-2</sup> ± 9.63×10<sup>-4</sup>|1.20×10<sup>-2</sup> ± 2.52×10<sup>-3</sup>|6.47×10<sup>-2</sup> ± 4.38×10<sup>-3</sup>|
-|      Unordered Map      |7.79×10<sup>-3</sup> ± 6.75×10<sup>-4</sup>|2.31×10<sup>-2</sup> ± 1.55×10<sup>-4</sup>|6.68×10<sup>-3</sup> ± 8.06×10<sup>-4</sup>|3.57×10<sup>-2</sup> ± 1.96×10<sup>-3</sup>|
+|          Vector         |__1.07×10<sup>-2</sup> ± 1.67×10<sup>-4</sup>__|__1.67×10<sup>-1</sup> ± 2.52×10<sup>-4</sup>__|1.19×10<sup>-2</sup> ± 2.05×10<sup>-3</sup>|__2.88×10<sup>1</sup> ± 4.68×10<sup>-1</sup>__|
+|           Map           |9.40×10<sup>-3</sup> ± 2.97×10<sup>-4</sup>|3.08×10<sup>-2</sup> ± 9.63×10<sup>-4</sup>|__1.20×10<sup>-2</sup> ± 2.52×10<sup>-3</sup>__|6.47×10<sup>-2</sup> ± 4.38×10<sup>-3</sup>|
+|      Unordered Map      |7.79×10<sup>-3</sup> ± 6.75×10<sup>-4</sup>|2.31×10<sup>-2</sup> ± 1.55×10<sup>-4</sup>|__6.68×10<sup>-3</sup> ± 8.06×10<sup>-4</sup>__|3.57×10<sup>-2</sup> ± 1.96×10<sup>-3</sup>|
 
 </div>
 
