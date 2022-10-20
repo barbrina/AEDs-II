@@ -2,7 +2,7 @@
 
 <img align="right" width="100" height="100" src="img/binarytree.png">
 
-# Comparando Estruturas em Árvore
+# Comparando Estruturas
 
 <div style="display: inline-block;">
 <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"/> 
