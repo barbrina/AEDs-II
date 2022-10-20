@@ -25,14 +25,10 @@ void insertTree(Tree **t, Record r)
     {
 
         if (r.key < (*t)->reg.key)
-        {
             insertTree(&(*t)->esq, r);
-        }
 
         if (r.key > (*t)->reg.key)
-        {
             insertTree(&(*t)->dir, r);
-        }
     }
 }
 
@@ -64,9 +60,7 @@ int isInTree(Tree *t, Record r)
 {
 
     if (t == NULL)
-    {
         return 0;
-    }
 
     return t->reg.key == r.key || isInTree(t->esq, r) || isInTree(t->dir, r);
 }
@@ -91,10 +85,7 @@ void removeTree(Tree **t, Record r)
     Tree *aux;
 
     if (*t == NULL)
-    {
-        // printf("[ERROR]: Record not found!!!");
         return;
-    }
 
     if (r.key < (*t)->reg.key)
     {

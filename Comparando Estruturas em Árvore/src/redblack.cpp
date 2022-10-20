@@ -170,28 +170,23 @@ void insertTreeRB(TreeRB **t, TreeRB **pai, TreeRB **raiz, RecordRB r)
     }
 }
 
-bool pesquisaRB(TreeRB **t, TreeRB **aux, RecordRB r)
+bool pesquisaRB(TreeRB **t, RecordRB r)
 {
 
-    if (*t == nill)
+    TreeRB *aux = *t;
+
+    while (aux != nill && r.key != aux->reg.key)
     {
-        // printf("[ERROR]: Node not found!");
-        return false;
+        if (r.key < aux->reg.key)
+            aux = aux->esq;
+        else
+            aux = aux->dir;
     }
 
-    if ((*t)->reg.key > r.key)
-    {
-        pesquisaRB(&(*t)->esq, aux, r);
+    if (aux->reg.key == r.key)
         return true;
-    }
-    if ((*t)->reg.key < r.key)
-    {
-        pesquisaRB(&(*t)->dir, aux, r);
-        return true;
-    }
 
-    *aux = *t;
-    return true;
+    return false;
 }
 
 void transplantRB(TreeRB **t, TreeRB *aux, TreeRB *auxf)

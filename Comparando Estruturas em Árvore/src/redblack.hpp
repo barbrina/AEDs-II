@@ -31,7 +31,7 @@ void inicializaTreeRB(TreeRB **raiz);
 
 void insertFixUp(TreeRB **raiz, TreeRB *child);
 void insertTreeRB(TreeRB **t, TreeRB **pai, TreeRB **raiz, RecordRB r);
-bool pesquisaRB(TreeRB **t, TreeRB **aux, RecordRB r);
+bool pesquisaRB(TreeRB **t, RecordRB r);
 void transplantRB(TreeRB **t, TreeRB *aux, TreeRB *auxf);
 void removeFixUp(TreeRB **raiz, TreeRB *filho);
 void removeTreeRB(TreeRB **t, RecordRB r);

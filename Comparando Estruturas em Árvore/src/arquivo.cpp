@@ -55,15 +55,6 @@ void menu()
     cout << ">> ";
 }
 
-void remove()
-{
-    cout << "\n------------------------------------------\n";
-    cout << "Gostaria de pesquisar e remover valores da estrutura preenchida acima? \n";
-    cout << "1 - sim\n";
-    cout << "2 - não\n";
-    cout << "------------------------------------------\n";
-}
-
 string arquivo()
 {
     int tam;
@@ -80,6 +71,7 @@ string arquivo()
 
         cout << ">> ";
         cin >> tam;
+        cout << endl;
 
     } while (tam > 4 && tam < 1);
 
@@ -98,29 +90,17 @@ void binary()
     Tree *raiz = CreateTree(); // cria a árvore binária de pesquisa
     Record r;
 
+    double tempo_insert, tempo_search, tempo_remove;
     string nome = arquivo();
-    int decisao = 0;
 
-    clock_t inicio = clock();
-    raiz = insert_binary(nome, raiz, r);
-    clock_t fim = clock();
+    raiz = insert_binary(nome, raiz, r, tempo_insert);
+    search_binary(raiz, tempo_search);
+    remove_binary(raiz, tempo_remove);
 
-    double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-    cout << ">> O tempo gasto para inserir na estrutura foi " << tempo << " ." << endl;
-
-    remove();
-    cout << ">> ";
-    cin >> decisao;
-
-    if (decisao == 1)
-    {
-        clock_t inicio = clock();
-        remove_binary(raiz);
-        clock_t fim = clock();
-
-        double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-        cout << "\n\n>> O tempo gasto para remover na estrutura foi " << tempo << " ." << endl;
-    }
+    cout << ">> O tempo gasto na árvore binária de busca foi:  " << endl;
+    cout << ">> inserção: " << tempo_insert << "s" << endl;
+    cout << ">> pesquisa: " << tempo_search << "s" << endl;
+    cout << ">> remoção: " << tempo_remove << "s" << endl;
 }
 
 void avl()
@@ -128,158 +108,99 @@ void avl()
     TreeAVL *raiz = CreateAVL(); // cria a árvore binária de pesquisa
     RecordAVL r;
 
+    double tempo_insert, tempo_search, tempo_remove;
     string nome = arquivo();
-    int decisao = 0;
 
-    clock_t inicio = clock();
-    raiz = insert_avl(nome, raiz, r);
-    clock_t fim = clock();
+    raiz = insert_avl(nome, raiz, r, tempo_insert);
+    search_avl(raiz, tempo_search);
+    remove_avl(raiz, tempo_remove);
 
-    double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-    cout << ">> O tempo gasto para inserir na estrutura foi " << tempo << " ." << endl;
-
-    remove();
-    cout << ">> ";
-    cin >> decisao;
-
-    if (decisao == 1)
-    {
-        clock_t inicio = clock();
-        remove_avl(raiz);
-        clock_t fim = clock();
-
-        double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-        cout << "\n\n>> O tempo gasto para remover na estrutura foi " << tempo << " ." << endl;
-    }
+    cout << ">> O tempo gasto na árvore avl foi:  " << endl;
+    cout << ">> inserção: " << tempo_insert << "s" << endl;
+    cout << ">> pesquisa: " << tempo_search << "s" << endl;
+    cout << ">> remoção: " << tempo_remove << "s" << endl;
 }
 
 void rb()
 {
     // TreeRB *raiz = CreateRB();
     TreeRB *raiz;
-
     inicializaTreeRB(&raiz);
-
     RecordRB r;
 
+    double tempo_insert, tempo_search, tempo_remove;
     string nome = arquivo();
-    int decisao = 0;
 
-    clock_t inicio = clock();
-    raiz = insert_rb(nome, raiz, r);
-    clock_t fim = clock();
+    raiz = insert_rb(nome, raiz, r, tempo_insert);
+    search_rb(raiz, tempo_search);
+    remove_rb(raiz, tempo_remove);
 
-    double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-    cout << ">> O tempo gasto para inserir na estrutura foi " << tempo << " ." << endl;
-
-    remove();
-    cout << ">> ";
-    cin >> decisao;
-
-    if (decisao == 1)
-    {
-        clock_t inicio = clock();
-        remove_rb(raiz);
-        clock_t fim = clock();
-
-        double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-        cout << "\n\n>> O tempo gasto para remover na estrutura foi " << tempo << " ." << endl;
-    }
+    cout << ">> O tempo gasto na árvore rubro negra foi:  " << endl;
+    cout << ">> inserção: " << tempo_insert << "s" << endl;
+    cout << ">> pesquisa: " << tempo_search << "s" << endl;
+    cout << ">> remoção: " << tempo_remove << "s" << endl;
 }
 
 void vetor()
 {
-    string nome = arquivo();
-    int decisao = 0;
     vector<double> vetor;
 
-    clock_t inicio = clock();
-    vetor = insert_vetor(nome, vetor);
-    clock_t fim = clock();
+    string nome = arquivo();
+    double tempo_insert, tempo_search, tempo_remove;
 
-    double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-    cout << ">> O tempo gasto para inserir na estrutura foi " << tempo << " ." << endl;
+    vetor = insert_vetor(nome, vetor, tempo_insert);
+    search_vetor(vetor, tempo_search);
+    remove_vetor(vetor, tempo_remove);
 
-    remove();
-    cout << ">> ";
-    cin >> decisao;
-
-    if (decisao == 1)
-    {
-        clock_t inicio = clock();
-        remove_vetor(vetor);
-        clock_t fim = clock();
-
-        double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-        cout << "\n\n>> O tempo gasto para remover na estrutura foi " << tempo << " ." << endl;
-    }
+    cout << ">> O tempo gasto na estrutura vector foi:  " << endl;
+    cout << ">> inserção: " << tempo_insert << "s" << endl;
+    cout << ">> pesquisa: " << tempo_search << "s" << endl;
+    cout << ">> remoção: " << tempo_remove << "s" << endl;
 }
 
 void mapa()
 {
-    string nome = arquivo();
-    int decisao = 0;
-
     map<double, int> mapa;
 
-    clock_t inicio = clock();
-    insert_mapa(nome, &mapa);
-    clock_t fim = clock();
+    string nome = arquivo();
+    double tempo_insert, tempo_search, tempo_remove;
 
-    double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-    cout << ">> O tempo gasto para inserir na estrutura foi " << tempo << " ." << endl;
+    insert_mapa(nome, &mapa, tempo_insert);
+    search_mapa(&mapa, tempo_search);
+    remove_mapa(&mapa, tempo_remove);
 
-    remove();
-    cout << ">> ";
-    cin >> decisao;
-
-    if (decisao == 1)
-    {
-        clock_t inicio = clock();
-        remove_mapa(&mapa);
-        clock_t fim = clock();
-
-        double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-        cout << "\n\n>> O tempo gasto para remover na estrutura foi " << tempo << " ." << endl;
-    }
+    cout << ">> O tempo gasto na estrutura map foi:  " << endl;
+    cout << ">> inserção: " << tempo_insert << "s" << endl;
+    cout << ">> pesquisa: " << tempo_search << "s" << endl;
+    cout << ">> remoção: " << tempo_remove << "s" << endl;
 }
 
 void umapa()
 {
-    string nome = arquivo();
-    int decisao = 0;
-
     unordered_map<double, int> umapa;
 
-    clock_t inicio = clock();
-    insert_umapa(nome, &umapa);
-    clock_t fim = clock();
+    string nome = arquivo();
+    double tempo_insert, tempo_search, tempo_remove;
 
-    double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-    cout << ">> O tempo gasto para inserir na estrutura foi " << tempo << " ." << endl;
+    insert_umapa(nome, &umapa, tempo_insert);
+    search_umapa(&umapa, tempo_search);
+    remove_umapa(&umapa, tempo_remove);
 
-    remove();
-    cout << ">> ";
-    cin >> decisao;
-
-    if (decisao == 1)
-    {
-        clock_t inicio = clock();
-        remove_umapa(&umapa);
-        clock_t fim = clock();
-
-        double tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
-        cout << "\n\n>> O tempo gasto para remover na estrutura foi " << tempo << " ." << endl;
-    }
+    cout << ">> O tempo gasto na estrutura unordered map foi:  " << endl;
+    cout << ">> inserção: " << tempo_insert << "s" << endl;
+    cout << ">> pesquisa: " << tempo_search << "s" << endl;
+    cout << ">> remoção: " << tempo_remove << "s" << endl;
 }
 
-Tree *insert_binary(string nome, Tree *raiz, Record r)
+Tree *insert_binary(string nome, Tree *raiz, Record r, double &tempo)
 {
     string numero;
     double num_double;
 
     // abre o arquivo para leitura
     ifstream arq(nome);
+
+    clock_t inicio = clock();
 
     while (getline(arq, numero))
     {
@@ -289,18 +210,23 @@ Tree *insert_binary(string nome, Tree *raiz, Record r)
         insertTree(&raiz, r);      // insere na árvore binária
     }
 
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
     arq.close();
 
     return raiz;
 }
 
-TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r)
+TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r, double &tempo)
 {
     string numero;
     double num_double;
 
     // abre o arquivo para leitura
     ifstream arq(nome);
+
+    clock_t inicio = clock();
 
     while (getline(arq, numero))
     {
@@ -310,18 +236,23 @@ TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r)
         insertTreeAVL(&raiz, r);   // insere na árvore AVL
     }
 
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
     arq.close();
 
     return raiz;
 }
 
-TreeRB *insert_rb(string nome, TreeRB *raiz, RecordRB r)
+TreeRB *insert_rb(string nome, TreeRB *raiz, RecordRB r, double &tempo)
 {
     string numero;
     double num_double;
 
     // abre o arquivo para leitura
     ifstream arq(nome);
+
+    clock_t inicio = clock();
 
     while (getline(arq, numero))
     {
@@ -330,12 +261,15 @@ TreeRB *insert_rb(string nome, TreeRB *raiz, RecordRB r)
         insertTreeRB(&raiz, &raiz, &raiz, r); // insere na árvore rubro negra
     }
 
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
     arq.close();
 
     return raiz;
 }
 
-vector<double> insert_vetor(string nome, vector<double> vetor)
+vector<double> insert_vetor(string nome, vector<double> vetor, double &tempo)
 {
     string numero;
     double num_double;
@@ -344,22 +278,26 @@ vector<double> insert_vetor(string nome, vector<double> vetor)
     // abre o arquivo para leitura
     ifstream arq(nome);
 
+    clock_t inicio = clock();
+
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
         vetor.push_back(num_double);
         // cout << vetor[i] << endl;
-        //  cout << i++;
+        // cout << i++;
     }
 
     sort(vetor.begin(), vetor.end());
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
 
     arq.close();
 
     return vetor;
 }
 
-void insert_mapa(string nome, map<double, int> *mapa)
+void insert_mapa(string nome, map<double, int> *mapa, double &tempo)
 {
     string line, numero;
     double num_double;
@@ -368,16 +306,21 @@ void insert_mapa(string nome, map<double, int> *mapa)
     // abre o arquivo para leitura
     ifstream arq(nome);
 
+    clock_t inicio = clock();
+
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
         mapa->insert({num_double, 1});
     }
 
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
     arq.close();
 }
 
-void insert_umapa(string nome, unordered_map<double, int> *umapa)
+void insert_umapa(string nome, unordered_map<double, int> *umapa, double &tempo)
 {
     string numero;
     double num_double;
@@ -386,16 +329,21 @@ void insert_umapa(string nome, unordered_map<double, int> *umapa)
     // abre o arquivo para leitura
     ifstream arq(nome);
 
+    clock_t inicio = clock();
+
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
         umapa->insert({num_double, 1});
     }
 
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
     arq.close();
 }
 
-void remove_binary(Tree *raiz)
+void search_binary(Tree *raiz, double &tempo)
 {
     string numero;
     double num_double;
@@ -405,18 +353,22 @@ void remove_binary(Tree *raiz)
     // abre o arquivo para leitura
     ifstream arq("src/files/consulta.txt");
 
+    clock_t inicio = clock();
+
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
         r.key = num_double;
-        if (pesquisa(&raiz, &aux, r))
-            removeTree(&raiz, r);
+        pesquisa(&raiz, &aux, r);
     }
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
 
     arq.close();
 }
 
-void remove_avl(TreeAVL *raiz)
+void search_avl(TreeAVL *raiz, double &tempo)
 {
     string numero;
     double num_double;
@@ -426,18 +378,22 @@ void remove_avl(TreeAVL *raiz)
     // abre o arquivo para leitura
     ifstream arq("src/files/consulta.txt");
 
+    clock_t inicio = clock();
+
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
         r.key = num_double;
-        if (pesquisaAVL(&raiz, &aux, r))
-            removeTreeAVL(&raiz, &raiz, r);
+        pesquisaAVL(&raiz, &aux, r);
     }
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
 
     arq.close();
 }
 
-void remove_rb(TreeRB *raiz)
+void search_rb(TreeRB *raiz, double &tempo)
 {
     string numero;
     double num_double;
@@ -446,17 +402,24 @@ void remove_rb(TreeRB *raiz)
     // abre o arquivo para leitura
     ifstream arq("src/files/consulta.txt");
 
+    clock_t inicio = clock();
+
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
         r.key = num_double;
-        removeTreeRB(&raiz, r);
+        pesquisaRB(&raiz, r);
     }
+
+    cout << "\n\n";
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
 
     arq.close();
 }
 
-void remove_vetor(vector<double> vetor)
+void search_vetor(vector<double> vetor, double &tempo)
 {
     string numero;
     double num_double;
@@ -464,27 +427,22 @@ void remove_vetor(vector<double> vetor)
     // abre o arquivo para leitura
     ifstream arq("src/files/consulta.txt");
 
+    clock_t inicio = clock();
+
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
-        if (binary_search(vetor.begin(), vetor.end(), num_double))
-        {
-            cout << num_double << " ";
-            for (int i = 0; i < vetor.size(); i++)
-            {
-                if (num_double == vetor[i])
-                {
-                    vetor.erase(vetor.begin() + i);
-                    break;
-                }
-            }
-        }
+        binary_search(vetor.begin(), vetor.end(), num_double);
     }
+    cout << "\n\n";
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
 
     arq.close();
 }
 
-void remove_mapa(map<double, int> *mapa)
+void search_mapa(map<double, int> *mapa, double &tempo)
 {
     string numero;
     double num_double;
@@ -493,6 +451,163 @@ void remove_mapa(map<double, int> *mapa)
     // abre o arquivo para leitura
     ifstream arq("src/files/consulta.txt");
 
+    clock_t inicio = clock();
+
+    while (getline(arq, numero))
+    {
+        num_double = stod(numero); // transforma string em número flutuante
+        itr = mapa->find(num_double);
+    }
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    arq.close();
+}
+
+void search_umapa(unordered_map<double, int> *umapa, double &tempo)
+{
+    string numero;
+    double num_double;
+    unordered_map<double, int>::iterator itr;
+
+    // abre o arquivo para leitura
+    ifstream arq("src/files/consulta.txt");
+
+    clock_t inicio = clock();
+
+    while (getline(arq, numero))
+    {
+        num_double = stod(numero); // transforma string em número flutuante
+        itr = umapa->find(num_double);
+    }
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    arq.close();
+}
+
+void remove_binary(Tree *raiz, double &tempo)
+{
+    string numero;
+    double num_double;
+    Tree *aux = CreateTree();
+    Record r;
+
+    // abre o arquivo para leitura
+    ifstream arq("src/files/consulta.txt");
+
+    clock_t inicio = clock();
+    cout << "Valores removidos: \n";
+    while (getline(arq, numero))
+    {
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;
+        removeTree(&raiz, r);
+    }
+    cout << "\n\n";
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    arq.close();
+}
+
+void remove_avl(TreeAVL *raiz, double &tempo)
+{
+    string numero;
+    double num_double;
+    TreeAVL *aux = CreateAVL();
+    RecordAVL r;
+
+    // abre o arquivo para leitura
+    ifstream arq("src/files/consulta.txt");
+
+    clock_t inicio = clock();
+    cout << "Valores removidos: \n";
+    while (getline(arq, numero))
+    {
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;
+        removeTreeAVL(&raiz, &raiz, r);
+    }
+    cout << "\n\n";
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    arq.close();
+}
+
+void remove_rb(TreeRB *raiz, double &tempo)
+{
+    string numero;
+    double num_double;
+    RecordRB r;
+
+    // abre o arquivo para leitura
+    ifstream arq("src/files/consulta.txt");
+
+    clock_t inicio = clock();
+    cout << "Valores removidos: \n";
+    while (getline(arq, numero))
+    {
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;
+        removeTreeRB(&raiz, r);
+    }
+
+    cout << "\n\n";
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    arq.close();
+}
+
+void remove_vetor(vector<double> vetor, double &tempo)
+{
+    string numero;
+    double num_double;
+
+    // abre o arquivo para leitura
+    ifstream arq("src/files/consulta.txt");
+
+    clock_t inicio = clock();
+    cout << "Valores removidos: \n";
+    while (getline(arq, numero))
+    {
+        num_double = stod(numero); // transforma string em número flutuante
+        for (int i = 0; i < vetor.size(); i++)
+        {
+            if (num_double == vetor[i])
+            {
+                cout << num_double << " ";
+                vetor.erase(vetor.begin() + i);
+                break;
+            }
+        }
+    }
+    cout << "\n\n";
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    arq.close();
+}
+
+void remove_mapa(map<double, int> *mapa, double &tempo)
+{
+    string numero;
+    double num_double;
+    map<double, int>::iterator itr;
+
+    // abre o arquivo para leitura
+    ifstream arq("src/files/consulta.txt");
+
+    clock_t inicio = clock();
+    cout << "Valores removidos: \n";
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
@@ -503,11 +618,15 @@ void remove_mapa(map<double, int> *mapa)
             mapa->erase(num_double);
         }
     }
+    cout << "\n\n";
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
 
     arq.close();
 }
 
-void remove_umapa(unordered_map<double, int> *umapa)
+void remove_umapa(unordered_map<double, int> *umapa, double &tempo)
 {
     string numero;
     double num_double;
@@ -516,6 +635,8 @@ void remove_umapa(unordered_map<double, int> *umapa)
     // abre o arquivo para leitura
     ifstream arq("src/files/consulta.txt");
 
+    clock_t inicio = clock();
+    cout << "Valores removidos: \n";
     while (getline(arq, numero))
     {
         num_double = stod(numero); // transforma string em número flutuante
@@ -526,6 +647,10 @@ void remove_umapa(unordered_map<double, int> *umapa)
             umapa->erase(num_double);
         }
     }
+    cout << "\n\n";
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
 
     arq.close();
 }

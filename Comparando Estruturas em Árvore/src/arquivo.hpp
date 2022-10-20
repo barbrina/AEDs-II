@@ -31,20 +31,28 @@ void vetor(); // conjunto de funções presentes em um vector
 void mapa();  // conjunto de funções presentes em um map
 void umapa(); // conjunto de funções presentes em um unordered map
 
-Tree *insert_binary(string nome, Tree *raiz, Record r);       // função para abrir aquivo e inserir valores na árvore binária de busca
-TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r); // função para abrir aquivo e inserir valores na árvore AVL
-TreeRB *insert_rb(string nome, TreeRB *raiz, RecordRB r);     // função para abrir aquivo e inserir valores na árvore Rubro Negra
+Tree *insert_binary(string nome, Tree *raiz, Record r, double &tempo);       // função para abrir aquivo e inserir valores na árvore binária de busca
+TreeAVL *insert_avl(string nome, TreeAVL *raiz, RecordAVL r, double &tempo); // função para abrir aquivo e inserir valores na árvore AVL
+TreeRB *insert_rb(string nome, TreeRB *raiz, RecordRB r, double &tempo);     // função para abrir aquivo e inserir valores na árvore Rubro Negra
 
-vector<double> insert_vetor(string nome, vector<double> vetor);    // função para abrir aquivo e inserir valores em um vector
-void insert_mapa(string nome, map<double, int> *mapa);             // função para abrir aquivo e inserir valores em um map
-void insert_umapa(string nome, unordered_map<double, int> *umapa); // função para abrir aquivo e inserir valores em um unordered map
+vector<double> insert_vetor(string nome, vector<double> vetor, double &tempo);    // função para abrir aquivo e inserir valores em um vector
+void insert_mapa(string nome, map<double, int> *mapa, double &tempo);             // função para abrir aquivo e inserir valores em um map
+void insert_umapa(string nome, unordered_map<double, int> *umapa, double &tempo); // função para abrir aquivo e inserir valores em um unordered map
 
-void remove_binary(Tree *raiz); // função para remover valores na árvore binária de busca
-void remove_avl(TreeAVL *raiz); // função para remover valores na árvore AVL
-void remove_rb(TreeRB *raiz);   // função para remover valores na árvore Rubro Negra
+void search_binary(Tree *raiz, double &tempo); // função para pesquisar valores na árvore binária de busca
+void search_avl(TreeAVL *raiz, double &tempo); // função para pesquisar valores na árvore AVL
+void search_rb(TreeRB *raiz, double &tempo);   // função para pesquisar valores na árvore Rubro Negra
 
-void remove_vetor(vector<double> vetor);              // função para remover valores em um vector
-void remove_mapa(map<double, int> *mapa);             // função para remover valores em um map
-void remove_umapa(unordered_map<double, int> *umapa); // função para remover valores em um unordered map
+void search_vetor(vector<double> vetor, double &tempo);              // função para pesquisar valores em um vector
+void search_mapa(map<double, int> *mapa, double &tempo);             // função para pesquisar valores em um map
+void search_umapa(unordered_map<double, int> *umapa, double &tempo); // função para pesquisar valores em um unordered map
+
+void remove_binary(Tree *raiz, double &tempo); // função para remover valores na árvore binária de busca
+void remove_avl(TreeAVL *, double &tempo);     // função para remover valores na árvore AVL
+void remove_rb(TreeRB *raiz, double &tempo);   // função para remover valores na árvore Rubro Negra
+
+void remove_vetor(vector<double> vetor, double &tempo);              // função para remover valores em um vector
+void remove_mapa(map<double, int> *mapa, double &tempo);             // função para remover valores em um map
+void remove_umapa(unordered_map<double, int> *umapa, double &tempo); // função para remover valores em um unordered map
 
 #endif
