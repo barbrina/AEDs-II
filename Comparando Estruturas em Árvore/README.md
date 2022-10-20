@@ -70,7 +70,8 @@ Para os dados de inserção, temos como resultado a seguinte tabela:
 |           Map           |9.19×10<sup>-4</sup> ± 1.08×10<sup>-4</sup>|__1.34×10<sup>-2</sup> ± 1.02×10<sup>-2</sup>__|8.62×10<sup>-2</sup> ± 3.03×10<sup>-3</sup>|8.03×10<sup>-1</sup> ± 7.32×10<sup>-2</sup> |
 |      Unordered Map      |1.08×10<sup>-3</sup> ± 1.32×10<sup>-4</sup>|9.23×10<sup>-3</sup> ±1.50×10<sup>-3</sup>|7.37×10<sup>-2</sup> ± 4.45×10<sup>-3</sup>|5.98×10<sup>-1</sup> ± 9.81×10<sup>-3</sup>|
 
-
+Para o arquivo de 500 números, a inserção que apresentou menor resultado, como apresentado e negrito, foi a árvore rubro negra. O tempo de inserção, apesar de pequeno, na ordem de casa 10<sup>-4</sup>, também esteve próximo dos valores encontrados pelo vector (segundo tempo mais rápido) e pela árvore AVL (terceiro tempo mais rápido). A árvore rubro negra e a AVL ser uma das mais rápidas não é surpreentende, visto que as árvores de busca balanceadas são uma das estruturas mais eficientes que conhecemos, e estudadas neste trabalho. O vector estar em segunda posição pode parecer um resultado interessante de primeira, mas o método de inserção utilizado, o push back, apresenta um "tempo amortizado constante".
+ 
  
 </div>
 
