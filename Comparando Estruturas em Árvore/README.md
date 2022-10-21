@@ -53,7 +53,7 @@ https://github.com/barbrina/AEDs-II/blob/978c0498e5b92eb0f0425e8956e99e5cf933c86
 
 ## 3. Resultados e Análises
 
-As estruturas foram chamadas cinco vezes para cada tipo de arquivo e para cada tipo de método, inserção, pesquisa ou remoção. O tempo gasto para cada um dos processos foi armazenado e uma tabela com seus valores e suas respectivas incertezas estarão demonstradas a seguir. Os valores em negrito são os menores e os maiores tempos para cada tipo de método e arquivo e a discussão sobre os dados encontrados foi realizada.
+As estruturas foram chamadas cinco vezes para cada tipo de arquivo e para cada tipo de método, inserção, pesquisa ou remoção. O tempo gasto para cada um dos processos foi armazenado e uma tabela com seus valores e suas respectivas incertezas estarão demonstradas a seguir. Os valores que estão em negrito são os menores e os maiores tempos para cada tipo de método e arquivo e a discussão sobre os dados encontrados foi realizada.
 
 ### 3.1 Inserção
 
@@ -74,9 +74,9 @@ Para os dados de inserção, temos como resultado a seguinte tabela:
 
 #### 3.1.1 Arquivo de 500 números
 
-Para o arquivo de 500 números, a inserção que apresentou menor resultado, como apresentado e negrito, foi a árvore rubro negra. O tempo de inserção, apesar de pequeno, na ordem de casa 10<sup>-4</sup>, também esteve próximo dos valores encontrados pelo vector (segundo tempo mais rápido) e pela árvore AVL (terceiro tempo mais rápido). A árvore rubro negra e a AVL ser uma das mais rápidas não é surpreentende, visto que as árvores de busca balanceadas são uma das estruturas mais eficientes que conhecemos, e estudadas neste trabalho. 
+Para o arquivo de 500 números, a inserção que apresentou menor resultado, foi a árvore rubro negra. O tempo de inserção, apesar de pequeno, na ordem de casa 10<sup>-4</sup>, também esteve próximo dos valores encontrados pelo vector (segundo tempo mais rápido) e pela árvore AVL (terceiro tempo mais rápido). A árvore rubro negra e a AVL ser uma das mais rápidas não é surpreentende, visto que as árvores de busca balanceadas são uma das estruturas mais eficientes que conhecemos, e estudadas neste trabalho. 
 
-A inserção que apresentou maior resultado, em negrito na primeira coluna, foi a árvore de busca binária. Por ser uma árvore que utiliza uma inserção simples, dependendo da ordem como os dados são inseridos, pode haver a deterioração. A inserção precisa localizar o local para a qual o número será inserido, dessa forma, árvores muito desbalanceadas precisam de um tempo maior para encontrar a folha vazia. Mesmo apresentanto o maior tempo de inserção, a árvore binária de busca ainda apresentou um tempo relativamente pequeno, na ordem de 10<sup>-3</sup> e isso não significa que a árvore binária de busca seja lenta, apenas que as outras estruturas, para esta quantidade de dados, sejam bem mais rápidas..
+A inserção que apresentou maior resultado foi a árvore de busca binária. Por ser uma árvore que utiliza uma inserção simples, dependendo da ordem como os dados são inseridos, pode haver a deterioração. A inserção precisa localizar o local para a qual o número será inserido, dessa forma, árvores muito desbalanceadas precisam de um tempo maior para encontrar a folha vazia. Mesmo apresentanto o maior tempo de inserção, a árvore binária de busca ainda apresentou um tempo relativamente pequeno, na ordem de 10<sup>-3</sup> e isso não significa que a árvore binária de busca seja lenta, apenas que as outras estruturas, para esta quantidade de dados, sejam bem mais rápidas..
 
 #### 3.1.2 Arquivo de 5.000 números
 
@@ -98,6 +98,10 @@ A árvore AVL, que apresentou o tempo de inserção mais lento, teve resultados 
 
 Assim como o arquivo de 50 mil números, o arquivo de 500 mil números demonstrou que novamente, o tempo mais curto de inserção foi a estrutura vector e o mais longo, pela árvore avl. Isso demonstra que para inserções de dados muito grandes, ambas as estruturas são respectivamente melhor e pior para inserção.
 
+#### 3.1.5 Análise
+
+Dessa forma, para problemas 
+
 ### 3.1 Pesquisa
 
 Para os dados de pesquisa, temos como resultado a seguinte tabela:
@@ -116,8 +120,13 @@ Para os dados de pesquisa, temos como resultado a seguinte tabela:
 
 #### 3.2.1 Arquivo de 500 números
 
+Para a pesquisa de quinhentos números, o menor tempo de execução foi referente a árvore AVL. 
+
+O maior tempo de execução, referente a pesquisa, foi o vector.
 
 #### 3.2.2 Arquivo de 5.000 números
+
+O menor tempo de execuração para arquivos de
 
 #### 3.2.3 Arquivo de 50.000 números
 
@@ -151,13 +160,19 @@ Para os dados de remoção, temos como resultado a seguinte tabela:
 
 ## 4. Conclusão
 
-Não existem respostas certas ou erradas para comparações de tempos de estruturas de dados. Diversos fatores interferem para que, as vezes, a melhor estrutura para solucionar determinado tipo de problema, apresente o pior resultado. 
+A análise realizada neste trabalho é apenas superficial, não existem respostas certas ou erradas para comparações de tempos de estruturas de dados. Diversos fatores interferem para que, as vezes, a melhor estrutura para solucionar determinado tipo de problema, apresente o pior resultado. Os fatores podem ser os seguintes:
+
+- Ordem de inserção, de pesquisa, e remoção;
+- Arquitetura do computador;
+- Sistema operacional;
+- Métodos de realizar os processos no algoritmo;
+- Método o qual o tempo é calculado;
+
+É importante ressaltar também, que não existem estruturas certas, apenas estruturas mais adequadas para solucionar determinados tipo de problemas, como pode exemplo. 
 
 Para trabalhos futuros, a pesquisa ideal seria utilizando escalas de centenas até bilhões de dados, em diversos sistemas operacionais e arquiteturas diferentes de computador, testando diversas formas de entrada de números.
 
-- Depende da ordem de inserção, de pesquisa, e remoção
-- Depende da arquitetura do computador
-- 
+
  
 ## 5. Compilação e Execução
 
