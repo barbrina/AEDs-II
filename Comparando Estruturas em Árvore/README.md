@@ -39,17 +39,89 @@
 
 4) Adotando como estrutura o map e unorder_map do C++, há ganhos maiores nesse processo de pesquisa?</p>
 
+### 2.2 Configuração do computador
 
-### 2.2 Estrutura dos arquivos
+### 2.3 Estrutura dos arquivos
 
 O código apresenta um arquivo makefile (um script que consta as instruções de como gerar um binário) e uma pasta src. A pasta src apresenta onze (11) arquivos, sendo eles o main.c, responsável pela chamada das principais funções, e os arquivos arquivo.hpp, arquivo.cpp, binary.hpp, binary.cpp, avl.hpp, avl.cpp, fila.hpp, fila.cpp e a redblack.hpp, redblack.cpp. Na pasta src, também temos um pasta files, que contém todos os quatro arquivos txt para leitura e o arquivo txt de consulta. Os dois primeiros arquivos na pasta src, arquivo.hpp e arquivo.cpp, são responsáveis pela criação dos cinco arquivos de número ponto flutuante, e a inserção e remoção destes arquivos nas estruturas mencionados em  **1. Estruturas**. Os arquivos restantes são os arquivos onde estão contidos as estruturas de árvore de busca binária (binary.hpp, binary.cpp), a árvore avl (avl.hpp, avl.cpp, fila.hpp, fila.cpp) e a árvore rubro negra (redblack.hpp, redblack.cpp). 
 
-### 2.3 Bibliotecas utilizadas
+### 2.4 Bibliotecas utilizadas
 
 https://github.com/barbrina/AEDs-II/blob/978c0498e5b92eb0f0425e8956e99e5cf933c866/Comparando%20Estruturas%20em%20%C3%81rvore/src/arquivo.hpp#L4-L13
 
-### 2.4 Estrutura do algoritmo
+### 2.5 Estrutura do algoritmo
 
+O código é implementado principalmente no arquivo.cpp, sendo a main.cpp apenas responsável pela chamada da função menu() e para a chamada das funções das respectivas estruturas estudadas. Os outros arquivos (binary.hpp, binary.cpp, avl.hpp, avl.cpp, fila.hpp, fila.cpp e a redblack.hpp, redblack.cpp) apresentam apenas os métodos de inicialização, inserção, remoção pesquisa e as características intrínsecas das árvores binárias. As estruturas vector, map e unordered map, por serem próprias do C++, não exigiram a criação de arquivos separados. Com isso em mente, explicarei de forma simples o conteúdo do arquivo.cpp.
+
+#### arquivo.cpp
+
+Na main, é chamada a função `menu()`, responsável por mostrar ao usuário as estruturas que serão estudadas e deixa-lo escolher. 
+
+https://github.com/barbrina/AEDs-II/blob/23cb45615cf4dce372b060d285295767534c7d75/Comparando%20Estruturas%20em%20%C3%81rvore/src/arquivo.cpp#L43-L56
+
+Apos a decisão do usuário, o método escolhido é chamado. Visto que todos os métodos apresentam basicamente a mesma estrutura, utilizarei o método binary() de exemplo.
+
+```cpp
+void binary()
+{
+    Tree *raiz = CreateTree(); // cria a árvore binária de pesquisa
+    Record r;
+    
+    double tempo_insert, tempo_search, tempo_remove;
+    string nome = arquivo();
+    
+    raiz = insert_binary(nome, raiz, r, tempo_insert);
+    search_binary(raiz, tempo_search);
+    remove_binary(raiz, tempo_remove);
+
+
+    cout << ">> O tempo gasto na árvore binária de busca foi:  " << endl;
+    cout << ">> inserção: " << tempo_insert << "s" << endl;
+    cout << ">> pesquisa: " << tempo_search << "s" << endl;
+    cout << ">> remoção: " << tempo_remove << "s" << endl;
+```
+
+Primeiramente, a estrutura desejada é inicializada, no caso, a árvore binária de busca é criada. Em seguida, os tempos de inserção, pesquisa e remoção são declaradas. Estas serão passadas por referência para dentro dos métodos de `Tree *insert_binary(string nome, Tree *raiz, Record r, double &tempo)`, `void search_binary(Tree *raiz, double &tempo)` e `void remove_binary(Tree *raiz, double &tempo)` para que o tempo das mesmas seja calculado.
+
+O nome do arquivo é declarado e para ele é passado o retorno da função `arquivo()`, função responsável por mostrar os tamanhos de arquivo disponíveis para serem preenchidos na estrutura e o usuário escolher.
+
+https://github.com/barbrina/AEDs-II/blob/23cb45615cf4dce372b060d285295767534c7d75/Comparando%20Estruturas%20em%20%C3%81rvore/src/arquivo.cpp#L58-L86
+
+Após isso, o arquivo escolhido pelo usuário, os dados da estrutura inicializados na função e o tempo declarado são passados como parâmetro para a função de inserção, que preenche os dados da estrutura e retorna o tempo de execução. O procedimento também é realizado com o método de pesquisa e remoção, que são bem parecidos, com a exceção que a remoção mostra os números removidos na tela. Segue exemplo do método de remoção da pesquisa binária:
+
+```cpp
+void remove_binary(Tree *raiz, double &tempo)
+{
+    string numero;
+    double num_double;
+    Tree *aux = CreateTree();
+    Record r;
+
+
+    // abre o arquivo para leitura
+    ifstream arq("src/files/consulta.txt");
+
+
+    clock_t inicio = clock();
+    cout << "Valores removidos: \n";
+    while (getline(arq, numero))
+    {
+        num_double = stod(numero); // transforma string em número flutuante
+        r.key = num_double;
+        removeTree(&raiz, r);
+    }
+    cout << "\n\n";
+
+
+    clock_t fim = clock();
+    tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+
+    arq.close();
+}
+```
+
+Por fim, o tempo é mostrado na tela e novamente o menu é mostrado na tela, esperando a próxima decisão do usuário. Para encerrar o programa, o usuário precisa apensar digitar o número 7 no menu.
 
 ## 3. Resultados e Análises
 
@@ -100,7 +172,7 @@ Assim como o arquivo de 50 mil números, o arquivo de 500 mil números demonstro
 
 #### 3.1.5 Análise
 
-Dessa forma, para problemas 
+Dessa forma, para resolver problemas em que uma boa quantidade de dados será inserida, para pequena massa de dados, o ideal seria escolher alguma árvore binária, balanceada ou não. Já para uma grande massa de dados, a estrutura vector pode ser considerada, por além de apresentar uma rápida inserção, ser fácil de criar e de se utilizar, sendo uma ferramenta própria e disponível pelo próprio C++.
 
 ### 3.1 Pesquisa
 
@@ -140,6 +212,10 @@ Novamente, o maior tempo de execução para arquivo de cinquenta mil números é
 
 Assim como o arquivo de cinquenta mil o menor tempo de execução e o maior tempo de execução são, respectivamente, as estruturas  unordered map e o map, corroborando com a ideia de que para uma grande base de dados, melhor é a pesquisa. 
 
+#### 3.2.5 Análise
+
+Para resolver problemas em que a base de dados será pesquisada o tempo todo, para uma pequena base de dados, uma árvore de pesquisa pode ser considerada. Já para uma grande base de dados, as próprias ferramentas fornecidas pelo C++ podem ser boas opções, o map ou o unordered map. 
+
 ### 3.3 Remoção
 
 Para os dados de remoção, temos como resultado a seguinte tabela:
@@ -160,23 +236,24 @@ Visto que nos casos de remoção de qualquer tamanho de arquivo o vector apresen
 
 Para os arquivos de quinhentos, cinco mil e quinhentos mil números, a árvore binária de pesquisa apresentou o menor tempo de remoção. Este apresenta ser um resultado adequado, visto que a remoção da árvore binária não exige rotações ou transformações em sua árvore, apenas uma simples mudança de dados, diferentemente do que ocorre nas árvores balanceadas. Este tempo esteve próximo da estrutura unordored map, que apresentou o menor tempo de execução para o arquivo de cinquenta mil números. Como o unordered map é implementado como uma hash, ele apenas remove o elemento, sem precisar ordenar ou redimensionar, assim, tornando o rápido e eficiente.
 
+#### 3.3.1 Análise
+
+Para remoção, apenas o vector não vale a pena ser utilizada para uma base de dados maior que 25 elementos, pelos motivos mencionados anteriormente. As outras estruturas são boas alternativas e devem ser consideradas para resolverem um determinado tipo de problema.
+
 ## 4. Conclusão
 
-A análise realizada neste trabalho é apenas superficial, não existem respostas certas ou erradas para comparações de tempos de estruturas de dados. Diversos fatores interferem para que, as vezes, a melhor estrutura para solucionar determinado tipo de problema, apresente o pior resultado. Os fatores podem ser os seguintes:
+A análise realizada neste trabalho é apenas superficial, não existem respostas certas ou erradas para comparações de tempos de estruturas de dados. Diversos fatores interferem para que, as vezes, a melhor estrutura para solucionar determinado tipo de problema não apresente o melhor resultado. __Alguns__ dos fatores que podem influenciar o tempo de resposta das estruturas de dados são os seguintes:
 
 - Ordem de inserção, de pesquisa, e remoção;
 - Arquitetura do computador;
 - Sistema operacional;
 - Métodos para realizar os processos no algoritmo;
 - Método o qual o tempo é calculado;
-- Imprecisão de medida do próprio computador;
+- Imprecisão de medida do próprio computador.
 
-É importante ressaltar também, que não existem estruturas certas, apenas estruturas mais adequadas para solucionar determinados tipo de problemas, como pode exemplo. 
+É importante ressaltar também que não existem estruturas melhores ou piores, apenas estruturas mais adequadas para solucionar determinados tipo de problemas, como pudemos ver na análise dos resultados do trabalho. Deve se levar em consideração que os dados encontrados são verdadeiros para o sistema e a arquitetura de computador nas quais as leituras foram realizadas (ver seção __#2.2 Configuração do computador__), podendo apresentar diferentes respostas caso as especificações sejam alteradas.
 
-Para trabalhos futuros, a pesquisa ideal seria utilizando escalas de centenas até bilhões de dados, em diversos sistemas operacionais e arquiteturas diferentes de computador, testando diversas formas de entrada de números.
-
-- Estudar para mais estruturas
-
+Para trabalhos futuros, a pesquisa ideal seria utilizando escalas de centenas até bilhões de dados, em diversos sistemas operacionais e arquiteturas diferentes de computador, testando diversas formas de entradas de números e possibilidades.
  
 ## 5. Compilação e Execução
 
