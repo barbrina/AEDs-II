@@ -13,17 +13,42 @@
 
 ## 1. Estruturas
 
+
+<div align="center">
+    
+|             |Árvore de Busca Binária| Árvore AVL  | Árvore Rubro-negra |   Vector  |    Map   |     Unordered_map     |
+|-------------|-----------------------|-------------|--------------------|-----------|----------|-----------------------|
+|   Inserir   |          O(h)         |   O(log n)  |      O(log n)      |    O(1)   | O(log N) |      O(1) ou O(n)     |
+|  Pesquisar  |          O(h)         |   O(log n)  |      O(log n)      |    O(n)   | O(log N) |      O(1) ou O(n)     |
+|   Remover   |          O(h)         |   O(log n)  |      O(log n)      |    O(n)   | O(log N) |      O(1) ou O(n)     |
+    
+</div>
+
 ### 1.1 Árvore de Busca Binária
+
+Árvores: ao contrário de Arrays, Linked Lists, Stack e filas, que são estruturas de dados lineares, as árvores são estruturas de dados hierárquicas. 
 
 ### 1.2 Árvore AVL
 
+A árvore AVL é uma árvore de busca binária (BST) de autobalanceamento, em que a diferença entre as alturas das subárvores esquerda e direita não pode ser mais de um para todos os nós. A inserção e exclusão em árvores AVL foram discutidas no artigo anterior . Neste artigo, as operações de inserção, pesquisa e exclusão são discutidas nas árvores AVL que também possuem um ponteiro pai em sua estrutura .
+
 ### 1.3 Árvore Rubro Negra
+
+Uma árvore vermelho-preto é um tipo de árvore de busca binária com equilíbrio automático, onde cada nó tem um bit extra, e esse bit é frequentemente interpretado como a cor (vermelho ou preto). Essas cores são usadas para garantir que a árvore permaneça equilibrada durante as inserções e exclusões. Embora o equilíbrio da árvore não seja perfeito, é bom o suficiente para reduzir o tempo de busca e mantê-lo em torno do tempo O (log n), onde n é o número total de elementos na árvore.
 
 ### 1.4 Vector
 
+Os vetores são iguais a listas dinâmicas, com a capacidade de se redimensionar automaticamente quando um elemento é inserido ou excluído, com seu armazenamento sendo controlado automaticamente pelo contêiner. Os elementos vetoriais são colocados em um armazenamento contíguo para que possam ser acessados e percorridos usando iteradores. Nos vetores, os dados são inseridos no final. A inserção no final leva um tempo diferencial, pois às vezes pode haver a necessidade de estender o array. A remoção do último elemento leva apenas um tempo constante porque não ocorre nenhum redimensionamento. Inserir e apagar no início ou no meio é linear no tempo.
+
 ### 1.5 Map
 
+Mapas são contêineres associativos que armazenam elementos de forma mapeada. Cada elemento possui um valor-chave e um valor mapeado. Dois valores mapeados não podem ter os mesmos valores-chave. Mapas são contêineres associativos que armazenam elementos de forma mapeada. Cada elemento possui um valor-chave e um valor mapeado. Dois valores mapeados não podem ter os mesmos valores-chave.
+
 ### 1.6 Unordered Map
+
+De forma análoga ao map, o unordered_map é um contêiner associado que armazena elementos formados pela combinação de um valor-chave e um valor mapeado. O valor da chave é usado para identificar exclusivamente o elemento e o valor mapeado é o conteúdo associado à chave. Tanto a chave quanto o valor podem ser de qualquer tipo predefinido ou definido pelo usuário. 
+
+O unordered_map interno é implementado usando a tabela hash: a chave fornecida para mapear é convertida em índices de uma tabela hash, é por isso que o desempenho da estrutura de dados depende muito da função hash, mas em média, o custo de pesquisa, inserção e exclusão do a tabela hash é O(1). 
 
 ## 2. Computador
 
