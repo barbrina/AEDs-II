@@ -128,17 +128,17 @@ O maior tempo de execução, referente a pesquisa, foi o vector. Para pesquisa, 
 
 O menor tempo de execuração para pesquisa de arquivos de cinco mil números é da árvore binária de busca. O tempo também esteve próximo das árvores AVL e árvore rubro negra e demonstra ser um resultado condizente, pois o tempo para pesquisa de uma árvore binária é O (log n) e ela depende dos números que estão sendo pesquisados.
 
-Novamente, o maior tempo de execução é da estrutura map, os motivos são principalmente aqueles mencionados na seção anterior (3.2.1 Arquivo de 500 números), mais uma vez reafirmando que para uma pequena base de dados, a estrutura map apresenta maior dificuldade para encontrar seus elementos.
+O maior tempo de execução é da estrutura map, tempo este que também esteve próximo da estrutura vector, mencionada na seção anterior. Os motivos são principalmente aqueles mencionados em 3.2.1 para o vector, mais uma vez reafirmando que, para uma pequena base de dados, a estrutura map e vector apresenta maior dificuldade para encontrar seus elementos.
 
 #### 3.2.3 Arquivo de 50.000 números
 
-O menor tempo execução para cinquenta mil números é da estrutura unordered map.
+O menor tempo execução para cinquenta mil números é da estrutura unordered map. A unordered map é implementada usando uma tabela hash, como mencionado na seção 1. Estruturas, e dessa forma, o seu tempo de pesquisa é igual O(1). Dessa forma, se os elementos estão bem dispersos na hash, mais fácil é encontrar seu elemento, assim, diminuindo o tempo de busca. É claro que tudo isso depende da base de dados de pesquisa. Outro fator é de que, por ser uma estrutura boa para pesquisa e implementada pelo próprio C++, ela é mais otimizada para tal.
 
-O maior tempo de execução é da estrutura map.
+Novamente, o maior tempo de execução para arquivo de cinquenta mil números é da estrutura map e os motivos para esta demora na pesquisa são explicitados na seção anterior.
 
 #### 3.2.4 Arquivo de 500.000 números
 
-Assim como o arquivo de cinquenta mil o menor tempo de execução e o maior tempo de execução são, respectivamente, as estruturas  unordered map e o map.
+Assim como o arquivo de cinquenta mil o menor tempo de execução e o maior tempo de execução são, respectivamente, as estruturas  unordered map e o map, corroborando com a ideia de que para uma grande base de dados, melhor é a pesquisa. 
 
 ### 3.3 Remoção
 
@@ -150,20 +150,15 @@ Para os dados de remoção, temos como resultado a seguinte tabela:
 | Árvore Binária de Busca |__4.56×10<sup>-3</sup> ± 7.30×10<sup>-4</sup>__|__8.54×10<sup>-3</sup> ± 1.97×10<sup>-4</sup>__|8.97×10<sup>-3</sup> ± 1.34×10<sup>-3</sup>|__1.57×10<sup>-2</sup> ± 1.85×10<sup>-3</sup>__|
 |       Árvore AVL        |5.52×10<sup>-3</sup> ± 6.96×10<sup>-4</sup>|1.29×10<sup>-2</sup> ± 2.07×10<sup>-4</sup>|9.12×10<sup>-3</sup> ± 2.44×10<sup>-3</sup>|3.36×10<sup>-2</sup> ± 9.33×10<sup>-4</sup>|
 |    Árvore Rubro Negra   |5.71×10<sup>-3</sup> ± 9.63×10<sup>-4</sup>|1.75×10<sup>-2</sup> ± 4.89×10<sup>-4</sup>|7.91×10<sup>-3</sup> ± 1.08×10<sup>-3</sup>|3.83×10<sup>-2</sup> ± 1.90×10<sup>-3</sup>|
-|          Vector         |__1.07×10<sup>-2</sup> ± 1.67×10<sup>-4</sup>__|__1.67×10<sup>-1</sup> ± 2.52×10<sup>-4</sup>__|1.19×10<sup>-2</sup> ± 2.05×10<sup>-3</sup>|__2.88×10<sup>1</sup> ± 4.68×10<sup>-1</sup>__|
-|           Map           |9.40×10<sup>-3</sup> ± 2.97×10<sup>-4</sup>|3.08×10<sup>-2</sup> ± 9.63×10<sup>-4</sup>|__1.20×10<sup>-2</sup> ± 2.52×10<sup>-3</sup>__|6.47×10<sup>-2</sup> ± 4.38×10<sup>-3</sup>|
-|      Unordered Map      |7.79×10<sup>-3</sup> ± 6.75×10<sup>-4</sup>|2.31×10<sup>-2</sup> ± 1.55×10<sup>-4</sup>|__6.68×10<sup>-3</sup> ± 8.06×10<sup>-4</sup>__|3.57×10<sup>-2</sup> ± 1.96×10<sup>-3</sup>|
+|          Vector         |__1.07×10<sup>-2</sup> ± 1.67×10<sup>-4</sup>__|__1.67×10<sup>-1</sup> ± 2.52×10<sup>-4</sup>__|__3.55 ± 2.05×10<sup>-3</sup>__|__2.88×10<sup>1</sup> ± 4.68×10<sup>-1</sup>__|
+|           Map           |9.40×10<sup>-3</sup> ± 2.97×10<sup>-4</sup>|3.08×10<sup>-2</sup> ± 9.63×10<sup>-4</sup>|1.20×10<sup>-2</sup> ± 1.22×10<sup>-1</sup>|6.47×10<sup>-2</sup> ± 4.38×10<sup>-3</sup>|
+|      Unordered Map      |7.79×10<sup>-3</sup> ± 6.75×10<sup>-4</sup>|2.31×10<sup>-2</sup> ± 1.55×10<sup>-4</sup>|__6.67×10<sup>-3</sup> ± 8.06×10<sup>-4</sup>__|3.57×10<sup>-2</sup> ± 1.96×10<sup>-3</sup>|
 
 </div>
 
-#### 3.3.1 Arquivo de 500 números
+Visto que nos casos de remoção de qualquer tamanho de arquivo o vector apresenta o pior tempo de execução, ele será mencionado apenas uma vez. O principal problema do vector é a remoção de todos os elementos (menos o último) deve ser seguida por um redimensionamento. Isso faz com que o vector custe O(n), o que para arquivos muito grandes, a remoção simplesmente não é viável. A clara demonstração é através de nosso código, para remover elementos de um arquivo de 500 mil números, o tempo de execução é de 28 segundos!
 
-
-#### 3.3.2 Arquivo de 5.000 números
-
-#### 3.3.3 Arquivo de 50.000 números
-
-#### 3.3.4 Arquivo de 500.000 números
+Para os arquivos de quinhentos, cinco mil e quinhentos mil números, a árvore binária de pesquisa apresentou o menor tempo de remoção. Este apresenta ser um resultado adequado, visto que a remoção da árvore binária não exige rotações ou transformações em sua árvore, apenas uma simples mudança de dados, diferentemente do que ocorre nas árvores balanceadas. Este tempo esteve próximo da estrutura unordored map, que apresentou o menor tempo de execução para o arquivo de cinquenta mil números. Como o unordered map é implementado como uma hash, 
 
 ## 4. Conclusão
 
@@ -180,6 +175,7 @@ A análise realizada neste trabalho é apenas superficial, não existem resposta
 
 Para trabalhos futuros, a pesquisa ideal seria utilizando escalas de centenas até bilhões de dados, em diversos sistemas operacionais e arquiteturas diferentes de computador, testando diversas formas de entrada de números.
 
+- Estudar para mais estruturas
 
  
 ## 5. Compilação e Execução
