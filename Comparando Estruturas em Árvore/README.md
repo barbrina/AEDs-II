@@ -26,7 +26,7 @@
 
 ### 1.1 Árvore de Busca Binária
 
-Árvores: ao contrário de Arrays, Linked Lists, Stack e filas, que são estruturas de dados lineares, as árvores são estruturas de dados hierárquicas. 
+Em uma árvore binária, cada elemento é denominado nó da árvore e sua posição na estrutura pode levar a uma de três nomenclaturas. Se o nó é o primeiro inserido, denominamos tal elemento como raiz da árvore. Partindo da raiz, temos por designação dois filhos, filho esquerdo e filho direto. Um filho é posicionado a esquerda, se somente se, seu valor de teste é menor que o valor do nó onde este será conectado. Este nó de conexão é conhecido como nó pai. Por conseguinte, os filhos tidos como direitos seguem a mesma regra, contudo, para valores maiores. 
 
 ### 1.2 Árvore AVL
 
@@ -94,7 +94,7 @@ Codename: focal
 
 ### 3.1 Problema Proposto 
 
-<p align="justify"> Até o momento trabalhamos com três modelos de árvore, binária, avl e redblack. Chegou o momento de compararmos tais estruturas, observando seu comportamento sob diferentes volumes de dados. Para tanto, elabore arquivos que contenham 500 , 5000 , 50.000 , 500.000 entradas numéricas do tipo ponto flutuante. Para tanto, tente evitar repetições de valores em grande escala para que possamos ter uma estrutura profunda. Considere produzir os menores a partir dos maiores volumes de forma randômica. Feito a isso, vamos testar os seguintes processos:
+<p align="justify"> Até o momento trabalhamos com três modelos de árvore binária, avl e redblack. Chegou o momento de compararmos tais estruturas, observando seu comportamento sob diferentes volumes de dados. Para tanto, elabore arquivos que contenham 500 , 5000 , 50.000 , 500.000 entradas numéricas do tipo ponto flutuante. Para tanto, tente evitar repetições de valores em grande escala para que possamos ter uma estrutura profunda. Considere produzir os menores a partir dos maiores volumes de forma randômica. Feito a isso, vamos testar os seguintes processos:
 
 1) Qual o tempo gasto com pesquisa para um arquivo de entrada com 10.000 consultas. Considere como consulta a busca de um determinado número na estrutura escolhida. Para cada pesquisa, é preciso remover o elemento da árvore, retornando esse número para o usuário. Então, considere o processo de remoção como parte final do processo. 
 
@@ -106,7 +106,7 @@ Codename: focal
 
 ### 3.2 Estrutura dos arquivos
 
-O código apresenta um arquivo makefile (um script que consta as instruções de como gerar um binário) e uma pasta src. A pasta src apresenta onze (11) arquivos, sendo eles o main.c, responsável pela chamada das principais funções, e os arquivos arquivo.hpp, arquivo.cpp, binary.hpp, binary.cpp, avl.hpp, avl.cpp, fila.hpp, fila.cpp e a redblack.hpp, redblack.cpp. Na pasta src, também temos um pasta files, que contém todos os quatro arquivos txt para leitura e o arquivo txt de consulta. Os dois primeiros arquivos na pasta src, arquivo.hpp e arquivo.cpp, são responsáveis pela criação dos cinco arquivos de número ponto flutuante, e a inserção e remoção destes arquivos nas estruturas mencionados em  **1. Estruturas**. Os arquivos restantes são os arquivos onde estão contidos as estruturas de árvore de busca binária (binary.hpp, binary.cpp), a árvore avl (avl.hpp, avl.cpp, fila.hpp, fila.cpp) e a árvore rubro negra (redblack.hpp, redblack.cpp). 
+O código apresenta um arquivo makefile (um script que consta as instruções de como gerar um binário) e uma pasta src. A pasta src apresenta onze (11) arquivos, sendo eles o main.c e os arquivos arquivo.hpp, arquivo.cpp, binary.hpp, binary.cpp, avl.hpp, avl.cpp, fila.hpp, fila.cpp e a redblack.hpp, redblack.cpp. Na pasta src, também temos um pasta files, que contém todos os quatro arquivos txt para leitura e o arquivo txt de consulta. Os dois primeiros arquivos na pasta src, arquivo.hpp e arquivo.cpp, são responsáveis pela criação dos cinco arquivos de número ponto flutuante, e a inserção e remoção destes arquivos nas estruturas mencionados em  **1. Estruturas**. Os arquivos restantes são os arquivos onde estão contidos as estruturas de árvore de busca binária (binary.hpp, binary.cpp), a árvore avl (avl.hpp, avl.cpp, fila.hpp, fila.cpp) e a árvore rubro negra (redblack.hpp, redblack.cpp). 
 
 ### 3.3 Bibliotecas utilizadas
 
@@ -114,9 +114,9 @@ https://github.com/barbrina/AEDs-II/blob/978c0498e5b92eb0f0425e8956e99e5cf933c86
 
 ### 3.4 Estrutura do algoritmo
 
-O código é implementado principalmente no arquivo.cpp, sendo a main.cpp apenas responsável pela chamada da função menu() e para a chamada das funções das respectivas estruturas estudadas. Os outros arquivos (binary.hpp, binary.cpp, avl.hpp, avl.cpp, fila.hpp, fila.cpp e a redblack.hpp, redblack.cpp) apresentam apenas os métodos de inicialização, inserção, remoção pesquisa e as características intrínsecas das árvores binárias. As estruturas vector, map e unordered map, por serem próprias do C++, não exigiram a criação de arquivos separados. Com isso em mente, explicarei de forma simples o conteúdo do arquivo.cpp.
+O código é implementado principalmente no arquivo.cpp, sendo a main.cpp apenas responsável pela chamada da função menu() e para a chamada das funções das respectivas estruturas estudadas. Os outros arquivos (binary.hpp, binary.cpp, avl.hpp, avl.cpp, fila.hpp, fila.cpp e a redblack.hpp, redblack.cpp) apresentam os métodos de inicialização, inserção, remoção, pesquisa e todas as características intrínsecas das árvores binárias. As estruturas vector, map e unordered map, por serem próprias do C++, não exigiram a criação de arquivos separados. Com isso em mente, explicarei de forma simples o conteúdo do arquivo.cpp.
 
-#### arquivo.cpp
+#### 3.4.1 arquivo.cpp
 
 Na main, é chamada a função `menu()`, responsável por mostrar ao usuário as estruturas que serão estudadas e deixa-lo escolher. 
 
@@ -142,6 +142,7 @@ void binary()
     cout << ">> inserção: " << tempo_insert << "s" << endl;
     cout << ">> pesquisa: " << tempo_search << "s" << endl;
     cout << ">> remoção: " << tempo_remove << "s" << endl;
+}
 ```
 
 Primeiramente, a estrutura desejada é inicializada, no caso, a árvore binária de busca é criada. Em seguida, os tempos de inserção, pesquisa e remoção são declaradas. Estas serão passadas por referência para dentro dos métodos de `Tree *insert_binary(string nome, Tree *raiz, Record r, double &tempo)`, `void search_binary(Tree *raiz, double &tempo)` e `void remove_binary(Tree *raiz, double &tempo)` para que o tempo das mesmas seja calculado.
@@ -207,19 +208,27 @@ Para os dados de inserção, temos como resultado a seguinte tabela:
  
 </div>
 
-#### 4.1.1 Arquivo de 500 números
+#### 4.1.1 Gráfico
+
+Para melhor visualizar a tabela, segue o gráfico de inserção.
+
+<div align="center">
+<img width="600" height="400" src="img/Inserção.png">
+</div>
+
+#### 4.1.2 Arquivo de 500 números
 
 Para o arquivo de 500 números, a inserção que apresentou menor resultado, foi a árvore rubro negra. O tempo de inserção, apesar de pequeno, na ordem de casa 10<sup>-4</sup>, também esteve próximo dos valores encontrados pelo vector (segundo tempo mais rápido) e pela árvore AVL (terceiro tempo mais rápido). A árvore rubro negra e a AVL ser uma das mais rápidas não é surpreentende, visto que as árvores de busca balanceadas são uma das estruturas mais eficientes que conhecemos, e estudadas neste trabalho. 
 
 A inserção que apresentou maior resultado foi a unordored map. Isto se deve principalmente pelo fato da estrutura unordored map não ser ordenada, logo, para ocorrer a inserção, é preciso verificar toda a estrutura, pois caso tenham valores repetidos, uma rehash deve ser realizada.
 
-#### 4.1.2 Arquivo de 5.000 números
+#### 4.1.3 Arquivo de 5.000 números
 
 De forma oposta aos resultados encontrados do arquivo de 500 números, o arquivo de 5000 números apresenta como tempo mais rápido de inserção, a própria árvore binária de busca. Apesar de ter sido o menor tempo, sua inserção esteve próximo das árvores avl e rubro negra, também com o vector. Esta diferença,  que a princípio pode parecer contraditória, não é, visto que a árvore binária de busca, como mencionada anteriormente, depende da ordem que os dados são inseridos. Dados bem distribuidos podem facilitar e diminuir o tempo de inserção. 
 
 O map foi a estrutura que apresentou maior tempo de inserção, um valor consideravalmente maior do que das outras estruturas, na casa de 10<sup>-2</sup>. Isso pode ser devido ao fato de que na estrutura map, todos os elementos estão ordenados de acordo com o seu valor chave. Dessa forma os elementos são sempre inseridos em suas respectivas posições, seguindo a ordenação. Segundo a documentação, se N elementos são inseridos, a complexidade é N log(tamanho + N).
 
-#### 4.1.3 Arquivo de 50.000 números
+#### 4.1.4 Arquivo de 50.000 números
 
 Para o arquivo de 50 mil números, o menor tempo de inserção foi realizado pela estrutura vector e o maior, pela árvore AVL. A estrutura vector apresentar o tempo mais rápido de inserção pode parecer um resultado interessante de primeira, mas o método de inserção utilizado, o push back, apresenta um "tempo amortizado constante". 
 
@@ -229,7 +238,7 @@ Apesar do vetor ter sido o mais rápido, todas as leituras apresentaram tempo re
 
 A árvore AVL, que apresentou o tempo de inserção mais lento, teve resultados próximos as estruturas map e unordered map. A explicação para este tipo de resultado pode ser devido a ordem de inserção, que pode ter feito com que a árvore avl passe por sucessivas rotações para a deixar balanceada, o que pode ter ocasionado neste tempo maior em relação as outras estruturas.
 
-#### 4.1.4 Arquivo de 500.000 números
+#### 4.1.5 Arquivo de 500.000 números
 
 Assim como o arquivo de 50 mil números, o arquivo de 500 mil números demonstrou que novamente, o tempo mais curto de inserção foi a estrutura vector e o mais longo, pela árvore avl. Isso demonstra que para inserções de dados muito grandes, ambas as estruturas são respectivamente melhor e pior para inserção.
 
@@ -237,7 +246,7 @@ Assim como o arquivo de 50 mil números, o arquivo de 500 mil números demonstro
 
 Dessa forma, para resolver problemas em que uma boa quantidade de dados será inserida, para pequena massa de dados, o ideal seria escolher alguma árvore binária, balanceada ou não. Já para uma grande massa de dados, a estrutura vector pode ser considerada, por além de apresentar uma rápida inserção, ser fácil de criar e de se utilizar, sendo uma ferramenta própria e disponível pelo próprio C++.
 
-### 4.1 Pesquisa
+### 4.2 Pesquisa
 
 Para os dados de pesquisa, temos como resultado a seguinte tabela:
 <div align="center">
@@ -253,29 +262,37 @@ Para os dados de pesquisa, temos como resultado a seguinte tabela:
 
 </div>
 
-#### 4.2.1 Arquivo de 500 números
+#### 4.2.1 Gráfico
+
+Para melhor visualizar a tabela, segue o gráfico de pesquisa.
+
+<div align="center">
+<img width="600" height="400" src="img/Pesquisa.png">
+</div>
+
+#### 4.2.2 Arquivo de 500 números
 
 Para a pesquisa de quinhentos números, o menor tempo de execução foi referente a árvore AVL. Este resultado é condizente pois árvores AVL é balanceada, dessa forma, o tempo de procura dos dados é igual a O(log n) para médio e pior caso, sendo O(1), para o melhor caso. Este tempo também foi próximo da árvore rubro negra, o que mostra que as árvores de balanceamento são ótimas para pesquisa quando se tem uma pequena base de dados de procura.
 
 O maior tempo de execução, referente a pesquisa, foi o vector. Para pesquisa, foi utilizado uma busca binária dentro do vetor, um algoritmo que implementa o paradigma divisão e conquista para encontrar um elemento na estrutura. Este tempo está próximo do tempo da estrutura map e unordored map e não é tão surpreendente, visto que temos uma base de dados pequena e pequenas variações de tempo podem acontecer, o que não significa que o algoritmo é ruim. 
 
-#### 4.2.2 Arquivo de 5.000 números
+#### 4.2.3 Arquivo de 5.000 números
 
 O menor tempo de execuração para pesquisa de arquivos de cinco mil números é da árvore binária de busca. O tempo também esteve próximo das árvores AVL e árvore rubro negra e demonstra ser um resultado condizente, pois o tempo para pesquisa de uma árvore binária é O (log n) e ela depende dos números que estão sendo pesquisados.
 
 O maior tempo de execução é da estrutura map, tempo este que também esteve próximo da estrutura vector, mencionada na seção anterior. Os motivos são principalmente aqueles mencionados em 3.2.1 para o vector, mais uma vez reafirmando que, para uma pequena base de dados, a estrutura map e vector apresenta maior dificuldade para encontrar seus elementos.
 
-#### 4.2.3 Arquivo de 50.000 números
+#### 4.2.4 Arquivo de 50.000 números
 
 O menor tempo execução para cinquenta mil números é da estrutura unordered map. A unordered map é implementada usando uma tabela hash, como mencionado na seção 1. Estruturas, e dessa forma, o seu tempo de pesquisa é igual O(1). Dessa forma, se os elementos estão bem dispersos na hash, mais fácil é encontrar seu elemento, assim, diminuindo o tempo de busca. É claro que tudo isso depende da base de dados de pesquisa. Outro fator é de que, por ser uma estrutura boa para pesquisa e implementada pelo próprio C++, ela é mais otimizada para tal.
 
 Novamente, o maior tempo de execução para arquivo de cinquenta mil números é da estrutura map e os motivos para esta demora na pesquisa são explicitados na seção anterior.
 
-#### 4.2.4 Arquivo de 500.000 números
+#### 4.2.5 Arquivo de 500.000 números
 
 Assim como o arquivo de cinquenta mil o menor tempo de execução e o maior tempo de execução são, respectivamente, as estruturas  unordered map e o map, corroborando com a ideia de que para uma grande base de dados, melhor é a pesquisa. 
 
-#### 4.2.5 Análise
+#### 4.2.6 Análise
 
 Para resolver problemas em que a base de dados será pesquisada o tempo todo, para uma pequena base de dados, uma árvore de pesquisa pode ser considerada. Já para uma grande base de dados, as próprias ferramentas fornecidas pelo C++ podem ser boas opções, o map ou o unordered map. 
 
@@ -293,6 +310,14 @@ Para os dados de remoção, temos como resultado a seguinte tabela:
 |           Map           |(9.40×10<sup>-3</sup> ± 2.97×10<sup>-4</sup>)s|(3.08×10<sup>-2</sup> ± 9.63×10<sup>-4</sup>)s|(1.20×10<sup>-2</sup> ± 1.22×10<sup>-1</sup>)s|6.47×10<sup>-2</sup> ± 4.38×10<sup>-3</sup>)s|
 |      Unordered Map      |(7.79×10<sup>-3</sup> ± 6.75×10<sup>-4</sup>)s|(2.31×10<sup>-2</sup> ± 1.55×10<sup>-4</sup>)s|__(6.67×10<sup>-3</sup> ± 8.06×10<sup>-4</sup>)s__|(3.57×10<sup>-2</sup> ± 1.96×10<sup>-3</sup>)s|
 
+</div>
+
+#### 4.3.1 Gráfico
+
+Para melhor visualizar a tabela, segue o gráfico de inserção.
+
+<div align="center">
+<img width="600" height="400" src="img/Remoção.png">
 </div>
 
 Visto que nos casos de remoção de qualquer tamanho de arquivo o vector apresenta o pior tempo de execução, ele será mencionado apenas uma vez. O principal problema do vector é a remoção de todos os elementos (menos o último) deve ser seguida por um redimensionamento. Isso faz com que o vector custe O(n), o que para arquivos muito grandes, a remoção simplesmente não é viável. A clara demonstração é através de nosso código, para remover elementos de um arquivo de 500 mil números, o tempo de execução é de 28 segundos!
