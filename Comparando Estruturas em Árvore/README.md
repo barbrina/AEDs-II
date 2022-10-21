@@ -63,7 +63,7 @@ Para os dados de inserção, temos como resultado a seguinte tabela:
 
 |                         |                   500.txt                 |   5000.txt  |  50000.txt  |  500000.txt |
 |-------------------------|-------------------------------------------|-------------|-------------|-------------|
-| Árvore Binária de Busca |__1.33×10<sup>-3</sup> ± 1.53×10<sup>-3</sup>__|__5.19×10<sup>-3</sup> ± 5.65×10<sup>-4</sup>__|6.65×10<sup>-2</sup> ± 9.69×10<sup>-3</sup>|7.33×10<sup>-1</sup> ± 5.82×10<sup>-2</sup>|
+| Árvore Binária de Busca |6.31×10<sup>-4</sup> ± 8.568×10<sup>-5</sup>|__5.19×10<sup>-3</sup> ± 5.65×10<sup>-4</sup>__|6.65×10<sup>-2</sup> ± 9.69×10<sup>-3</sup>|7.33×10<sup>-1</sup> ± 5.82×10<sup>-2</sup>|
 |       Árvore AVL        |7.80×10<sup>-4</sup> ± 8.64×10<sup>-5</sup>|6.61×10<sup>-3</sup> ± 4.23×10<sup>-4</sup>|__9.18×10<sup>-2</sup> ± 4.70×10<sup>-3</sup>__|__9.31×10<sup>-1</sup> ± 3.22×10<sup>-2</sup>__|
 |    Árvore Rubro Negra   |__5.51×10<sup>-4</sup> ± 1.21×10<sup>-4</sup>__|6.23×10<sup>-3</sup> ± 6.95×10<sup>-4</sup>|6.43×10<sup>-2</sup> ± 1.71×10<sup>-3</sup>|6.45×10<sup>-1</sup> ± 1.40×10<sup>-2</sup>|
 |          Vector         |6.46×10<sup>-4</sup> ± 3.26×10<sup>-5</sup>|5.90×10<sup>-3</sup> ± 1.97×10<sup>-4</sup>|__5.63×10<sup>-2</sup> ± 3.62×10<sup>-3</sup>__|__4.45×10<sup>-1</sup> ± 5.14×10<sup>-3</sup>__|
@@ -76,7 +76,7 @@ Para os dados de inserção, temos como resultado a seguinte tabela:
 
 Para o arquivo de 500 números, a inserção que apresentou menor resultado, foi a árvore rubro negra. O tempo de inserção, apesar de pequeno, na ordem de casa 10<sup>-4</sup>, também esteve próximo dos valores encontrados pelo vector (segundo tempo mais rápido) e pela árvore AVL (terceiro tempo mais rápido). A árvore rubro negra e a AVL ser uma das mais rápidas não é surpreentende, visto que as árvores de busca balanceadas são uma das estruturas mais eficientes que conhecemos, e estudadas neste trabalho. 
 
-A inserção que apresentou maior resultado foi a árvore de busca binária. Por ser uma árvore que utiliza uma inserção simples, dependendo da ordem como os dados são inseridos, pode haver a deterioração. A inserção precisa localizar o local para a qual o número será inserido, dessa forma, árvores muito desbalanceadas precisam de um tempo maior para encontrar a folha vazia. Mesmo apresentanto o maior tempo de inserção, a árvore binária de busca ainda apresentou um tempo relativamente pequeno, na ordem de 10<sup>-3</sup> e isso não significa que a árvore binária de busca seja lenta, apenas que as outras estruturas, para esta quantidade de dados, sejam bem mais rápidas..
+A inserção que apresentou maior resultado foi a unordored map. Isto se deve principalmente pelo fato da estrutura unordored map não ser ordenada, logo, para ocorrer a inserção, é preciso verificar toda a estrutura, pois caso tenham valores repetidos, uma rehash deve ser realizada.
 
 #### 3.1.2 Arquivo de 5.000 números
 
@@ -120,18 +120,25 @@ Para os dados de pesquisa, temos como resultado a seguinte tabela:
 
 #### 3.2.1 Arquivo de 500 números
 
-Para a pesquisa de quinhentos números, o menor tempo de execução foi referente a árvore AVL. 
+Para a pesquisa de quinhentos números, o menor tempo de execução foi referente a árvore AVL. Este resultado é condizente pois árvores AVL é balanceada, dessa forma, o tempo de procura dos dados é igual a O(log n) para médio e pior caso, sendo O(1), para o melhor caso. Este tempo também foi próximo da árvore rubro negra, o que mostra que as árvores de balanceamento são ótimas para pesquisa quando se tem uma pequena base de dados de procura.
 
-O maior tempo de execução, referente a pesquisa, foi o vector.
+O maior tempo de execução, referente a pesquisa, foi o vector. Para pesquisa, foi utilizado uma busca binária dentro do vetor, um algoritmo que implementa o paradigma divisão e conquista para encontrar um elemento na estrutura. Este tempo está próximo do tempo da estrutura map e unordored map e não é tão surpreendente, visto que temos uma base de dados pequena e pequenas variações de tempo podem acontecer, o que não significa que o algoritmo é ruim. 
 
 #### 3.2.2 Arquivo de 5.000 números
 
-O menor tempo de execuração para arquivos de
+O menor tempo de execuração para pesquisa de arquivos de cinco mil números é da árvore binária de busca. O tempo também esteve próximo das árvores AVL e árvore rubro negra e demonstra ser um resultado condizente, pois o tempo para pesquisa de uma árvore binária é O (log n) e ela depende dos números que estão sendo pesquisados.
+
+Novamente, o maior tempo de execução é da estrutura map, os motivos são principalmente aqueles mencionados na seção anterior (3.2.1 Arquivo de 500 números), mais uma vez reafirmando que para uma pequena base de dados, a estrutura map apresenta maior dificuldade para encontrar seus elementos.
 
 #### 3.2.3 Arquivo de 50.000 números
 
+O menor tempo execução para cinquenta mil números é da estrutura unordered map.
+
+O maior tempo de execução é da estrutura map.
+
 #### 3.2.4 Arquivo de 500.000 números
 
+Assim como o arquivo de cinquenta mil o menor tempo de execução e o maior tempo de execução são, respectivamente, as estruturas  unordered map e o map.
 
 ### 3.3 Remoção
 
@@ -165,8 +172,9 @@ A análise realizada neste trabalho é apenas superficial, não existem resposta
 - Ordem de inserção, de pesquisa, e remoção;
 - Arquitetura do computador;
 - Sistema operacional;
-- Métodos de realizar os processos no algoritmo;
+- Métodos para realizar os processos no algoritmo;
 - Método o qual o tempo é calculado;
+- Imprecisão de medida do próprio computador;
 
 É importante ressaltar também, que não existem estruturas certas, apenas estruturas mais adequadas para solucionar determinados tipo de problemas, como pode exemplo. 
 
