@@ -1,4 +1,4 @@
-<img align="right" width="100" height="100" src="img/binarytree.png">
+<img align="right" width="100" height="100" src="img/twitter_icon.png">
 
 # Analisando relevância de perfis do Twitter
 
