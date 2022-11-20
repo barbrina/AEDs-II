@@ -47,8 +47,21 @@ Logo, a API permite que você execute programaticamente qualquer ação que exec
 
 ### 3.3 Bibliotecas utilizadas
 
+https://github.com/barbrina/AEDs-II/blob/16db07d586ac314277d98428a3cc1acde9fdb912/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L1-L8
+
+As ferramentas utilizadas foram:
+
+- Tweepy — um tipo de API RESTful especificamente para o Twitter
+- NetworkX — uma biblioteca Python para estudar gráficos e redes.
+- Pandas — biblioteca de manipulação e análise de dados
+- Matplotlib — biblioteca de plotagem
+- JSON — tipo de arquivo
+- Gephi — um pacote de software de análise e visualização de rede de código aberto
+- Scipy — 
+
 ### 3.4 Estrutura do algoritmo
 
+Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lugar, você deve obter as credenciais da API do Twitter no site do desenvolvedor do Twitter, que são a chave da API, a chave secreta da API, o token de acesso e o segredo do token de acesso.
 
 ## 4. Exemplo
  
