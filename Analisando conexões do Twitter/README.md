@@ -1,3 +1,5 @@
+<div align="justify">
+
 <img align="right" width="100" height="100" src="img/twitter_icon.png">
 
 # Analisando conexões de perfis pessoais do Twitter
@@ -16,14 +18,28 @@
 
 ### 2.1 API
 
-Para consumir dados do Twitter, não é necessário ter acesso aos servidores e bancos de dados internos do Twitter, também não é preciso entender como o Twitter é codificado. É necessário um intermediário entre você (usuário) e o back-end do Twitter, um intermediário em que se pode solicitar (com alguns parâmetros) para obter alguns dados ou interagir com os serviços do Twitter. Em poucas palavras, uma API é isso: é simplesmente uma junção entre dois aplicativos independentes que se comunicam entre si.
+Para consumir dados do Twitter, não é necessário ter acesso aos servidores e bancos de dados internos do Twitter, também não é preciso entender como o Twitter é codificado. É necessário um intermediário entre o usuário e o back-end do Twitter, um intermediário em que o clinte pode solicitar (com alguns parâmetros) para obter alguns dados ou interagir com os serviços do Twitter. Em poucas palavras, uma API é isso: simplesmente uma junção entre dois aplicativos independentes que se comunicam entre si.
 
 
 <div align="center">
  <p> </p>
- <img src="img/API-twitter.png">
+ <img src="img/API twitter.png">
  <p> </p>
 </div>
+
+Como abstração, a API do Twitter simplifica a integração com terceiros (desenvolvedores, aplicativos, outras APIs, etc.).
+
+Aqui está o que se pode fazer com a API do Twitter:
+
+- Pesquisar tweets programaticamente com base em hashtags, palavras-chave, geolocalização, etc.
+- Criar bots do Twitter que retuitam automaticamente uma lista de contas predefinidas
+- Transmitir tweets em tempo real com base em uma série de filtros
+- Seguir automaticamente uma lista de usuários
+- etc.
+
+Logo, a API permite que você execute programaticamente qualquer ação que executaria manualmente na interface.
+
+## 3. SNA (Social Network Analysis)
  
 ## 3. O Algoritmo
 
