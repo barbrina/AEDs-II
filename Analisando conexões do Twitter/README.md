@@ -14,6 +14,16 @@
 
 ## 2. Twitter
 
+### 2.1 API
+
+Para consumir dados do Twitter, não é necessário ter acesso aos servidores e bancos de dados internos do Twitter, também não é preciso entender como o Twitter é codificado. É necessário um intermediário entre você (usuário) e o back-end do Twitter, um intermediário em que se pode solicitar (com alguns parâmetros) para obter alguns dados ou interagir com os serviços do Twitter. Em poucas palavras, uma API é isso: é simplesmente uma junção entre dois aplicativos independentes que se comunicam entre si.
+
+
+<div align="center">
+ <p> </p>
+ <img src="img/API-twitter.png">
+ <p> </p>
+</div>
  
 ## 3. O Algoritmo
 
