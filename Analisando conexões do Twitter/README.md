@@ -13,6 +13,21 @@
 
 ## 1. Grafos
 
+A ideia básica de grafos surgiu com o matemático Leonhard Euler no século XVIII (1735). Ele usou grafos para resolver o famoso problema das 7 pontes de Konigsberg.
+
+> *A cidade de Königsberg, na Prússia, foi definida em ambos os lados do rio Pregel , e incluía duas grandes ilhas — Kneiphof e Lomse — que estavam conectadas entre si, ou às duas porções continentais da cidade, por 7 pontes. O problema era planejar um passeio pela cidade que cruzasse cada uma dessas pontes uma vez e apenas uma vez.*
+
+A solução de Euler foi primeiro remover tudo que fosse irrelevante ao problema, ou seja, remover as cidades próximas, ruas conectadas e deixou apenas o que precisava em vértices que se ligavam baseado nas rotas possíveis. Isso permitiu a ele formular o problema de forma abstrata, iniciando o que temos hoje em teoria dos grafos.
+
+Por que é necessário saber teoria dos grafos? Para responder esta pergunta, utilizaremos um exemplo de aplicação muito comum atualmente. Suponha que um ponto representa uma pessoa, e que linhas entre esses pontos representam relações juntando pares de pessoas que você segue. Então no final para cada pessoa que você seguir vai ter uma ligação. Se for analisado o perfil de uma das pessoas que você segue, ela tem um conjunto de pessoas que também segue outros. Algo que poderia ser usado com esse grafo, é recomendar seguidores. Essa lógica é usada para a maioria das redes sociais!
+
+
+<div align="center">
+ <p> </p>
+ <img src="img/Social Network.png">
+ <p> </p>
+</div>
+
 
 ## 2. Twitter
 
@@ -70,6 +85,8 @@ Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lug
 </div>
 
 ## 6. Referências Bibliogŕaficas
+
+Mota M., **_Grafos — Conceitos Básicos_**. Internet: https://medium.com/20-21/grafos-ac48e874570
 
 Jain S, Sinha A. **_Identification of influential users on Twitter: a novel weighted correlated influence measure for Covid-19_**. Chaos, Solitons & Fractals, 2020.
 
