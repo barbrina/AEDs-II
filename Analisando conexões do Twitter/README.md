@@ -37,6 +37,9 @@ Para consumir dados do Twitter, não é necessário ter acesso aos servidores e 
 <div align="center">
  <p> </p>
  <img src="img/API twitter.png">
+   <p> </p>
+ <figcaption>Funcioamento da API </figcaption>
+ <p> </p>
  <p> </p>
 </div>
 
@@ -58,9 +61,20 @@ A noção de rede social refere-se historicamente à abordagem estrutural de est
 <div align="center">
  <p> </p>
  <img src="img/evolucao de grupos.jpeg">
+  <p> </p>
+ <figcaption>Um dos grafos originais do Moreno, do livro "Who shall survive" (1934). </figcaption>
  <p> </p>
 </div>
 
+ Outros autores, depois de Moreno, também se apropriaram do conceito para seus estudos e setaram outras bases para o que depois veio a se tornar a Análise de Redes Sociais. Mas foi apenas na década de 90 que aconteceu uma mudança radical: Com o surgimento da mídia digital e a transformação das interações sociais em dados, novas formas de estudar esses grupos sociais, principalmente de forma mais massiva (a análise de redes sociais era feita com trabalho de coleta de dados mais "formiguinha" até então). Essa nova abordagem, muito mais interdisciplinar, vai ser inaugurada por autores como Barabási e Christakis, entre outros, e notadamente, vai também originar outras novas "subáreas" de estudo em áreas que tradicionalmente não estudavam dados sociais (como a Ciência Social Computacional, por exemplo).
+ 
+Quando transformamos essa discussão para as redes sociais online ou as redes sociais na internet, o que temos é uma mudança importante entre uma estrutura mediada principalmente pelas relações institucionais e interpessoais e uma estrutura mediada pelas relações mediadas pela tecnologia digital. Eu costumo dizer que, nessa mudança, essas redes ganham “superpoderes”, tais como:
+
+- A possibilidade de conexão mais “individual” e por interesse, não limitada pela localização geográfica;
+- A posssibilidade de conexões massivas, em grande escala (uma vez que essas conexões podem ser mantidas pelas ferramentas sem a necessidade de interação social), assim permitindo que as pessoas tenham centenas ou milhares de “amigos” — o fenômeno dos “influenciadores”, por exemplo;
+- A possibilidade de participação em conversações globais e de acesso a conteúdos que não necessariamente estariam disponíveis devido à complexificação das conexões sociais;
+- A possibilidade de ser alguém diferente, ter mais de um “perfil”, brincar com a própria identidade (o que também possibilita que coisas que não poderiam ser atores em redes sociais offline, como um perfil robô, por exemplo, agora possam ser).
+ 
  
 ## 3. O Algoritmo
 
