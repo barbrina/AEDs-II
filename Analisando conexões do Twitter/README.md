@@ -110,6 +110,12 @@ Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lug
 
 #### 3.4.1 Criação de um aplicativo do Twitter e configurção das credenciais
 
+Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação. Visto que as credenciais são pessoais, neste trabalho **EXPLICAR AQUI**.
+
+**FOTO DO TWITTER DEVELOPER AQUI.**
+
+#### 3.4.2 Conexão à API do Twitter
+
 
 
 ## 4. Exemplo
