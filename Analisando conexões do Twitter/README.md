@@ -83,15 +83,26 @@ Quando transformamos essa discussão para as redes sociais online ou as redes so
 - A posssibilidade de conexões massivas, em grande escala (uma vez que essas conexões podem ser mantidas pelas ferramentas sem a necessidade de interação social), assim permitindo que as pessoas tenham centenas ou milhares de “amigos” — o fenômeno dos “influenciadores”, por exemplo;
 - A possibilidade de participação em conversações globais e de acesso a conteúdos que não necessariamente estariam disponíveis devido à complexificação das conexões sociais;
 - A possibilidade de ser alguém diferente, ter mais de um “perfil”, brincar com a própria identidade (o que também possibilita que coisas que não poderiam ser atores em redes sociais offline, como um perfil robô, por exemplo, agora possam ser).
+
+Logo, de acordo com a Wikipédia,
+
+> “A análise de redes sociais (SNA) é o processo de investigação de estruturas sociais por meio do uso de redes e teoria dos grafos. Caracteriza as estruturas em rede em termos de nós (atores individuais, pessoas ou coisas dentro da rede) e os laços, arestas ou links (relacionamentos ou interações) que os conectam.
+
+Ele entrou em praticamente todos os campos - novamente, de acordo com a Wikipedia:
+
+> “A análise de redes sociais emergiu como uma técnica chave na sociologia moderna. Também ganhou seguidores significativos em antropologia, biologia, demografia, estudos de comunicação, economia, geografia, história, ciência da informação, estudos organizacionais, ciência política, saúde pública, psicologia social, estudos de desenvolvimento, sociolinguística e ciência da computação e agora é comumente disponível como uma ferramenta de consumo (consulte a lista de software SNA).”
  
  
 ## 3. O Algoritmo
 
 ### 3.1 Problema Proposto 
 
-### 3.2 Estrutura dos arquivos
+1) Usar o Tweepy para raspar o Twitter para todos os meus seguidores e (a maioria) de seus seguidores
+2) Criar um DataFrame pandas de todas essas conexões
+3) Usar o NetworkX para extrair uma rede desses dados e executar algumas análises básicas de rede
+4) Visualizar a rede no Gephi
 
-### 3.3 Instalação
+### 3.2Instalação
 
 Para rodar este código, é necessário instalar algumas bibliotecas.
 
@@ -123,7 +134,6 @@ Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lug
 
 Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação. Visto que as credenciais são pessoais, neste trabalho **EXPLICAR AQUI**.
 
-
 <div align="center">
  <p> </p>
  <img src="img/twitter - API.png">
@@ -132,8 +142,13 @@ Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter
  <p> </p>
 </div>
 
-
 #### 3.4.2 Conexão à API do Twitter
+
+Para começar, vamos construir uma rede usando minha conta pessoal no Twitter (@ barbrinass). Para fazer isso, vamos começar com uma lista de todos os meus seguidores (atualmente 69 seguidores). Em seguida, obteremos todos os seguidores dessas 69 contas. Para economizar tempo, para contas com mais de 5.000 seguidores, irei raspar apenas os primeiros 5.000 de seus seguidores.
+
+Primeiro, precisamos importar os pacotes Tweepy e pandas.
+
+https://github.com/barbrina/AEDs-II/blob/7d3954f73d13c52d913bbdebae227a7f303ae8b2/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L5-L6
 
 
 
