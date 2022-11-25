@@ -55,6 +55,12 @@ Logo, a API permite que você execute programaticamente qualquer ação que exec
 A noção de rede social refere-se historicamente à abordagem estrutural de estudo dos grupos sociais. O conceito, que tem suas raízes na Sociologia há quase um século, principalmente através do trabalho do Jakob Moreno, ainda na década de 30, que sistematicamente coletou e analisou as interações sociais de alunos de escolhas, é uma das principais bases do que ele chamava de Sociometria. Na base, rede social significava a visão de um grupo social através de suas relações, considerando o grafo (estrutura de rede) como construto para tal.
 
 
+<div align="center">
+ <p> </p>
+ <img src="img/evolucao de grupos.jpeg">
+ <p> </p>
+</div>
+
  
 ## 3. O Algoritmo
 
