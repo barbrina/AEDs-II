@@ -84,7 +84,7 @@ Quando transformamos essa discussão para as redes sociais online ou as redes so
 
 ### 3.3 Bibliotecas utilizadas
 
-https://github.com/barbrina/AEDs-II/blob/16db07d586ac314277d98428a3cc1acde9fdb912/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L1-L8
+https://github.com/barbrina/AEDs-II/blob/ec4f340603c80c50ced61438448984aa963f7396/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L1-L7
 
 As ferramentas utilizadas foram:
 
@@ -94,7 +94,6 @@ As ferramentas utilizadas foram:
 - Matplotlib — biblioteca de plotagem
 - JSON — tipo de arquivo
 - Gephi — um pacote de software de análise e visualização de rede de código aberto
-- Scipy — 
 
 ### 3.4 Estrutura do algoritmo
 
