@@ -50,7 +50,11 @@ Aqui está o que se pode fazer com a API do Twitter:
 
 Logo, a API permite que você execute programaticamente qualquer ação que executaria manualmente na interface.
 
-## 3. SNA (Social Network Analysis)
+## 3. Social network analysis ou Análise de rede social
+ 
+A noção de rede social refere-se historicamente à abordagem estrutural de estudo dos grupos sociais. O conceito, que tem suas raízes na Sociologia há quase um século, principalmente através do trabalho do Jakob Moreno, ainda na década de 30, que sistematicamente coletou e analisou as interações sociais de alunos de escolhas, é uma das principais bases do que ele chamava de Sociometria. Na base, rede social significava a visão de um grupo social através de suas relações, considerando o grafo (estrutura de rede) como construto para tal.
+
+
  
 ## 3. O Algoritmo
 
@@ -84,7 +88,9 @@ Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lug
 
 ## 6. Referências Bibliogŕaficas
 
-Mota M., **_Grafos — Conceitos Básicos_**. Internet: https://medium.com/20-21/grafos-ac48e874570
+Mota M. **_Grafos — Conceitos Básicos_**. Internet: https://medium.com/20-21/grafos-ac48e874570
+
+Recuero R. **_Mídia social, plataforma digital, site de rede social ou rede social? Não é tudo a mesma coisa?_**. Internet: https://medium.com/@raquelrecuero/m%C3%ADdia-social-plataforma-digital-site-de-rede-social-ou-rede-social-n%C3%A3o-%C3%A9-tudo-a-mesma-coisa-d7b54591a9ec, 2019;
 
 Jain S, Sinha A. **_Identification of influential users on Twitter: a novel weighted correlated influence measure for Covid-19_**. Chaos, Solitons & Fractals, 2020.
 
