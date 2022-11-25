@@ -192,6 +192,15 @@ O código acima renderiza o seguinte visual:
  <p> </p>
 </div>
 
+O que queremos mesmo é conseguir todos os seguidores desses 69 usuários. Para fazer isso, percorreremos a lista de todos os usuários, obteremos seus seguidores e adicionaremos esses links ao DataFrame original. Este é o código que levará muito tempo para ser executado por causa dos limites de taxa da API do twitter.
+
+https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L65-L94
+
+Esse código é muito semelhante ao código acima, pois obtém todos os seguidores de um determinado ID de usuário. A grande diferença é que ao invés de alimentar apenas uma conta, estamos passando por todas as 69 contas que me seguem. Outra diferença é que se uma conta tiver mais de 5.000 seguidores, pegamos apenas os primeiros 5.000 seguidores. Isso ocorre devido à maneira como a API funciona. Cada solicitação de API retornará apenas 5.000 contas. Portanto, se quisermos todos os seguidores de uma conta que tenha, digamos, um milhão de seguidores, precisaríamos fazer 200 solicitações individuais.
+
+Por causa dos limites de taxa (rate limits), o código pode levar longos períodos para terminar de obter todos os dados. Ele faz 15 solicitações de API, depois espera 15 minutos, faz outras 15 solicitações e assim por diante. Portanto, pode demorar muito.
+
+Feito isso, você deve ter um csv com todas as arestas da rede. Escrevi tudo isso em um csv apenas para que, se ele quebrar durante a execução, eu ainda tenha todas as bordas raspadas. Agora precisamos ler o csv e transformar o df em um gráfico usando o NetworkX.
 
 
 ## 4. Exemplo
