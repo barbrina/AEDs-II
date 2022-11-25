@@ -111,6 +111,7 @@ pip3 install networkx
 pip3 install tweepy
 pip3 install community
 pip3 install python-louvain
+pip3 install ipython
 ```
 
 ### 3.3 Bibliotecas utilizadas
@@ -149,6 +150,39 @@ Para começar, vamos construir uma rede usando minha conta pessoal no Twitter (@
 Primeiro, precisamos importar os pacotes Tweepy e pandas.
 
 https://github.com/barbrina/AEDs-II/blob/7d3954f73d13c52d913bbdebae227a7f303ae8b2/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L5-L6
+
+Em seguida, precisamos inserir a credenciais da API do Twitter retiradas na sessão **Criação de um aplicativo do Twitter e configurção das credenciais**.
+
+```
+consumer_key = 'XXXXXXXXXXXXX'
+consumer_secret = 'XXXXXXXXXXXXX'
+access_token = 'XXXXXXXXXXXXX'
+access_token_secret = 'XXXXXXXXXXXXX'
+```
+
+Com o Tweepy, podemos usar essas credenciais para nos conectar à API do Twitter e começar a baixar os dados. O código a seguir usa apenas as credenciais inseridas acima para se conectar à API. Como vamos fazer o download de grandes conjuntos de dados, é importante especificar alguns parâmetros quando inicializarmos a API. Definimos ‘wait_on_rate_limit’ como True. Existem limites de taxa ao baixar dados do Twitter - você só pode fazer um número limitado de solicitações de download para a API em um determinado período de tempo. Ao definir esses parâmetros como True, não interromperemos a conexão com a API quando atingirmos esses limites. Em vez disso, esperaremos até que o tempo limite termine e possamos continuar baixando os dados.
+
+https://github.com/barbrina/AEDs-II/blob/7d3954f73d13c52d913bbdebae227a7f303ae8b2/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L19-L25
+
+#### 3.4.3 Raspagem de dados
+
+Para iniciar o download dos dados, obteremos todos os seguidores de um usuário individual. Para obter isso, você precisa do ID do usuário. Você pode obter o ID de usuário de um usuário se souber seu nome de tela usando o código abaixo.
+
+https://github.com/barbrina/AEDs-II/blob/90272f1186d0c2aff410601cddc71834da98f536/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L27-L28
+
+Meu ID de usuário é: **COLOCAR ID DE USUÁRIO AQUI**
+
+Uma rede consiste de nós (ou vértices) e links (ou arestas). Para esta rede, usaremos contas de usuários individuais como nós e seguidores como links. Nosso objetivo, portanto, é criar um DataFrame de IDs de usuário com duas colunas: origem (‘source’) e destino (‘target’). Para cada linha, o destino segue a origem. Para começar, queremos listar todos os meus seguidores como alvos.
+
+O código a seguir cria uma lista dos meus 69 seguidores. Agora que temos uma lista de todos os seguidores, podemos colocá-los em um DataFrame.
+
+https://github.com/barbrina/AEDs-II/blob/90272f1186d0c2aff410601cddc71834da98f536/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L30-L46
+
+Mas esta não é uma rede muito interessante e pouco pode se analisar ela. Para visualizar essa rede simples, podemos usar o pacote NetworkX para converter o DataFrame em um gráfico ou rede. Em seguida, plotamos o gráfico usando matplotlib e o armazenamos em um arquivo.
+
+https://github.com/barbrina/AEDs-II/blob/90272f1186d0c2aff410601cddc71834da98f536/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L50-L61
+
+O código acima renderiza o seguinte visual:
 
 
 
