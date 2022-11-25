@@ -4,10 +4,12 @@
 
 # Analisando conexões de perfis pessoais do Twitter
 
+
 <div style="display: inline-block;">
 <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"/> 
 <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/> 
-<img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"/> 
+<img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"/>
+
 </a> 
 </div>
 
@@ -97,14 +99,18 @@ Ele entrou em praticamente todos os campos - novamente, de acordo com a Wikipedi
 
 ### 3.1 Problema Proposto 
 
-1) Usar o Tweepy para raspar o Twitter para todos os meus seguidores e (a maioria) de seus seguidores
-2) Criar um DataFrame pandas de todas essas conexões
-3) Usar o NetworkX para extrair uma rede desses dados e executar algumas análises básicas de rede
-4) Visualizar a rede no Gephi
+Neste trabalho o objetivo é aplicar as estruturas em grafos para solucionar um problema real qualquer. Cada dupla de alunos deve escolher em literatura uma das áreas de aplicação do tema e propor uma solução baseada nos conceitos apresentados. Essa solução pode ser realizada utilizando C, C++ e/ou Python. O objetivo e mostrar a atuação de algoritmos clássicos em grafos na resolução de problemas emergentes. Alguns temas para inspiração são: Análise de rede social, rotas de entregas, análise de trafego (i.e., carros, pacotes na internet, etc), mínima quantidade de saltos em redes, teoria dos jogos, elaboração de horário vs rodízio de salas, envoltória convexa (do inglês, convex hull), etc.
+
+Desta forma, o seguinte trabalho consiste em:
+
+1) Usar o Tweepy para raspar o Twitter para todos os meus seguidores e (a maioria) de seus seguidores;
+2) Criar um DataFrame pandas de todas essas conexões;
+3) Usar o NetworkX para extrair uma rede desses dados e executar algumas análises básicas de rede;
+4) Visualizar a rede no Gephi.
 
 ### 3.2 Instalação
 
-Para rodar este código, é necessário instalar algumas bibliotecas.
+Para rodar este código, é necessário instalar as bibliotecas a seguir.
 
 ```
 pip3 install networkx
@@ -269,3 +275,13 @@ Hammer L. **_Guide: Analyzing Twitter Networks with Gephi 0.9.1_** Internet: htt
 Aric A. Hagberg, Daniel A. Schult and Pieter J. Swart, **_Exploring network structure, dynamics, and function using NetworkX_**, in Proceedings of the 7th Python in Science Conference (SciPy2008), Gäel Varoquaux, Travis Vaught, and Jarrod Millman (Eds), (Pasadena, CA USA), pp. 11–15, Aug 2008
 
 Parika P. **_Analysis Of Twitter Social Network_**. Internet: https://medium.com/social-media-theories-ethics-and-analytics/analysis-of-twitter-social-network-d5023e1a1aa, 2020. 
+
+## 6. Integrantes
+
+
+<div>
+<p align="justify"> <b> Thaissa Vitória Guimarães Daldegan de Souza </b> </p>
+
+<div>
+<p align="justify"> <b> Bárbara Braga Gualberto Correa </b> </p>
+
