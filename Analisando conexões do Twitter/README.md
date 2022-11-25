@@ -38,11 +38,10 @@ A solução de Euler foi primeiro remover tudo que fosse irrelevante ao problema
  <p> </p>
 </div>
 
-Formalmente, o grafo é definido por uma tripla ordenada.
-
-Consistindo de um conjunto não vazio V(G) de vértices, um conjunto E(G) de arestas e uma função de incidência ψG, que associa uma aresta de G a um par não ordenado de vértices de G. Para entender um pouco melhor a função de incidência, suponha que e é uma aresta e u e v são seus vértices, então a função de incidência fica:
 
 Por que é necessário saber teoria dos grafos? Para responder esta pergunta, utilizaremos um exemplo de aplicação muito comum atualmente. Suponha que um ponto representa uma pessoa, e que linhas entre esses pontos representam relações juntando pares de pessoas que você segue. Então no final para cada pessoa que você seguir vai ter uma ligação. Se for analisado o perfil de uma das pessoas que você segue, ela tem um conjunto de pessoas que também segue outros. Algo que poderia ser usado com esse grafo, é recomendar seguidores. Essa lógica é usada para a maioria das redes sociais!
+
+### Networkx
 
 
 ## 2. Twitter
