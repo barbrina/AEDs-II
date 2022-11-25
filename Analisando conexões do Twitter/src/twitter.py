@@ -11,10 +11,10 @@ import json
 credenciais = open('credenciais.json').read()
 info = json.loads(credenciais)
 
-consumer_key = info['API_ACCESS_BARBARA']
-consumer_secret = info['API_ACCESS_SECRET_BARBARA']
-access_key = info['ACCESS_TOKEN_BARBARA']
-access_secret = info['ACCESS_TOKEN_SECRET_BARBARA']
+consumer_key = info['API_ACCESS']
+consumer_secret = info['API_ACCESS_SECRET']
+access_key = info['ACCESS_TOKEN']
+access_secret = info['ACCESS_TOKEN_SECRET']
 
 # Configure tweepy para autenticar com as credenciais do Twitter:
 autorizacao = tweepy.OAuthHandler(consumer_key, consumer_secret)
