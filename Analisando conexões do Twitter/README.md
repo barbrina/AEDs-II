@@ -184,6 +184,14 @@ https://github.com/barbrina/AEDs-II/blob/90272f1186d0c2aff410601cddc71834da98f53
 
 O código acima renderiza o seguinte visual:
 
+<div align="center">
+ <p> </p>
+ <img width="800" height="800" src="img/BarbrinassFollowers.png">
+  <p> </p>
+ <figcaption>Grafo das minhas conexões no twitter. </figcaption>
+ <p> </p>
+</div>
+
 
 
 ## 4. Exemplo
