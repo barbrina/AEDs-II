@@ -3,8 +3,8 @@ from IPython.display import display
 import matplotlib.pyplot as plt
 import networkx as nx
 import tweepy
-import json
 import pandas as pd
+import json
 
 # Aqui utilizamos a funcaoo open para abrir nosso arquivo e a
 # biblioteca json para carregar nosso arquivo para uma variavel chamada info.
