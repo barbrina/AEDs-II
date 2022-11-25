@@ -21,15 +21,13 @@ A solução de Euler foi primeiro remover tudo que fosse irrelevante ao problema
 
 Por que é necessário saber teoria dos grafos? Para responder esta pergunta, utilizaremos um exemplo de aplicação muito comum atualmente. Suponha que um ponto representa uma pessoa, e que linhas entre esses pontos representam relações juntando pares de pessoas que você segue. Então no final para cada pessoa que você seguir vai ter uma ligação. Se for analisado o perfil de uma das pessoas que você segue, ela tem um conjunto de pessoas que também segue outros. Algo que poderia ser usado com esse grafo, é recomendar seguidores. Essa lógica é usada para a maioria das redes sociais!
 
-
-<div align="center">
- <p> </p>
- <img src="img/Social Network.png">
- <p> </p>
-</div>
-
-
 ## 2. Twitter
+
+> Twitter é uma plataforma para as pessoas conversarem sobre assuntos do momento, um lugar que cria uma audiência muito engajada, que fica ao nosso alcance — seja por meios orgânicos ou anúncios pagos.
+
+Jenny Broekemeier, Gerente de Mídias Sociais Pagas da MANSCAPED, Inc.
+
+Trata-se de uma rede social, bastante difundida, onde seu usuário poder realizar publicações, chamados de tweets que podem conter, textos, imagens, vídeos, hiperlinks ou todos deles integrados. Essas publicações podem ser visualizadas por diversos usuários e que eventualmente poderão republicar aquela "mensagem" em uma operação conhecida como retweet.
 
 ### 2.1 API
 
