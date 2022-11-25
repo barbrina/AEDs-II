@@ -91,6 +91,17 @@ Quando transformamos essa discussão para as redes sociais online ou as redes so
 
 ### 3.2 Estrutura dos arquivos
 
+### 3.3 Instalação
+
+Para rodar este código, é necessário instalar algumas bibliotecas.
+
+```
+pip3 install networkx
+pip3 install tweepy
+pip3 install community
+pip3 install python-louvain
+```
+
 ### 3.3 Bibliotecas utilizadas
 
 https://github.com/barbrina/AEDs-II/blob/ec4f340603c80c50ced61438448984aa963f7396/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L1-L7
@@ -112,7 +123,15 @@ Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lug
 
 Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação. Visto que as credenciais são pessoais, neste trabalho **EXPLICAR AQUI**.
 
-**FOTO DO TWITTER DEVELOPER AQUI.**
+
+<div align="center">
+ <p> </p>
+ <img src="img/twitter - API.png">
+  <p> </p>
+ <figcaption>Portal do desenvolvedor do Twitter. </figcaption>
+ <p> </p>
+</div>
+
 
 #### 3.4.2 Conexão à API do Twitter
 
