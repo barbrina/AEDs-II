@@ -20,7 +20,7 @@ A ideia básica de grafos surgiu com o matemático Leonhard Euler no século XVI
  <p> </p>
  <img src="img/cidade.webp">
   <p> </p>
- <figcaption>Configuração das pontes na cidade de Königsberg. </figcaption>
+ <figcaption>Figura 1: Configuração das pontes na cidade de Königsberg. </figcaption>
  <p> </p>
 </div>
 
@@ -47,7 +47,7 @@ Para consumir dados do Twitter, não é necessário ter acesso aos servidores e 
  <p> </p>
  <img src="img/API twitter.png">
    <p> </p>
- <figcaption>Funcioamento da API.</figcaption>
+ <figcaption>Figura 2: Funcioamento da API.</figcaption>
  <p> </p>
  <p> </p>
 </div>
@@ -71,7 +71,7 @@ A noção de rede social refere-se historicamente à abordagem estrutural de est
  <p> </p>
  <img src="img/evolucao de grupos.jpeg">
   <p> </p>
- <figcaption>Um dos grafos originais do Moreno, do livro "Who shall survive" (1934). </figcaption>
+ <figcaption>Figura 3: Um dos grafos originais do Moreno, do livro "Who shall survive" (1934). </figcaption>
  <p> </p>
 </div>
 
@@ -102,7 +102,7 @@ Ele entrou em praticamente todos os campos - novamente, de acordo com a Wikipedi
 3) Usar o NetworkX para extrair uma rede desses dados e executar algumas análises básicas de rede
 4) Visualizar a rede no Gephi
 
-### 3.2Instalação
+### 3.2 Instalação
 
 Para rodar este código, é necessário instalar algumas bibliotecas.
 
@@ -139,7 +139,7 @@ Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter
  <p> </p>
  <img src="img/twitter - API.png">
   <p> </p>
- <figcaption>Portal do desenvolvedor do Twitter. </figcaption>
+ <figcaption>Figura 4: Portal do desenvolvedor do Twitter. </figcaption>
  <p> </p>
 </div>
 
@@ -186,9 +186,9 @@ O código acima renderiza o seguinte visual:
 
 <div align="center">
  <p> </p>
- <img width="800" height="800" src="img/BarbrinassFollowers.png">
+ <img src="img/BarbrinassFollowers.png">
   <p> </p>
- <figcaption>Grafo das minhas conexões no twitter. </figcaption>
+ <figcaption>Figura 5: Grafo das minhas conexões no twitter. </figcaption>
  <p> </p>
 </div>
 
@@ -226,7 +226,7 @@ Isso deve criar um gráfico parecido com isto:
  <p> </p>
  <img src="img/twitterFollowers.png">
   <p> </p>
- <figcaption>Grafo de todas as conexões. </figcaption>
+ <figcaption>Figura 6: Grafo de todas as conexões. </figcaption>
  <p> </p>
 </div>
 
