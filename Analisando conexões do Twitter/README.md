@@ -15,6 +15,15 @@
 
 A ideia básica de grafos surgiu com o matemático Leonhard Euler no século XVIII (1735). Ele usou grafos para resolver o famoso problema das 7 pontes de Konigsberg.
 
+
+<div align="center">
+ <p> </p>
+ <img src="img/cidade.webp">
+  <p> </p>
+ <figcaption>Configuração das pontes na cidade de Königsberg. </figcaption>
+ <p> </p>
+</div>
+
 > *A cidade de Königsberg, na Prússia, foi definida em ambos os lados do rio Pregel , e incluía duas grandes ilhas — Kneiphof e Lomse — que estavam conectadas entre si, ou às duas porções continentais da cidade, por 7 pontes. O problema era planejar um passeio pela cidade que cruzasse cada uma dessas pontes uma vez e apenas uma vez.*
 
 A solução de Euler foi primeiro remover tudo que fosse irrelevante ao problema, ou seja, remover as cidades próximas, ruas conectadas e deixou apenas o que precisava em vértices que se ligavam baseado nas rotas possíveis. Isso permitiu a ele formular o problema de forma abstrata, iniciando o que temos hoje em teoria dos grafos.
@@ -38,7 +47,7 @@ Para consumir dados do Twitter, não é necessário ter acesso aos servidores e 
  <p> </p>
  <img src="img/API twitter.png">
    <p> </p>
- <figcaption>Funcioamento da API </figcaption>
+ <figcaption>Funcioamento da API.</figcaption>
  <p> </p>
  <p> </p>
 </div>
@@ -99,13 +108,17 @@ As ferramentas utilizadas foram:
 
 Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lugar, você deve obter as credenciais da API do Twitter no site do desenvolvedor do Twitter, que são a chave da API, a chave secreta da API, o token de acesso e o segredo do token de acesso.
 
+#### 3.4.1 Criação de um aplicativo do Twitter e configurção das credenciais
+
+
+
 ## 4. Exemplo
  
 ## 5. Compilação e Execução
 
 </div>
 
-## 6. Referências Bibliogŕaficas
+## 6. Referências Bibliográficas
 
 Mota M. **_Grafos — Conceitos Básicos_**. Internet: https://medium.com/20-21/grafos-ac48e874570
 
@@ -130,3 +143,5 @@ Shaham F. **_Generating A Twitter Ego-Network & Detecting Communities_**. Intern
 Hammer L. **_Guide: Analyzing Twitter Networks with Gephi 0.9.1_** Internet: https://medium.com/@Luca/guide-analyzing-twitter-networks-with-gephi-0-9-1-2e0220d9097d
 
 Aric A. Hagberg, Daniel A. Schult and Pieter J. Swart, **_Exploring network structure, dynamics, and function using NetworkX_**, in Proceedings of the 7th Python in Science Conference (SciPy2008), Gäel Varoquaux, Travis Vaught, and Jarrod Millman (Eds), (Pasadena, CA USA), pp. 11–15, Aug 2008
+
+Parika P. **_Analysis Of Twitter Social Network_**. Internet: https://medium.com/social-media-theories-ethics-and-analytics/analysis-of-twitter-social-network-d5023e1a1aa, 2020. 
