@@ -289,7 +289,7 @@ Através do Gephi, pudemos gerar uma série de grafos diferentes.
 
  <div align="center">
  <p> </p>
- <img src="img/Grafos - grupos.PNG ">
+ <img  align="left" width="470" height="470" src="img/Grafo - grupos.png">
   <p> </p>
  <figcaption>Figura 9: Grafo de cores definidos por grupos. </figcaption>
  <p> </p>
@@ -298,11 +298,13 @@ Através do Gephi, pudemos gerar uma série de grafos diferentes.
 
  <div align="center">
  <p> </p>
- <img src="img/Grafos - grau de saída.PNG ">
+ <img  align="right" width="470" height="470" src="img/Grafo - grau de saída.png ">
   <p> </p>
  <figcaption>Figura 9: Grafo de cores definidos graus de saída dos nós. </figcaption>
  <p> </p>
 </div>
+
+
 
 
 ## 6. Conclusão
