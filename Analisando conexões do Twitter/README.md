@@ -230,7 +230,7 @@ Feito isso, você deve ter um csv com todas as arestas da rede. Escrevi tudo iss
 
 Agora precisamos ler o csv e transformar o df em um gráfico usando o NetworkX. Depois que os dados forem convertidos em um gráfico, podemos executar algumas análises básicas de rede. 
 
-Existem **NÚMERO DE CONEXÕES** nós na minha rede. Também podemos encontrar os nós mais influentes na rede usando medidas de centralidade. A medida mais simples de centralidade é o grau de centralidade, que é apenas uma função do número de conexões que cada nó possui. O código a seguir encontra o número de conexões que cada nó possui, ou seja, o grau de cada nó e os classifica em ordem decrescente.
+Existem 41 mil nós na minha rede. Também podemos encontrar os nós mais influentes na rede usando medidas de centralidade. A medida mais simples de centralidade é o grau de centralidade, que é apenas uma função do número de conexões que cada nó possui. O código a seguir encontra o número de conexões que cada nó possui, ou seja, o grau de cada nó e os classifica em ordem decrescente.
 
 https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L94-L103
 
