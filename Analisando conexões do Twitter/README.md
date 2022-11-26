@@ -265,10 +265,44 @@ https://github.com/barbrina/AEDs-II/blob/f1bf5e59395128852974d5bbb7e3097cfc634bd
 
 Exportaremos os arquivos para o formato csv e usaremos o Gephi para visualizar. Gephi é um software de análise e visualização de rede de código aberto. Você deve ser capaz de instalá-lo facilmente gratuitamente no site deles.
 
+ <div align="center">
+ <p> </p>
+ <img src="img/Gephi inicial.PNG ">
+  <p> </p>
+ <figcaption>Figura 8: Gephi. </figcaption>
+ <p> </p>
+</div>
 
+Em seguida, importamos os csv's de nós (nodes.csv) e arestas (edges.csv) gerados no código para o Gephi e através deste software pudemos gerar uma série de análises.
+
+ <div align="center">
+ <p> </p>
+ <img src="img/csv.PNG ">
+  <p> </p>
+ <figcaption>Figura 8: Importação de arquivos csv ao Gephi. </figcaption>
+ <p> </p>
+</div>
 
 ## 5. Resultados e Análises
 
+Através do Gephi, pudemos gerar uma série de grafos diferentes.
+
+ <div align="center">
+ <p> </p>
+ <img src="img/Grafos - grupos.PNG ">
+  <p> </p>
+ <figcaption>Figura 9: Grafo de cores definidos por grupos. </figcaption>
+ <p> </p>
+</div>
+
+
+ <div align="center">
+ <p> </p>
+ <img src="img/Grafos - grau de saída.PNG ">
+  <p> </p>
+ <figcaption>Figura 9: Grafo de cores definidos graus de saída dos nós. </figcaption>
+ <p> </p>
+</div>
 
 
 ## 6. Conclusão
