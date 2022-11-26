@@ -285,30 +285,40 @@ Em seguida, importamos os csv's de nós (nodes.csv) e arestas (edges.csv) gerado
 
 ## 5. Resultados e Análises
 
-Através do Gephi, pudemos gerar uma série de grafos diferentes.
+Através do Gephi, pudemos gerar um grafo das conexões.
 
  <div align="center">
  <p> </p>
- <img  align="left" width="470" height="470" src="img/Grafo - grupos.png">
+ <img width="500" src="img/grafo.png ">
   <p> </p>
- <figcaption>Figura 9: Grafo de cores definidos por grupos. </figcaption>
+ <figcaption>Figura 9: Primeiro grafo plotado no Gephi. </figcaption>
  <p> </p>
 </div>
 
+Inicialmente, os dados importados ao Gephi parecem confusos. Agora, executamos uma visualização em nossos dados. Na seção “Distribuição” eu escolho “ForceAtlas″ porque é rápido e bom em mostrar relacionamentos em uma rede.
 
- <div align="center">
- <p> </p>
- <img  align="right" width="470" height="470" src="img/Grafo - grau de saída.png ">
-  <p> </p>
- <figcaption>Figura 9: Grafo de cores definidos graus de saída dos nós. </figcaption>
- <p> </p>
+
+<div id="image-table">
+    <table>
+	    <tr>
+    	    <td style="padding:10px">
+        	     <img src="img/Grafo - grupos.png" width="500"/>
+      	    </td>
+            <td style="padding:10px">
+            	 <img src="img/Grafo - grau de saída.png" width="500"/>
+            </td>
+        </tr>
+    </table>
 </div>
 
-
+<div align="center">
+<p> Figura 9: Grafo de cores definidos por grupos e por graus de saída, respectivamente. </p>
+</div>
 
 
 ## 6. Conclusão
 
+No final, com a análise de redes sociais, podemos aprender muito sobre o que acontece nas mídias sociais, como os usuários interagem e que tipo de interações estão acontecendo. Esta é uma ferramenta muito poderosa para analisar dados de mídia social e esses dados podem ser usados para moldar a forma como os usuários interagem e como eles interagem em determinados tópicos e determinados usuários. Isso pode ser benéfico especialmente ao promover algo ou construir uma marca.
  
 ## 7. Compilação e Execução
 
