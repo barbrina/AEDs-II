@@ -236,7 +236,7 @@ https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138
 
 O nó da minha rede com o grau mais alto é o nó 1034409277551796224 ou @cvdbotasbatidas. cvdbotasbatidas tem um grau de 125. 110 dessas conexões são os 110 seguidores deste nó que raspamos. Mas isso significa que existem 15 conexões adicionais - o que significa que cvdbotasbatidas segue 15 contas que me seguem. Para obtermos o nome de usuário de uma conta, dado o ID do usuário, usei o seguinte código, semelhante a como obtive o ID de usuário acima.
 
-**https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L105-L106**
+https://github.com/barbrina/AEDs-II/blob/60a02da12c5fda0dbb911fefe075d7f1eebed8e6/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L106-L107
 
 Como a rede é muito grande agora (mais de 41 mil nós), qualquer análise levará muito tempo para ser executada e qualquer visualização será uma bagunça completa, desta forma, filtrarei a rede para um número mais gerenciável de nós. Isso é feito usando a função k_core do NetworkX. A função k_core filtra os nós com grau menor que um determinado número, k. Neste exemplo, defino k igual a 4, o que reduz o número de nós no gráfico para cerca de 300.
 
