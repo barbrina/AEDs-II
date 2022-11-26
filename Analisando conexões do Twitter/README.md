@@ -230,11 +230,11 @@ Feito isso, você deve ter um csv com todas as arestas da rede. Escrevi tudo iss
 
 Agora precisamos ler o csv e transformar o df em um gráfico usando o NetworkX. Depois que os dados forem convertidos em um gráfico, podemos executar algumas análises básicas de rede. 
 
-Existem 41 mil nós na minha rede. Também podemos encontrar os nós mais influentes na rede usando medidas de centralidade. A medida mais simples de centralidade é o grau de centralidade, que é apenas uma função do número de conexões que cada nó possui. O código a seguir encontra o número de conexões que cada nó possui, ou seja, o grau de cada nó e os classifica em ordem decrescente.
+Podemos encontrar os nós mais influentes na rede usando medidas de centralidade. A medida mais simples de centralidade é o grau de centralidade, que é apenas uma função do número de conexões que cada nó possui. O código a seguir encontra o número de conexões que cada nó possui, ou seja, o grau de cada nó e os classifica em ordem decrescente.
 
 https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L94-L103
 
-O nó da minha rede com o grau mais alto é o nó **NÚMERO** ou **NOME DE USUÁRIO**. **NOME DE USUÁRIO** tem um grau de **NÚMERO**. **NÚMERO** dessas conexões são os **NÚMERO** seguidores deste nó que raspamos. Para obtermos o nome de usuário de uma conta, dado o ID do usuário, use o seguinte código, semelhante a como obtivemos nosso ID de usuário acima.
+O nó da minha rede com o grau mais alto é o nó 1034409277551796224 ou @cvdbotasbatidas. cvdbotasbatidas tem um grau de 125. 110 dessas conexões são os 110 seguidores deste nó que raspamos. Mas isso significa que existem 15 conexões adicionais - o que significa que cvdbotasbatidas segue 15 contas que me seguem. Para obtermos o nome de usuário de uma conta, dado o ID do usuário, use o seguinte código, semelhante a como obtivemos nosso ID de usuário acima.
 
 **https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L105-L106**
 
