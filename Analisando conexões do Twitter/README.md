@@ -38,7 +38,6 @@ A solução de Euler foi primeiro remover tudo que fosse irrelevante ao problema
  <p> </p>
 </div>
 
-
 Por que é necessário saber teoria dos grafos? Para responder esta pergunta, utilizaremos um exemplo de aplicação muito comum atualmente: suponha que um ponto representa uma pessoa, e que linhas entre esses pontos representam relações, juntando pares de pessoas que você segue. Então no final, para cada pessoa que você seguir, vai ter uma ligação. Se for analisado o perfil de uma das pessoas que você segue, ela tem um conjunto de pessoas que também segue outros. Algo que poderia ser usado com esse grafo, é recomendar seguidores. Essa lógica é usada para a maioria das redes sociais.
 
 ### 1.1 Networkx
@@ -60,7 +59,7 @@ Grafos em networkX podem ser criados de algumas maneiras diferentes:
 
 **_Jenny Broekemeier, Gerente de Mídias Sociais Pagas da MANSCAPED, Inc._**
 
-Trata-se de uma rede social bastante difundida, onde seu usuário poder realizar publicações, chamados de tweets que podem conter, textos, imagens, vídeos, hiperlinks ou todos deles integrados. Essas publicações podem ser visualizadas por diversos usuários e que eventualmente poderão republicar aquela "mensagem" em uma operação conhecida como retweet.
+Trata-se de uma rede social bastante difundida, onde seu usuário poder realizar publicações, chamados de tweets que podem conter, textos, imagens, vídeos, hiperlinks ou todos eles integrados. Essas publicações podem ser visualizadas por diversos usuários e que eventualmente poderão republicar aquela "mensagem" em uma operação conhecida como retweet.
 
 ### 2.1 API
 
@@ -101,7 +100,7 @@ A noção de rede social refere-se historicamente à abordagem estrutural de est
 
  Outros autores, depois de Moreno, também se apropriaram do conceito para seus estudos e setaram outras bases para o que depois veio a se tornar a Análise de Redes Sociais. Mas foi apenas na década de 90 que aconteceu uma mudança radical: Com o surgimento da mídia digital e a transformação das interações sociais em dados, novas formas de estudar esses grupos sociais, principalmente de forma mais massiva (a análise de redes sociais era feita com trabalho de coleta de dados mais "formiguinha" até então). Essa nova abordagem, muito mais interdisciplinar, vai ser inaugurada por autores como Barabási e Christakis, entre outros, e notadamente, vai também originar outras novas "subáreas" de estudo em áreas que tradicionalmente não estudavam dados sociais (como a Ciência Social Computacional, por exemplo).
  
-Quando transformamos essa discussão para as redes sociais online ou as redes sociais na internet, o que temos é uma mudança importante entre uma estrutura mediada principalmente pelas relações institucionais e interpessoais e uma estrutura mediada pelas relações mediadas pela tecnologia digital. Eu costumo dizer que, nessa mudança, essas redes ganham “superpoderes”, tais como:
+Quando transformamos essa discussão para as redes sociais online ou as redes sociais na internet, o que temos é uma mudança importante entre uma estrutura mediada principalmente pelas relações institucionais e interpessoais e uma estrutura mediada pelas relações mediadas pela tecnologia digital. Nessa mudança, essas redes ganham “superpoderes”, tais como:
 
 - A possibilidade de conexão mais “individual” e por interesse, não limitada pela localização geográfica;
 - A posssibilidade de conexões massivas, em grande escala (uma vez que essas conexões podem ser mantidas pelas ferramentas sem a necessidade de interação social), assim permitindo que as pessoas tenham centenas ou milhares de “amigos” — o fenômeno dos “influenciadores”, por exemplo;
@@ -128,10 +127,11 @@ Desta forma, o seguinte trabalho consiste em:
 1) Usar o Tweepy para raspar o Twitter para todos os meus seguidores e (a maioria) de seus seguidores;
 2) Criar um DataFrame pandas de todas essas conexões;
 3) Usar o NetworkX para extrair uma rede desses dados e executar algumas análises básicas de rede;
+4) Visualizar a rede no Gephi.
 
 ### 4.2 Instalação
 
-Para rodar este código, é necessário instalar as bibliotecas a seguir.
+Para rodar este código, é necessário instalar as bibliotecas a seguir:
 
 ```
 pip3 install networkx
@@ -155,11 +155,11 @@ As ferramentas utilizadas foram:
 
 ### 4.4 Estrutura do algoritmo
 
-Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lugar, você deve obter as credenciais da API do Twitter no site do desenvolvedor do Twitter, que são a chave da API, a chave secreta da API, o token de acesso e o segredo do token de acesso.
+Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lugar, você deve obter as credenciais da API do Twitter no site do desenvolvedor do Twitter, que são a chave da API (API_ACCESS), a chave secreta da API (API_ACCESS_SECRET), o token de acesso (ACCESS_TOKEN) e o segredo do token de acesso (ACCESS_TOKEN_SECRET).
 
 #### 4.4.1 Criação de um aplicativo do Twitter e configurção das credenciais
 
-Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação. Visto que as credenciais são pessoais, neste trabalho **EXPLICAR AQUI**.
+Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação. 
 
 <div align="center">
  <p> </p>
@@ -171,13 +171,13 @@ Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter
 
 #### 4.4.2 Conexão à API do Twitter
 
-Para começar, vamos construir uma rede usando minha conta pessoal no Twitter (@ barbrinass). Para fazer isso, vamos começar com uma lista de todos os meus seguidores (atualmente 69 seguidores). Em seguida, obteremos todos os seguidores dessas 69 contas. Para economizar tempo, para contas com mais de 5.000 seguidores, irei raspar apenas os primeiros 5.000 de seus seguidores.
+Para começar, irei construir uma rede usando minha conta pessoal no Twitter (@ barbrinass). Para fazer isso, começarei com uma lista de todos os meus seguidores (atualmente 69 seguidores). Em seguida, obterei todos os seguidores dessas 69 contas. Para economizar tempo, para contas com mais de 5.000 seguidores, irei raspar apenas as primeiros 5.000 contas.
 
 Primeiro, precisamos importar os pacotes Tweepy e pandas.
 
 https://github.com/barbrina/AEDs-II/blob/7d3954f73d13c52d913bbdebae227a7f303ae8b2/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L5-L6
 
-Em seguida, precisamos inserir a credenciais da API do Twitter retiradas na sessão **Criação de um aplicativo do Twitter e configurção das credenciais**.
+Em seguida, precisei inserir a credenciais da API do Twitter retiradas na sessão **Criação de um aplicativo do Twitter e configurção das credenciais**.
 
 ```
 consumer_key = info['API_ACCESS']
@@ -186,25 +186,25 @@ access_key = info['ACCESS_TOKEN']
 access_secret = info['ACCESS_TOKEN_SECRET']
 ```
 
-Com o Tweepy, podemos usar essas credenciais para nos conectar à API do Twitter e começar a baixar os dados. O código a seguir usa apenas as credenciais inseridas acima para se conectar à API. Como vamos fazer o download de grandes conjuntos de dados, é importante especificar alguns parâmetros quando inicializarmos a API. Definimos ‘wait_on_rate_limit’ como True. Existem limites de taxa ao baixar dados do Twitter - você só pode fazer um número limitado de solicitações de download para a API em um determinado período de tempo. Ao definir esses parâmetros como True, não interromperemos a conexão com a API quando atingirmos esses limites. Em vez disso, esperaremos até que o tempo limite termine e possamos continuar baixando os dados.
+Com o Tweepy, poderei usar essas credenciais para me conectar à API do Twitter e começar a baixar os dados. O código a seguir usa apenas as credenciais inseridas acima para se conectar a ela. Como irei fazer o download de grandes conjuntos de dados, é importante especificar alguns parâmetros quando inicializarei a API. Defini ‘wait_on_rate_limit’ como True. Existem limites de taxa ao baixar dados do Twitter - só se pode fazer um número limitado de solicitações de download para a API em um determinado período de tempo. Ao definir esse parâmetro como True, não interromperei a conexão com a API quando atingirmos esses limites. Em vez disso, esperarei até que o tempo limite termine e eu possa continuar baixando os dados.
 
 https://github.com/barbrina/AEDs-II/blob/7d3954f73d13c52d913bbdebae227a7f303ae8b2/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L19-L25
 
 #### 4.4.3 Raspagem de dados
 
-Para iniciar o download dos dados, obteremos todos os seguidores de um usuário individual. Para obter isso, você precisa do ID do usuário. Você pode obter o ID de usuário de um usuário se souber seu nome de tela usando o código abaixo.
+Para iniciar o download dos dados, obterei todos os seguidores de um usuário individual. Para obter isso, é preciso do ID do usuário. Pode-se obter o ID de usuário se souber seu nome de tela usando o código abaixo.
 
 https://github.com/barbrina/AEDs-II/blob/90272f1186d0c2aff410601cddc71834da98f536/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L27-L28
 
 Meu ID de usuário é: 1551694598518480898
 
-Uma rede consiste de nós (ou vértices) e links (ou arestas). Para esta rede, usaremos contas de usuários individuais como nós e seguidores como links. Nosso objetivo, portanto, é criar um DataFrame de IDs de usuário com duas colunas: origem (‘source’) e destino (‘target’). Para cada linha, o destino segue a origem. Para começar, queremos listar todos os meus seguidores como alvos.
+Uma rede consiste de nós (ou vértices) e links (ou arestas). Para esta rede, usarei contas de usuários individuais como nós e seguidores como links. O objetivo, portanto, é criar um DataFrame de IDs de usuário com duas colunas: origem (‘source’) e destino (‘target’). Para cada linha, o destino segue a origem. Para começar, irei listar todos os meus seguidores como alvos.
 
-O código a seguir cria uma lista dos meus 69 seguidores. Agora que temos uma lista de todos os seguidores, podemos colocá-los em um DataFrame.
+O código a seguir cria uma lista dos meus 69 seguidores. Agora que tenho uma lista de todos os seguidores, poderei colocá-los em um DataFrame.
 
 https://github.com/barbrina/AEDs-II/blob/90272f1186d0c2aff410601cddc71834da98f536/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L30-L46
 
-Mas esta não é uma rede muito interessante e pouco pode se analisar ela. Para visualizar essa rede simples, podemos usar o pacote NetworkX para converter o DataFrame em um gráfico ou rede. Em seguida, plotamos o gráfico usando matplotlib e o armazenamos em um arquivo.
+Mas esta não é uma rede muito interessante e pouco pode se analisar ela. Para visualizar essa rede simples, pode-se usar o pacote NetworkX para converter o DataFrame em um gráfico ou rede. Em seguida, plotar o gráfico usando matplotlib e o armazenar em um arquivo.
 
 https://github.com/barbrina/AEDs-II/blob/90272f1186d0c2aff410601cddc71834da98f536/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L50-L61
 
@@ -218,31 +218,31 @@ O código acima renderiza o seguinte visual:
  <p> </p>
 </div>
 
-O que queremos mesmo é conseguir todos os seguidores desses 69 usuários. Para fazer isso, percorreremos a lista de todos os usuários, obteremos seus seguidores e adicionaremos esses links ao DataFrame original. Este é o código que levará muito tempo para ser executado por causa dos limites de taxa da API do twitter.
+O objetivo mesmo é conseguir todos os seguidores desses 69 usuários. Para fazer isso, percorrerei a lista de todos os usuários, obterei seus seguidores e adicionarei esses links ao DataFrame original. Este código levará muito tempo para ser executado por causa dos limites de taxa (rate limits) da API do twitter.
 
 https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L65-L91
 
-Esse código é muito semelhante ao código acima, pois obtém todos os seguidores de um determinado ID de usuário. A grande diferença é que ao invés de alimentar apenas uma conta, estamos passando por todas as 69 contas que me seguem. Outra diferença é que se uma conta tiver mais de 5.000 seguidores, pegamos apenas os primeiros 5.000 seguidores. Isso ocorre devido à maneira como a API funciona. Cada solicitação de API retornará apenas 5.000 contas. Portanto, se quisermos todos os seguidores de uma conta que tenha, digamos, um milhão de seguidores, precisaríamos fazer 200 solicitações individuais.
+Esse código é muito semelhante ao código acima, ele obtém todos os seguidores de um determinado ID de usuário. A grande diferença é que ao invés de alimentar apenas uma conta, estarei passando por todas as 69 contas que me seguem. Outra diferença é que se uma conta tiver mais de 5.000 seguidores, pego apenas os primeiros 5.000 seguidores. Isso ocorre devido à maneira como a API funciona. Cada solicitação de API retorna apenas 5.000 contas. Portanto, para pegar todos os seguidores de uma conta, por exemplo, um milhão de seguidores, precisaria-se fazer 200 solicitações individuais.
 
 Por causa dos limites de taxa (rate limits), o código pode levar longos períodos para terminar de obter todos os dados. Ele faz 15 solicitações de API, depois espera 15 minutos, faz outras 15 solicitações e assim por diante. Portanto, pode demorar muito.
 
-Feito isso, você deve ter um csv com todas as arestas da rede. Escrevi tudo isso em um csv apenas para que, se ele quebrar durante a execução, eu ainda tenha todas as bordas raspadas.
+Feito isso, deve-se ter um csv com todas as arestas da rede. Escrevi estes dados em um csv apenas para que, se o código quebrar durante a execução, eu ainda tenha todas as bordas raspadas.
 
-Agora precisamos ler o csv e transformar o df em um gráfico usando o NetworkX. Depois que os dados forem convertidos em um gráfico, podemos executar algumas análises básicas de rede. 
+Agora, lerei o csv e transformarei o df em um gráfico usando o NetworkX. Depois que os dados forem convertidos em um gráfico, poderei executar algumas análises básicas de rede. 
 
-Podemos encontrar os nós mais influentes na rede usando medidas de centralidade. A medida mais simples de centralidade é o grau de centralidade, que é apenas uma função do número de conexões que cada nó possui. O código a seguir encontra o número de conexões que cada nó possui, ou seja, o grau de cada nó e os classifica em ordem decrescente.
+É possível encontrar os nós mais influentes na rede usando medidas de centralidade. A medida mais simples de centralidade é o grau de centralidade, que é apenas uma função do número de conexões que cada nó possui. O código a seguir encontra o número de conexões que cada nó possui, ou seja, o grau de cada nó e os classifica em ordem decrescente.
 
 https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L94-L103
 
-O nó da minha rede com o grau mais alto é o nó 1034409277551796224 ou @cvdbotasbatidas. cvdbotasbatidas tem um grau de 125. 110 dessas conexões são os 110 seguidores deste nó que raspamos. Mas isso significa que existem 15 conexões adicionais - o que significa que cvdbotasbatidas segue 15 contas que me seguem. Para obtermos o nome de usuário de uma conta, dado o ID do usuário, use o seguinte código, semelhante a como obtivemos nosso ID de usuário acima.
+O nó da minha rede com o grau mais alto é o nó 1034409277551796224 ou @cvdbotasbatidas. cvdbotasbatidas tem um grau de 125. 110 dessas conexões são os 110 seguidores deste nó que raspamos. Mas isso significa que existem 15 conexões adicionais - o que significa que cvdbotasbatidas segue 15 contas que me seguem. Para obtermos o nome de usuário de uma conta, dado o ID do usuário, usei o seguinte código, semelhante a como obtive o ID de usuário acima.
 
 **https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L105-L106**
 
-Como a rede é muito grande agora (mais de 41 mil nós), qualquer análise levará muito tempo para ser executada e qualquer visualização será uma bagunça completa. No restante deste tutorial, filtraremos a rede para um número mais gerenciável de nós. Fazemos isso usando a função k_core do NetworkX. A função k_core filtra os nós com grau menor que um determinado número, k. Neste exemplo, defino k igual a 4, o que reduz o número de nós no gráfico para cerca de 300.
+Como a rede é muito grande agora (mais de 41 mil nós), qualquer análise levará muito tempo para ser executada e qualquer visualização será uma bagunça completa, desta forma, filtrarei a rede para um número mais gerenciável de nós. Isso é feito usando a função k_core do NetworkX. A função k_core filtra os nós com grau menor que um determinado número, k. Neste exemplo, defino k igual a 4, o que reduz o número de nós no gráfico para cerca de 300.
 
 #### 4.4.4 Análise de conexões
 
-Com esse gráfico menor, podemos facilmente fazer algumas análises de rede. Começamos dividindo o gráfico em grupos usando um algoritmo de detecção de comunidade. Dessa forma, nós precisamos executar o código de centralidade de grau novamente agora que nossa rede é menor. Now that we have the nodes split into groups and the degree of each node, we combine these into one DataFrame. Agora que temos os nós divididos em grupos e o grau de cada nó, nós os combinamos em um DataFrame. Em seguida, podemos visualizar este gráfico e salvá-lo em um arquivo png. 
+Com esse gráfico menor, poderei facilmente fazer algumas análises de rede. Começarei dividindo o gráfico em grupos usando um algoritmo de detecção de comunidade. Dessa forma, é preciso executar o código de centralidade de grau novamente agora que nossa rede é menor. Agora que temos os nós divididos em grupos e o grau de cada nó, o combinarei em um DataFrame. Em seguida, pode-se visualizar este gráfico e salvá-lo em um arquivo png. 
 
 https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L110-L140
 
@@ -256,14 +256,13 @@ Isso deve criar um gráfico parecido com isto:
  <p> </p>
 </div>
 
-
-Para usar o Gephi, primeiro é necessário exportar a lista de nós e a lista de arestas como arquivos csv.
+Agora que temos todos os dados, partirei para a próxima etapa do projeto. Para usar o Gephi, primeiro é necessário exportar a lista de nós e a lista de arestas como arquivos csv.
 
 https://github.com/barbrina/AEDs-II/blob/f1bf5e59395128852974d5bbb7e3097cfc634bde/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L142-L146
 
 #### 4.4.5 Visualização no Gephi
 
-Exportaremos os arquivos para o formato csv e usaremos o Gephi para visualizar. Gephi é um software de análise e visualização de rede de código aberto. Você deve ser capaz de instalá-lo facilmente gratuitamente no site deles.
+Após exportar os arquivos para o formato csv, usarei o Gephi para visualizar o grafo. Gephi é um software de análise e visualização de rede de código aberto.
 
  <div align="center">
  <p> </p>
@@ -273,7 +272,7 @@ Exportaremos os arquivos para o formato csv e usaremos o Gephi para visualizar. 
  <p> </p>
 </div>
 
-Em seguida, importamos os csv's de nós (nodes.csv) e arestas (edges.csv) gerados no código para o Gephi e através deste software pudemos gerar uma série de análises.
+Em seguida, importei os arquivis csv de nós (nodes.csv) e arestas (edges.csv), gerados pelo código, para o Gephi e através deste software pude gerar uma série de análises.
 
  <div align="center">
  <p> </p>
@@ -312,7 +311,7 @@ Inicialmente, os dados importados ao Gephi parecem confusos. Agora, executamos u
 </div>
 
 <div align="center">
-<p> Figura 9: Grafo de cores definidos por grupos e por graus de saída, respectivamente. </p>
+<p> Figura 10: Grafo de cores definidos por grupos e por graus de saída, respectivamente. </p>
 </div>
 
 
