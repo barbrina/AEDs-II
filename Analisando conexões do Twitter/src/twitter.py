@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
 from community import community_louvain
 from IPython.display import display
+import scipy as sp
 import matplotlib.pyplot as plt
 import networkx as nx
 import tweepy
-import pandas as pd
 import json
+import pandas as pd
 
 # Aqui utilizamos a funcaoo open para abrir nosso arquivo e a
 # biblioteca json para carregar nosso arquivo para uma variavel chamada info.
@@ -20,7 +22,7 @@ access_secret = info['ACCESS_TOKEN_SECRET']
 autorizacao = tweepy.OAuthHandler(consumer_key, consumer_secret)
 autorizacao.set_access_token(access_key, access_secret)
 
-# Agora temos nossa vari√É¬°vel chamada api onde guardamos uma inst√É¬¢ncia do tweepy e
+# Agora temos nossa vari√°vel chamada api onde guardamos uma inst√¢ncia do tweepy e
 # com ela que iremos trabalhar a partir de agora.
 api = tweepy.API(autorizacao, wait_on_rate_limit=True)
 
@@ -43,12 +45,12 @@ for user in user_list:
 df = pd.DataFrame(columns=['source', 'target'])  # DataFrame vazio
 # Defina a lista de seguidores como a coluna de destino
 df['target'] = follower_list[0]
-df['source'] = me.id  # Define meu ID de usu√°rio como source
+df['source'] = me.id  # Define meu ID de usu·rio como source
 
 display(df)
 
-G = nx.from_pandas_edgelist(df, 'source', 'target')  # Transforma df em gr√°fico
-pos = nx.spring_layout(G)  # especifica layout 
+G = nx.from_pandas_edgelist(df, 'source', 'target')  # Transforma df em gr·fico
+pos = nx.spring_layout(G)  # especifica layout
 
 f, ax = plt.subplots(figsize=(10, 10))
 plt.style.use('ggplot')
@@ -61,14 +63,14 @@ nx.draw(G)
 plt.savefig("BarbrinassFollowers.png")
 
 
-# Use a lista de seguidores que extra√≠mos no c√≥digo acima
+# Use a lista de seguidores que extraÌmos no cÛdigo acima
 user_list = list(df['target'])
 for userID in user_list:
     print(userID)
     followers = []
     follower_list = []
 
-    # busca o usu√°rio
+    # busca o usu·rio
     user = api.get_user(user_id=userID)
 
     # buscan a contagem de seguidores
@@ -91,24 +93,24 @@ for userID in user_list:
     df.to_csv("networkOfFollowers.csv")
 
 
-df = pd.read_csv("networkOfFollowers.csv")  # L√™ em um df
+df = pd.read_csv("networkOfFollowers.csv")  # LÍ em um df
 display(df)
 
 G = nx.from_pandas_edgelist(df, 'source', 'target')
 
-G.number_of_nodes()  # Encontra o n√∫mero total de n√≥s neste gr√°fico
+G.number_of_nodes()  # Encontra o n˙mero total de nÛs neste gr·fico
 
 G_sorted = pd.DataFrame(sorted(G.degree, key=lambda x: x[1], reverse=True))
 G_sorted.columns = ['nconst', 'degree']
 G_sorted.head()
 
-#u = api.get_user(37728789)
-# u.screen_name
+u = api.get_user(user_id=1034409277551796224)
+u.screen_name
 
-G_tmp = nx.k_core(G, 4)  # Exclui n√≥s com grau menor que 4
+G_tmp = nx.k_core(G, 4)  # Exclui nÛs com grau menor que 4
 
 partition = community_louvain.best_partition(
-    G_tmp)  # Transforma parti√ß√£o em dataframe
+    G_tmp)  # Transforma partiÁ„o em dataframe
 partition1 = pd.DataFrame([partition]).T
 partition1 = partition1.reset_index()
 partition1.columns = ['names', 'group']
