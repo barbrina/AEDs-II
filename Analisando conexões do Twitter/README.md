@@ -322,6 +322,11 @@ No final, com a análise de redes sociais, podemos aprender muito sobre o que ac
  
 ## 7. Compilação e Execução
 
+
+| Comando                |  Função                                                                                           |
+| -----------------------| ------------------------------------------------------------------------------------------------- |
+|  python twitter.py     | Executa e interpreta o programa                                     |
+
 </div>
 
 ## 8. Referências Bibliográficas
