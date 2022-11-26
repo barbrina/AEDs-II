@@ -238,7 +238,7 @@ O nó da minha rede com o grau mais alto é o nó 1034409277551796224 ou @cvdbot
 
 **https://github.com/barbrina/AEDs-II/blob/6ff8ee5eb7072be17c032ac030c983578ba8138d/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L105-L106**
 
-Como a rede é muito grande agora (mais de **NÚMERO** mil nós), qualquer análise levará muito tempo para ser executada e qualquer visualização será uma bagunça completa. No restante deste tutorial, filtraremos a rede para um número mais gerenciável de nós. Fazemos isso usando a função k_core do NetworkX. A função k_core filtra os nós com grau menor que um determinado número, k. Neste exemplo, defino k igual a 4, o que reduz o número de nós no gráfico para cerca de 300.
+Como a rede é muito grande agora (mais de 41 mil nós), qualquer análise levará muito tempo para ser executada e qualquer visualização será uma bagunça completa. No restante deste tutorial, filtraremos a rede para um número mais gerenciável de nós. Fazemos isso usando a função k_core do NetworkX. A função k_core filtra os nós com grau menor que um determinado número, k. Neste exemplo, defino k igual a 4, o que reduz o número de nós no gráfico para cerca de 300.
 
 #### 4.4.3 Análise de conexões
 
