@@ -128,7 +128,6 @@ Desta forma, o seguinte trabalho consiste em:
 1) Usar o Tweepy para raspar o Twitter para todos os meus seguidores e (a maioria) de seus seguidores;
 2) Criar um DataFrame pandas de todas essas conexões;
 3) Usar o NetworkX para extrair uma rede desses dados e executar algumas análises básicas de rede;
-4) Visualizar a rede no Gephi.
 
 ### 4.2 Instalação
 
@@ -153,7 +152,6 @@ As ferramentas utilizadas foram:
 - Pandas — biblioteca de manipulação e análise de dados
 - Matplotlib — biblioteca de plotagem
 - JSON — tipo de arquivo
-- Gephi — um pacote de software de análise e visualização de rede de código aberto
 
 ### 4.4 Estrutura do algoritmo
 
@@ -258,19 +256,29 @@ Isso deve criar um gráfico parecido com isto:
  <p> </p>
 </div>
 
-#### 4.4.4 Visualização no Gephi
-
-Em seguida, exportaremos os arquivos para o formato csv e usaremos o Gephi para visualizar. Gephi é um software de análise e visualização de rede de código aberto. Você deve ser capaz de instalá-lo facilmente gratuitamente no site deles.
 
 Para usar o Gephi, primeiro é necessário exportar a lista de nós e a lista de arestas como arquivos csv.
 
 https://github.com/barbrina/AEDs-II/blob/f1bf5e59395128852974d5bbb7e3097cfc634bde/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L142-L146
+
+#### 4.4.4 Visualização no Gephi
+
+Exportaremos os arquivos para o formato csv e usaremos o Gephi para visualizar. Gephi é um software de análise e visualização de rede de código aberto. Você deve ser capaz de instalá-lo facilmente gratuitamente no site deles.
+
+
+
+## 5. Resultados e Análises
+
+
+
+## 6. Conclusão
+
  
-## 5. Compilação e Execução
+## 7. Compilação e Execução
 
 </div>
 
-## 6. Referências Bibliográficas
+## 8. Referências Bibliográficas
 
 Mota M. **_Grafos — Conceitos Básicos_**. Internet: https://medium.com/20-21/grafos-ac48e874570
 
@@ -298,7 +306,7 @@ Aric A. Hagberg, Daniel A. Schult and Pieter J. Swart, **_Exploring network stru
 
 Parika P. **_Analysis Of Twitter Social Network_**. Internet: https://medium.com/social-media-theories-ethics-and-analytics/analysis-of-twitter-social-network-d5023e1a1aa, 2020. 
 
-## 7. Integrantes
+## 9. Integrantes
 
 <div>
 <p align="justify"> <b> Thaissa Vitória Guimarães Daldegan de Souza </b> </p>
