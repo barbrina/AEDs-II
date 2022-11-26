@@ -318,6 +318,8 @@ Inicialmente, os dados importados ao Gephi parecem confusos. Agora, executamos u
 ## 6. Conclusão
 
 No final, com a análise de redes sociais, podemos aprender muito sobre o que acontece nas mídias sociais, como os usuários interagem e que tipo de interações estão acontecendo. Esta é uma ferramenta muito poderosa para analisar dados de mídia social e esses dados podem ser usados para moldar a forma como os usuários interagem e como eles interagem em determinados tópicos e determinados usuários. Isso pode ser benéfico especialmente ao promover algo ou construir uma marca.
+
+O objetivo do trabalho foi cumprido, apesar de ter realizado uma análise de uma pequena amostragem de dados visto as limitações da própria API, da arquitetura do computador e o tempo para fazer o trabalho e coletar os dados. Para trabalhos futuros, seria interessante uma maior coleta de dados e mais atribuições para análise de conexões, como tweets, curtidas e menções. 
  
 ## 7. Compilação e Execução
 
