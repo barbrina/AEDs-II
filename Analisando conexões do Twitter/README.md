@@ -39,18 +39,28 @@ A solução de Euler foi primeiro remover tudo que fosse irrelevante ao problema
 </div>
 
 
-Por que é necessário saber teoria dos grafos? Para responder esta pergunta, utilizaremos um exemplo de aplicação muito comum atualmente. Suponha que um ponto representa uma pessoa, e que linhas entre esses pontos representam relações juntando pares de pessoas que você segue. Então no final para cada pessoa que você seguir vai ter uma ligação. Se for analisado o perfil de uma das pessoas que você segue, ela tem um conjunto de pessoas que também segue outros. Algo que poderia ser usado com esse grafo, é recomendar seguidores. Essa lógica é usada para a maioria das redes sociais!
+Por que é necessário saber teoria dos grafos? Para responder esta pergunta, utilizaremos um exemplo de aplicação muito comum atualmente: suponha que um ponto representa uma pessoa, e que linhas entre esses pontos representam relações, juntando pares de pessoas que você segue. Então no final, para cada pessoa que você seguir, vai ter uma ligação. Se for analisado o perfil de uma das pessoas que você segue, ela tem um conjunto de pessoas que também segue outros. Algo que poderia ser usado com esse grafo, é recomendar seguidores. Essa lógica é usada para a maioria das redes sociais.
 
-### Networkx
+### 1.1 Networkx
 
+NetworkX é uma biblioteca Python para estudar grafos e redes. Esta é uma demonstração de código para mostrar como usamos o NetworkX para conduzir a comparação de subgráficos e manipulamos os parâmetros para desenhar os grafos.
+
+Grafos em networkX podem ser criados de algumas maneiras diferentes:
+
+- Podemos carregar um grafo de um arquivo contendo uma lista de adjacências.
+- Podemos carregar um grafo de um arquivo contendo uma lista de arestas (edge list).
+- Podemos criar um grafo a partir de uma matriz de adjacência.
+- Podemos criar um gráfico a partir de um dataframe do pandas.
+- Podemos criar um grafo vazio e adicionar os vértices e arestas um a um ou a partir de uma lista.
+- Finalmente, alguns gráficos especiais (gráficos completos, gráficos bipartidos completos, …) podem ser criados usando funções especiais.
 
 ## 2. Twitter
 
 > Twitter é uma plataforma para as pessoas conversarem sobre assuntos do momento, um lugar que cria uma audiência muito engajada, que fica ao nosso alcance — seja por meios orgânicos ou anúncios pagos.
 
-Jenny Broekemeier, Gerente de Mídias Sociais Pagas da MANSCAPED, Inc.
+**_Jenny Broekemeier, Gerente de Mídias Sociais Pagas da MANSCAPED, Inc._**
 
-Trata-se de uma rede social, bastante difundida, onde seu usuário poder realizar publicações, chamados de tweets que podem conter, textos, imagens, vídeos, hiperlinks ou todos deles integrados. Essas publicações podem ser visualizadas por diversos usuários e que eventualmente poderão republicar aquela "mensagem" em uma operação conhecida como retweet.
+Trata-se de uma rede social bastante difundida, onde seu usuário poder realizar publicações, chamados de tweets que podem conter, textos, imagens, vídeos, hiperlinks ou todos deles integrados. Essas publicações podem ser visualizadas por diversos usuários e que eventualmente poderão republicar aquela "mensagem" em uma operação conhecida como retweet.
 
 ### 2.1 API
 
@@ -107,9 +117,9 @@ Ele entrou em praticamente todos os campos - novamente, de acordo com a Wikipedi
 > “A análise de redes sociais emergiu como uma técnica chave na sociologia moderna. Também ganhou seguidores significativos em antropologia, biologia, demografia, estudos de comunicação, economia, geografia, história, ciência da informação, estudos organizacionais, ciência política, saúde pública, psicologia social, estudos de desenvolvimento, sociolinguística e ciência da computação e agora é comumente disponível como uma ferramenta de consumo (consulte a lista de software SNA).”
  
  
-## 3. O Algoritmo
+## 4. O Algoritmo
 
-### 3.1 Problema Proposto 
+### 4.1 Problema Proposto 
 
 Neste trabalho o objetivo é aplicar as estruturas em grafos para solucionar um problema real qualquer. Cada dupla de alunos deve escolher em literatura uma das áreas de aplicação do tema e propor uma solução baseada nos conceitos apresentados. Essa solução pode ser realizada utilizando C, C++ e/ou Python. O objetivo e mostrar a atuação de algoritmos clássicos em grafos na resolução de problemas emergentes. Alguns temas para inspiração são: Análise de rede social, rotas de entregas, análise de trafego (i.e., carros, pacotes na internet, etc), mínima quantidade de saltos em redes, teoria dos jogos, elaboração de horário vs rodízio de salas, envoltória convexa (do inglês, convex hull), etc.
 
@@ -120,7 +130,7 @@ Desta forma, o seguinte trabalho consiste em:
 3) Usar o NetworkX para extrair uma rede desses dados e executar algumas análises básicas de rede;
 4) Visualizar a rede no Gephi.
 
-### 3.2 Instalação
+### 4.2 Instalação
 
 Para rodar este código, é necessário instalar as bibliotecas a seguir.
 
@@ -132,7 +142,7 @@ pip3 install python-louvain
 pip3 install ipython
 ```
 
-### 3.3 Bibliotecas utilizadas
+### 4.3 Bibliotecas utilizadas
 
 https://github.com/barbrina/AEDs-II/blob/ec4f340603c80c50ced61438448984aa963f7396/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L1-L7
 
@@ -145,11 +155,11 @@ As ferramentas utilizadas foram:
 - JSON — tipo de arquivo
 - Gephi — um pacote de software de análise e visualização de rede de código aberto
 
-### 3.4 Estrutura do algoritmo
+### 4.4 Estrutura do algoritmo
 
 Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lugar, você deve obter as credenciais da API do Twitter no site do desenvolvedor do Twitter, que são a chave da API, a chave secreta da API, o token de acesso e o segredo do token de acesso.
 
-#### 3.4.1 Criação de um aplicativo do Twitter e configurção das credenciais
+#### 4.4.1 Criação de um aplicativo do Twitter e configurção das credenciais
 
 Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação. Visto que as credenciais são pessoais, neste trabalho **EXPLICAR AQUI**.
 
@@ -161,7 +171,7 @@ Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter
  <p> </p>
 </div>
 
-#### 3.4.2 Conexão à API do Twitter
+#### 4.4.2 Conexão à API do Twitter
 
 Para começar, vamos construir uma rede usando minha conta pessoal no Twitter (@ barbrinass). Para fazer isso, vamos começar com uma lista de todos os meus seguidores (atualmente 69 seguidores). Em seguida, obteremos todos os seguidores dessas 69 contas. Para economizar tempo, para contas com mais de 5.000 seguidores, irei raspar apenas os primeiros 5.000 de seus seguidores.
 
@@ -172,23 +182,23 @@ https://github.com/barbrina/AEDs-II/blob/7d3954f73d13c52d913bbdebae227a7f303ae8b
 Em seguida, precisamos inserir a credenciais da API do Twitter retiradas na sessão **Criação de um aplicativo do Twitter e configurção das credenciais**.
 
 ```
-consumer_key = 'XXXXXXXXXXXXX'
-consumer_secret = 'XXXXXXXXXXXXX'
-access_token = 'XXXXXXXXXXXXX'
-access_token_secret = 'XXXXXXXXXXXXX'
+consumer_key = info['API_ACCESS']
+consumer_secret = info['API_ACCESS_SECRET']
+access_key = info['ACCESS_TOKEN']
+access_secret = info['ACCESS_TOKEN_SECRET']
 ```
 
 Com o Tweepy, podemos usar essas credenciais para nos conectar à API do Twitter e começar a baixar os dados. O código a seguir usa apenas as credenciais inseridas acima para se conectar à API. Como vamos fazer o download de grandes conjuntos de dados, é importante especificar alguns parâmetros quando inicializarmos a API. Definimos ‘wait_on_rate_limit’ como True. Existem limites de taxa ao baixar dados do Twitter - você só pode fazer um número limitado de solicitações de download para a API em um determinado período de tempo. Ao definir esses parâmetros como True, não interromperemos a conexão com a API quando atingirmos esses limites. Em vez disso, esperaremos até que o tempo limite termine e possamos continuar baixando os dados.
 
 https://github.com/barbrina/AEDs-II/blob/7d3954f73d13c52d913bbdebae227a7f303ae8b2/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L19-L25
 
-#### 3.4.3 Raspagem de dados
+#### 4.4.3 Raspagem de dados
 
 Para iniciar o download dos dados, obteremos todos os seguidores de um usuário individual. Para obter isso, você precisa do ID do usuário. Você pode obter o ID de usuário de um usuário se souber seu nome de tela usando o código abaixo.
 
 https://github.com/barbrina/AEDs-II/blob/90272f1186d0c2aff410601cddc71834da98f536/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L27-L28
 
-Meu ID de usuário é: **COLOCAR ID DE USUÁRIO AQUI**
+Meu ID de usuário é: 1551694598518480898
 
 Uma rede consiste de nós (ou vértices) e links (ou arestas). Para esta rede, usaremos contas de usuários individuais como nós e seguidores como links. Nosso objetivo, portanto, é criar um DataFrame de IDs de usuário com duas colunas: origem (‘source’) e destino (‘target’). Para cada linha, o destino segue a origem. Para começar, queremos listar todos os meus seguidores como alvos.
 
@@ -232,7 +242,7 @@ O nó da minha rede com o grau mais alto é o nó **NÚMERO** ou **NOME DE USUÁ
 
 Como a rede é muito grande agora (mais de **NÚMERO** mil nós), qualquer análise levará muito tempo para ser executada e qualquer visualização será uma bagunça completa. No restante deste tutorial, filtraremos a rede para um número mais gerenciável de nós. Fazemos isso usando a função k_core do NetworkX. A função k_core filtra os nós com grau menor que um determinado número, k. Neste exemplo, defino k igual a 4, o que reduz o número de nós no gráfico para cerca de 300.
 
-#### 3.4.3 Análise de conexões
+#### 4.4.3 Análise de conexões
 
 Com esse gráfico menor, podemos facilmente fazer algumas análises de rede. Começamos dividindo o gráfico em grupos usando um algoritmo de detecção de comunidade. Dessa forma, nós precisamos executar o código de centralidade de grau novamente agora que nossa rede é menor. Now that we have the nodes split into groups and the degree of each node, we combine these into one DataFrame. Agora que temos os nós divididos em grupos e o grau de cada nó, nós os combinamos em um DataFrame. Em seguida, podemos visualizar este gráfico e salvá-lo em um arquivo png. 
 
@@ -248,19 +258,19 @@ Isso deve criar um gráfico parecido com isto:
  <p> </p>
 </div>
 
+#### 4.4.4 Visualização no Gephi
+
 Em seguida, exportaremos os arquivos para o formato csv e usaremos o Gephi para visualizar. Gephi é um software de análise e visualização de rede de código aberto. Você deve ser capaz de instalá-lo facilmente gratuitamente no site deles.
 
-Para usar o Gephi, primeiro você precisa exportar a lista de nós e a lista de arestas como arquivos csv.
+Para usar o Gephi, primeiro é necessário exportar a lista de nós e a lista de arestas como arquivos csv.
 
 https://github.com/barbrina/AEDs-II/blob/f1bf5e59395128852974d5bbb7e3097cfc634bde/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L142-L146
-
-#### 3.4.4 Visualização no Gephi
  
-## 4. Compilação e Execução
+## 5. Compilação e Execução
 
 </div>
 
-## 5. Referências Bibliográficas
+## 6. Referências Bibliográficas
 
 Mota M. **_Grafos — Conceitos Básicos_**. Internet: https://medium.com/20-21/grafos-ac48e874570
 
@@ -288,8 +298,7 @@ Aric A. Hagberg, Daniel A. Schult and Pieter J. Swart, **_Exploring network stru
 
 Parika P. **_Analysis Of Twitter Social Network_**. Internet: https://medium.com/social-media-theories-ethics-and-analytics/analysis-of-twitter-social-network-d5023e1a1aa, 2020. 
 
-## 6. Integrantes
-
+## 7. Integrantes
 
 <div>
 <p align="justify"> <b> Thaissa Vitória Guimarães Daldegan de Souza </b> </p>
